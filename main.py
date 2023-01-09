@@ -12,13 +12,14 @@ main.title("Vending Machine")
 space1 = Label(main).grid(row=0,column=0,padx=50,pady=50)
 space2 = Label(main).grid(row=1,column=1,padx=50,pady=50)
 
-i = 0
-while i < len(seed.items):
-    Label(main, text= list(seed.items)[i]).grid(row=i*2+2,column=2,padx=5)
-    for j,options in enumerate(seed.items[list(seed.items)[i]]):
-        Label(main,text=options).grid(row=i*2+2,column=j+3,padx=5)
-    i +=1
-    
+def  addToCard(options):
+    print(options)
+
+for i, products in enumerate(seed.productList):
+    Label(main, text=products).grid(row=i*2+2,column=2,padx=5)
+    for j, items in enumerate(seed.productList[products]):
+        Button(main,text=items).grid(row=i*2+2, column=j+3,padx=5, command=addToCard(items))
+
 def Success():
     print("login or registered..")
 
