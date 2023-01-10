@@ -1,5 +1,6 @@
 from tkinter import *
 import seed
+import sqlite3 
 
 main = Tk()
 main.state("zoomed")
@@ -22,6 +23,9 @@ for i, products in enumerate(seed.productList):
 
 def Success():
     print("login or registered..")
+
+con = sqlite3.connect("vending_machine.db")
+cur = con.cursor()
 
 def Register():
     registerMainTitle = Label(main, text="Become a member",fg="white", font=(None, 35)).grid(row=1,column=11,padx=5)
