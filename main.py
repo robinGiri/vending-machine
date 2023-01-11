@@ -1,5 +1,6 @@
 from tkinter import *
 import seed
+import product
 import sqlite3 
 from tkinter import messagebox
 
@@ -14,40 +15,8 @@ main.title("Vending Machine")
 space1 = Label(main,padx=50,pady=20,bg="#000000").grid(row=0,column=0)
 space2 = Label(main,padx=50,pady=5,bg="#000000").grid(row=1,column=1)
 
-
-con = sqlite3.connect("vending_machine.db")
-cur = con.cursor()
-cur.execute("""CREATE TABLE Drinks (
-    ID INT(50),
-    Name VARCHAR(10),
-    Price INT(10),
-    Quantity INT(10)
-)
-""")
-cur.execute("""CREATE TABLE Biscuits(
-    ID INT(50),
-    Name VARCHAR(10),
-    Price INT(10),
-    Quantity INT(10)
-)
-""")
-cur.execute("""CREATE TABLE Chips(
-    ID INT(50),
-    Name VARCHAR(10),
-    Price INT(10),
-    Quantity INT(10)
-)
-""")
-cur.execute("""CREATE TABLE Chocolates(
-    ID INT(50),
-    Name VARCHAR(10),
-    Price INT(10),
-    Quantity INT(10)
-)
-""")
-con.commit()
-con.close()
-
+# create products table
+product.create_productTable()
 
 def register():
 
