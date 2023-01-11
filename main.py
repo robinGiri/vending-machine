@@ -1,6 +1,7 @@
 from tkinter import *
 import seed
 import product
+import cash
 import sqlite3 
 from tkinter import messagebox
 from PIL import Image,ImageTk
@@ -13,26 +14,26 @@ main.config(bg="#000000")
 main.title("Vending Machine")
 
 
-image    = Image.open("drinks.png")
-resized = image .resize((100,85), Image.ANTIALIAS)
+image    = Image.open("public/Drinks.png")
+resized = image .resize((100,85), Image.Resampling.LANCZOS)
 new_pic  = ImageTk.PhotoImage(resized)
 my_label = Label(main, image=new_pic    ,borderwidth=0,border=0,bg="#000000")
 my_label.place(x=180,y=90)
 
-image    = Image.open("drinks.png")
-resized = image .resize((100,85), Image.ANTIALIAS)
+image    = Image.open("public/Drinks.png")
+resized = image .resize((100,85), Image.Resampling.LANCZOS)
 new_pic6  = ImageTk.PhotoImage(resized)
 my_label = Label(main, image=new_pic6    ,borderwidth=0,border=0,bg="#000000")
 my_label.place(x=180,y=220)
 
-image    = Image.open("Chips.png")
-resized = image.resize((100,85), Image.ANTIALIAS)
+image    = Image.open("public/Chips.png")
+resized = image.resize((100,85), Image.Resampling.LANCZOS)
 new_pic11  = ImageTk.PhotoImage(resized)
 my_label = Label(main, image=new_pic11    ,borderwidth=0,border=0,bg="#000000")
 my_label.place(x=180,y=335)
 
-image    = Image.open("drinks.png")
-resized = image.resize((100,85), Image.ANTIALIAS)
+image    = Image.open("public/Drinks.png")
+resized = image.resize((100,85), Image.Resampling.LANCZOS)
 new_pic16  = ImageTk.PhotoImage(resized)
 my_label = Label(main, image=new_pic16    ,borderwidth=0,border=0,bg="#000000")
 my_label.place(x=180,y=465)
@@ -41,12 +42,25 @@ my_label.place(x=180,y=465)
 # create products table
 product.create_productTable()
 
+# create cash table
+cash.create_cash_table()
+
+# add 4 types currenty
+cash.add_cash(1, 'ten', 10)
+cash.add_cash(2, 'twenty', 10)
+cash.add_cash(3, 'fifty', 10)
+cash.add_cash(4, 'hundred', 10)
+
+# query all currenty
+value, quantity = cash.query_all()
+print(value, quantity)
+
 def register():         
 
     def coke():
         my_coke.config(image=new_pic2,bg="#000000",border=0,borderwidth=0)
-    image2 = Image.open("coke.png")
-    resized = image2.resize((60,85), Image.ANTIALIAS)
+    image2 = Image.open("public/Coke.png")
+    resized = image2.resize((60,85), Image.Resampling.LANCZOS)
     new_pic2 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic2,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=335,y=90)
@@ -57,8 +71,8 @@ def register():
 
     def coke():
         my_coke.config(image=new_pic3,bg="#000000",border=0,borderwidth=0)
-    image3 = Image.open("coke.png")
-    resized = image3.resize((60,85), Image.ANTIALIAS)
+    image3 = Image.open("public/Coke.png")
+    resized = image3.resize((60,85), Image.Resampling.LANCZOS)
     new_pic3 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic3,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=435,y=90)
@@ -69,8 +83,8 @@ def register():
 
     def coke():
         my_coke.config(image=new_pic4,bg="#000000",border=0,borderwidth=0)
-    image4 = Image.open("coke.png")
-    resized = image4.resize((60,85), Image.ANTIALIAS)
+    image4 = Image.open("public/Coke.png")
+    resized = image4.resize((60,85), Image.Resampling.LANCZOS)
     new_pic4 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic4,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=537,y=90)
@@ -81,8 +95,8 @@ def register():
 
     def coke():
         my_coke.config(image=new_pic5,bg="#000000",border=0,borderwidth=0)
-    image5 = Image.open("coke.png")
-    resized = image5.resize((60,85), Image.ANTIALIAS)
+    image5 = Image.open("public/Coke.png")
+    resized = image5.resize((60,85), Image.Resampling.LANCZOS)
     new_pic5 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic5,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=635,y=90)
@@ -94,8 +108,8 @@ def register():
 
     def coke():
         my_coke.config(image=new_pic7,bg="#000000",border=0,borderwidth=0)
-    image7 = Image.open("coke.png")
-    resized = image7.resize((60,85), Image.ANTIALIAS)
+    image7 = Image.open("public/Coke.png")
+    resized = image7.resize((60,85), Image.Resampling.LANCZOS)
     new_pic7 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic7,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=335,y=220)
@@ -106,8 +120,8 @@ def register():
 
     def coke():
         my_coke.config(image=new_pic8,bg="#000000",border=0,borderwidth=0)
-    image8 = Image.open("coke.png")
-    resized = image3.resize((60,85), Image.ANTIALIAS)
+    image8 = Image.open("public/Coke.png")
+    resized = image3.resize((60,85), Image.Resampling.LANCZOS)
     new_pic8 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic8,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=435,y=220)
@@ -118,8 +132,8 @@ def register():
 
     def coke():
         my_coke.config(image=new_pic9,bg="#000000",border=0,borderwidth=0)
-    image9 = Image.open("coke.png")
-    resized = image9.resize((60,85), Image.ANTIALIAS)
+    image9 = Image.open("public/Coke.png")
+    resized = image9.resize((60,85), Image.Resampling.LANCZOS)
     new_pic9 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic9,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=537,y=220)
@@ -130,8 +144,8 @@ def register():
 
     def coke():
         my_coke.config(image=new_pic10,bg="#000000",border=0,borderwidth=0)
-    image10 = Image.open("coke.png")
-    resized = image5.resize((60,85), Image.ANTIALIAS)
+    image10 = Image.open("public/Coke.png")
+    resized = image5.resize((60,85), Image.Resampling.LANCZOS)
     new_pic10 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic10,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=635,y=220)
@@ -142,8 +156,8 @@ def register():
 
     def Dorritos():
         my_Dorritos.config(image=new_pic12,bg="#000000",border=0,borderwidth=0)
-    image12 = Image.open("Dorritos.png")
-    resized = image12.resize((80,85), Image.ANTIALIAS)
+    image12 = Image.open("public/Dorritos.png")
+    resized = image12.resize((80,85), Image.Resampling.LANCZOS)
     new_pic12 = ImageTk.PhotoImage(resized)
     Dorritos_img = Label(main, image=new_pic12,borderwidth=0,border=0,bg="#000000")
     Dorritos_img.place(x=323,y=335)
@@ -154,8 +168,8 @@ def register():
 
     def Lays():
         my_Lays.config(image=new_pic13,bg="#000000",border=0,borderwidth=0)
-    image13 = Image.open("Lays.png")
-    resized = image13.resize((120,85), Image.ANTIALIAS)
+    image13 = Image.open("public/Lays.png")
+    resized = image13.resize((120,85), Image.Resampling.LANCZOS)
     new_pic13 = ImageTk.PhotoImage(resized)
     Lays_img = Label(main, image=new_pic13,borderwidth=0,border=0,bg="#000000")
     Lays_img.place(x=410,y=335)
@@ -166,8 +180,8 @@ def register():
 
     def Local_Chips():
         my_Local_Chips.config(image=new_pic14,bg="#000000",border=0,borderwidth=0)
-    image14 = Image.open("Local Chips.png")
-    resized = image14.resize((80,100), Image.ANTIALIAS)
+    image14 = Image.open("public/Local_Chips.png")
+    resized = image14.resize((80,100), Image.Resampling.LANCZOS)
     new_pic14 = ImageTk.PhotoImage(resized)
     Local_Chips_img = Label(main, image=new_pic14,borderwidth=0,border=0,bg="#000000")
     Local_Chips_img.place(x=535,y=324)
@@ -178,8 +192,8 @@ def register():
 
     def Uncle_Chips():
         my_Uncle_Chips.config(image=new_pic15,bg="#000000",border=0,borderwidth=0)
-    image15 = Image.open("Uncle Chips.png")
-    resized = image15.resize((80,85), Image.ANTIALIAS)
+    image15 = Image.open("public/Uncle_Chips.png")
+    resized = image15.resize((80,85), Image.Resampling.LANCZOS)
     new_pic15 = ImageTk.PhotoImage(resized)
     Uncle_Chips_img = Label(main, image=new_pic15,borderwidth=0,border=0,bg="#000000")
     Uncle_Chips_img.place(x=635,y=335)
@@ -190,8 +204,8 @@ def register():
 
     def coke():
         my_coke.config(image=new_pic17,bg="#000000",border=0,borderwidth=0)
-    image17 = Image.open("coke.png")
-    resized = image17.resize((60,85), Image.ANTIALIAS)
+    image17 = Image.open("public/Coke.png")
+    resized = image17.resize((60,85), Image.Resampling.LANCZOS)
     new_pic17 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic17,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=335,y=460)
@@ -202,8 +216,8 @@ def register():
 
     def coke():
         my_coke.config(image=new_pic18,bg="#000000",border=0,borderwidth=0)
-    image18 = Image.open("coke.png")
-    resized = image3.resize((60,85), Image.ANTIALIAS)
+    image18 = Image.open("public/Coke.png")
+    resized = image3.resize((60,85), Image.Resampling.LANCZOS)
     new_pic18 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic18,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=435,y=458)
@@ -214,8 +228,8 @@ def register():
 
     def coke():
         my_coke.config(image=new_pic19,bg="#000000",border=0,borderwidth=0)
-    image19 = Image.open("coke.png")
-    resized = image19.resize((60,85), Image.ANTIALIAS)
+    image19 = Image.open("public/Coke.png")
+    resized = image19.resize((60,85), Image.Resampling.LANCZOS)
     new_pic19 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic19,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=537,y=458)
@@ -226,8 +240,8 @@ def register():
 
     def coke():
         my_coke.config(image=new_pic20,bg="#000000",border=0,borderwidth=0)
-    image20 = Image.open("coke.png")
-    resized = image5.resize((60,85), Image.ANTIALIAS)
+    image20 = Image.open("public/Coke.png")
+    resized = image5.resize((60,85), Image.Resampling.LANCZOS)
     new_pic20 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic20,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=635,y=458)
@@ -318,8 +332,8 @@ def login():
     
     def coke():
         my_coke.config(image=new_pic2,bg="#000000",border=0,borderwidth=0)
-    image2 = Image.open("coke.png")
-    resized = image2.resize((60,85), Image.ANTIALIAS)
+    image2 = Image.open("public/Coke.png")
+    resized = image2.resize((60,85), Image.Resampling.LANCZOS)
     new_pic2 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic2,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=335,y=90)
@@ -330,8 +344,8 @@ def login():
 
     def coke():
         my_coke.config(image=new_pic3,bg="#000000",border=0,borderwidth=0)
-    image3 = Image.open("coke.png")
-    resized = image3.resize((60,85), Image.ANTIALIAS)
+    image3 = Image.open("public/Coke.png")
+    resized = image3.resize((60,85), Image.Resampling.LANCZOS)
     new_pic3 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic3,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=435,y=90)
@@ -342,8 +356,8 @@ def login():
 
     def coke():
         my_coke.config(image=new_pic4,bg="#000000",border=0,borderwidth=0)
-    image4 = Image.open("coke.png")
-    resized = image4.resize((60,85), Image.ANTIALIAS)
+    image4 = Image.open("public/Coke.png")
+    resized = image4.resize((60,85), Image.Resampling.LANCZOS)
     new_pic4 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic4,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=537,y=90)
@@ -354,8 +368,8 @@ def login():
 
     def coke():
         my_coke.config(image=new_pic5,bg="#000000",border=0,borderwidth=0)
-    image5 = Image.open("coke.png")
-    resized = image5.resize((60,85), Image.ANTIALIAS)
+    image5 = Image.open("public/Coke.png")
+    resized = image5.resize((60,85), Image.Resampling.LANCZOS)
     new_pic5 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic5,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=635,y=90)
@@ -367,8 +381,8 @@ def login():
 
     def coke():
         my_coke.config(image=new_pic7,bg="#000000",border=0,borderwidth=0)
-    image7 = Image.open("coke.png")
-    resized = image7.resize((60,85), Image.ANTIALIAS)
+    image7 = Image.open("public/Coke.png")
+    resized = image7.resize((60,85), Image.Resampling.LANCZOS)
     new_pic7 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic7,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=335,y=220)
@@ -379,8 +393,8 @@ def login():
 
     def coke():
         my_coke.config(image=new_pic8,bg="#000000",border=0,borderwidth=0)
-    image8 = Image.open("coke.png")
-    resized = image3.resize((60,85), Image.ANTIALIAS)
+    image8 = Image.open("public/Coke.png")
+    resized = image3.resize((60,85), Image.Resampling.LANCZOS)
     new_pic8 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic8,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=435,y=220)
@@ -391,8 +405,8 @@ def login():
 
     def coke():
         my_coke.config(image=new_pic9,bg="#000000",border=0,borderwidth=0)
-    image9 = Image.open("coke.png")
-    resized = image9.resize((60,85), Image.ANTIALIAS)
+    image9 = Image.open("public/Coke.png")
+    resized = image9.resize((60,85), Image.Resampling.LANCZOS)
     new_pic9 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic9,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=537,y=220)
@@ -403,8 +417,8 @@ def login():
 
     def coke():
         my_coke.config(image=new_pic10,bg="#000000",border=0,borderwidth=0)
-    image10 = Image.open("coke.png")
-    resized = image5.resize((60,85), Image.ANTIALIAS)
+    image10 = Image.open("public/Coke.png")
+    resized = image5.resize((60,85), Image.Resampling.LANCZOS)
     new_pic10 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic10,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=635,y=220)
@@ -416,8 +430,8 @@ def login():
 
     def Dorritos():
         my_Dorritos.config(image=new_pic12,bg="#000000",border=0,borderwidth=0)
-    image12 = Image.open("Dorritos.png")
-    resized = image12.resize((80,85), Image.ANTIALIAS)
+    image12 = Image.open("public/Dorritos.png")
+    resized = image12.resize((80,85), Image.Resampling.LANCZOS)
     new_pic12 = ImageTk.PhotoImage(resized)
     Dorritos_img = Label(main, image=new_pic12,borderwidth=0,border=0,bg="#000000")
     Dorritos_img.place(x=323,y=335)
@@ -428,8 +442,8 @@ def login():
 
     def Lays():
         my_Lays.config(image=new_pic13,bg="#000000",border=0,borderwidth=0)
-    image13 = Image.open("Lays.png")
-    resized = image13.resize((120,85), Image.ANTIALIAS)
+    image13 = Image.open("public/Lays.png")
+    resized = image13.resize((120,85), Image.Resampling.LANCZOS)
     new_pic13 = ImageTk.PhotoImage(resized)
     Lays_img = Label(main, image=new_pic13,borderwidth=0,border=0,bg="#000000")
     Lays_img.place(x=410,y=335)
@@ -440,8 +454,8 @@ def login():
 
     def Local_Chips():
         my_Local_Chips.config(image=new_pic14,bg="#000000",border=0,borderwidth=0)
-    image14 = Image.open("Local Chips.png")
-    resized = image14.resize((80,100), Image.ANTIALIAS)
+    image14 = Image.open("public/Local_Chips.png")
+    resized = image14.resize((80,100), Image.Resampling.LANCZOS)
     new_pic14 = ImageTk.PhotoImage(resized)
     Local_Chips_img = Label(main, image=new_pic14,borderwidth=0,border=0,bg="#000000")
     Local_Chips_img.place(x=535,y=331)
@@ -452,8 +466,8 @@ def login():
 
     def Uncle_Chips():
         my_Uncle_Chips.config(image=new_pic15,bg="#000000",border=0,borderwidth=0)
-    image15 = Image.open("Uncle Chips.png")
-    resized = image15.resize((80,85), Image.ANTIALIAS)
+    image15 = Image.open("public/Uncle_Chips.png")
+    resized = image15.resize((80,85), Image.Resampling.LANCZOS)
     new_pic15 = ImageTk.PhotoImage(resized)
     Uncle_Chips_img = Label(main, image=new_pic15,borderwidth=0,border=0,bg="#000000")
     Uncle_Chips_img.place(x=635,y=335)
@@ -464,8 +478,8 @@ def login():
 
     def coke():
         my_coke.config(image=new_pic17,bg="#000000",border=0,borderwidth=0)
-    image17 = Image.open("coke.png")
-    resized = image17.resize((60,85), Image.ANTIALIAS)
+    image17 = Image.open("public/Coke.png")
+    resized = image17.resize((60,85), Image.Resampling.LANCZOS)
     new_pic17 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic17,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=335,y=460)
@@ -476,8 +490,8 @@ def login():
 
     def coke():
         my_coke.config(image=new_pic18,bg="#000000",border=0,borderwidth=0)
-    image18 = Image.open("coke.png")
-    resized = image3.resize((60,85), Image.ANTIALIAS)
+    image18 = Image.open("public/Coke.png")
+    resized = image3.resize((60,85), Image.Resampling.LANCZOS)
     new_pic18 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic18,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=435,y=458)
@@ -488,8 +502,8 @@ def login():
 
     def coke():
         my_coke.config(image=new_pic19,bg="#000000",border=0,borderwidth=0)
-    image19 = Image.open("coke.png")
-    resized = image19.resize((60,85), Image.ANTIALIAS)
+    image19 = Image.open("public/Coke.png")
+    resized = image19.resize((60,85), Image.Resampling.LANCZOS)
     new_pic19 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic19,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=537,y=458)
@@ -500,8 +514,8 @@ def login():
 
     def coke():
         my_coke.config(image=new_pic20,bg="#000000",border=0,borderwidth=0)
-    image20 = Image.open("coke.png")
-    resized = image5.resize((60,85), Image.ANTIALIAS)
+    image20 = Image.open("public/Coke.png")
+    resized = image5.resize((60,85), Image.Resampling.LANCZOS)
     new_pic20 = ImageTk.PhotoImage(resized)
     coke_img = Label(main, image=new_pic20,borderwidth=0,border=0,bg="#000000")
     coke_img.place(x=635,y=458)
@@ -599,8 +613,8 @@ def login():
         else:        
             def coke():
                 my_coke.config(image=new_pic2,bg="#000000",border=0,borderwidth=0)
-            image2 = Image.open("coke.png")
-            resized = image2.resize((60,85), Image.ANTIALIAS)
+            image2 = Image.open("public/Coke.png")
+            resized = image2.resize((60,85), Image.Resampling.LANCZOS)
             new_pic2 = ImageTk.PhotoImage(resized)
             coke_img = Label(main, image=new_pic2,borderwidth=0,border=0,bg="#000000")
             coke_img.place(x=335,y=90)
@@ -611,8 +625,8 @@ def login():
 
             def coke():
                 my_coke.config(image=new_pic3,bg="#000000",border=0,borderwidth=0)
-            image3 = Image.open("coke.png")
-            resized = image3.resize((60,85), Image.ANTIALIAS)
+            image3 = Image.open("public/Coke.png")
+            resized = image3.resize((60,85), Image.Resampling.LANCZOS)
             new_pic3 = ImageTk.PhotoImage(resized)
             coke_img = Label(main, image=new_pic3,borderwidth=0,border=0,bg="#000000")
             coke_img.place(x=435,y=90)
@@ -623,8 +637,8 @@ def login():
 
             def coke():
                 my_coke.config(image=new_pic4,bg="#000000",border=0,borderwidth=0)
-            image4 = Image.open("coke.png")
-            resized = image4.resize((60,85), Image.ANTIALIAS)
+            image4 = Image.open("public/Coke.png")
+            resized = image4.resize((60,85), Image.Resampling.LANCZOS)
             new_pic4 = ImageTk.PhotoImage(resized)
             coke_img = Label(main, image=new_pic4,borderwidth=0,border=0,bg="#000000")
             coke_img.place(x=537,y=90)
@@ -635,8 +649,8 @@ def login():
 
             def coke():
                 my_coke.config(image=new_pic5,bg="#000000",border=0,borderwidth=0)
-            image5 = Image.open("coke.png")
-            resized = image5.resize((60,85), Image.ANTIALIAS)
+            image5 = Image.open("public/Coke.png")
+            resized = image5.resize((60,85), Image.Resampling.LANCZOS)
             new_pic5 = ImageTk.PhotoImage(resized)
             coke_img = Label(main, image=new_pic5,borderwidth=0,border=0,bg="#000000")
             coke_img.place(x=635,y=90)
@@ -648,8 +662,8 @@ def login():
 
             def coke():
                 my_coke.config(image=new_pic7,bg="#000000",border=0,borderwidth=0)
-            image7 = Image.open("coke.png")
-            resized = image7.resize((60,85), Image.ANTIALIAS)
+            image7 = Image.open("public/Coke.png")
+            resized = image7.resize((60,85), Image.Resampling.LANCZOS)
             new_pic7 = ImageTk.PhotoImage(resized)
             coke_img = Label(main, image=new_pic7,borderwidth=0,border=0,bg="#000000")
             coke_img.place(x=335,y=220)
@@ -660,8 +674,8 @@ def login():
 
             def coke():
                 my_coke.config(image=new_pic8,bg="#000000",border=0,borderwidth=0)
-            image8 = Image.open("coke.png")
-            resized = image3.resize((60,85), Image.ANTIALIAS)
+            image8 = Image.open("public/Coke.png")
+            resized = image3.resize((60,85), Image.Resampling.LANCZOS)
             new_pic8 = ImageTk.PhotoImage(resized)
             coke_img = Label(main, image=new_pic8,borderwidth=0,border=0,bg="#000000")
             coke_img.place(x=435,y=220)
@@ -672,8 +686,8 @@ def login():
 
             def coke():
                 my_coke.config(image=new_pic9,bg="#000000",border=0,borderwidth=0)
-            image9 = Image.open("coke.png")
-            resized = image9.resize((60,85), Image.ANTIALIAS)
+            image9 = Image.open("public/Coke.png")
+            resized = image9.resize((60,85), Image.Resampling.LANCZOS)
             new_pic9 = ImageTk.PhotoImage(resized)
             coke_img = Label(main, image=new_pic9,borderwidth=0,border=0,bg="#000000")
             coke_img.place(x=537,y=220)
@@ -684,8 +698,8 @@ def login():
 
             def coke():
                 my_coke.config(image=new_pic10,bg="#000000",border=0,borderwidth=0)
-            image10 = Image.open("coke.png")
-            resized = image5.resize((60,85), Image.ANTIALIAS)
+            image10 = Image.open("public/Coke.png")
+            resized = image5.resize((60,85), Image.Resampling.LANCZOS)
             new_pic10 = ImageTk.PhotoImage(resized)
             coke_img = Label(main, image=new_pic10,borderwidth=0,border=0,bg="#000000")
             coke_img.place(x=635,y=220)
@@ -698,7 +712,7 @@ def login():
             def Dorritos():
                 my_Dorritos.config(image=new_pic12,bg="#000000",border=0,borderwidth=0)
             image12 = Image.open("Dorritos.png")
-            resized = image12.resize((80,85), Image.ANTIALIAS)
+            resized = image12.resize((80,85), Image.Resampling.LANCZOS)
             new_pic12 = ImageTk.PhotoImage(resized)
             Dorritos_img = Label(main, image=new_pic12,borderwidth=0,border=0,bg="#000000")
             Dorritos_img.place(x=323,y=335)
@@ -710,7 +724,7 @@ def login():
             def Lays():
                 my_Lays.config(image=new_pic13,bg="#000000",border=0,borderwidth=0)
             image13 = Image.open("Lays.png")
-            resized = image13.resize((120,85), Image.ANTIALIAS)
+            resized = image13.resize((120,85), Image.Resampling.LANCZOS)
             new_pic13 = ImageTk.PhotoImage(resized)
             Lays_img = Label(main, image=new_pic13,borderwidth=0,border=0,bg="#000000")
             Lays_img.place(x=410,y=335)
@@ -722,7 +736,7 @@ def login():
             def Local_Chips():
                 my_Local_Chips.config(image=new_pic14,bg="#000000",border=0,borderwidth=0)
             image14 = Image.open("Local Chips.png")
-            resized = image14.resize((80,100), Image.ANTIALIAS)
+            resized = image14.resize((80,100), Image.Resampling.LANCZOS)
             new_pic14 = ImageTk.PhotoImage(resized)
             Local_Chips_img = Label(main, image=new_pic14,borderwidth=0,border=0,bg="#000000")
             Local_Chips_img.place(x=535,y=331)
@@ -734,7 +748,7 @@ def login():
             def Uncle_Chips():
                 my_Uncle_Chips.config(image=new_pic15,bg="#000000",border=0,borderwidth=0)
             image15 = Image.open("Uncle Chips.png")
-            resized = image15.resize((80,85), Image.ANTIALIAS)
+            resized = image15.resize((80,85), Image.Resampling.LANCZOS)
             new_pic15 = ImageTk.PhotoImage(resized)
             Uncle_Chips_img = Label(main, image=new_pic15,borderwidth=0,border=0,bg="#000000")
             Uncle_Chips_img.place(x=635,y=335)
@@ -745,8 +759,8 @@ def login():
 
             def coke():
                 my_coke.config(image=new_pic17,bg="#000000",border=0,borderwidth=0)
-            image17 = Image.open("coke.png")
-            resized = image17.resize((60,85), Image.ANTIALIAS)
+            image17 = Image.open("public/Coke.png")
+            resized = image17.resize((60,85), Image.Resampling.LANCZOS)
             new_pic17 = ImageTk.PhotoImage(resized)
             coke_img = Label(main, image=new_pic17,borderwidth=0,border=0,bg="#000000")
             coke_img.place(x=335,y=460)
@@ -757,8 +771,8 @@ def login():
 
             def coke():
                 my_coke.config(image=new_pic18,bg="#000000",border=0,borderwidth=0)
-            image18 = Image.open("coke.png")
-            resized = image3.resize((60,85), Image.ANTIALIAS)
+            image18 = Image.open("public/Coke.png")
+            resized = image3.resize((60,85), Image.Resampling.LANCZOS)
             new_pic18 = ImageTk.PhotoImage(resized)
             coke_img = Label(main, image=new_pic18,borderwidth=0,border=0,bg="#000000")
             coke_img.place(x=435,y=458)
@@ -769,8 +783,8 @@ def login():
 
             def coke():
                 my_coke.config(image=new_pic19,bg="#000000",border=0,borderwidth=0)
-            image19 = Image.open("coke.png")
-            resized = image19.resize((60,85), Image.ANTIALIAS)
+            image19 = Image.open("public/Coke.png")
+            resized = image19.resize((60,85), Image.Resampling.LANCZOS)
             new_pic19 = ImageTk.PhotoImage(resized)
             coke_img = Label(main, image=new_pic19,borderwidth=0,border=0,bg="#000000")
             coke_img.place(x=537,y=458)
@@ -781,8 +795,8 @@ def login():
 
             def coke():
                 my_coke.config(image=new_pic20,bg="#000000",border=0,borderwidth=0)
-            image20 = Image.open("coke.png")
-            resized = image5.resize((60,85), Image.ANTIALIAS)
+            image20 = Image.open("public/Coke.png")
+            resized = image5.resize((60,85), Image.Resampling.LANCZOS)
             new_pic20 = ImageTk.PhotoImage(resized)
             coke_img = Label(main, image=new_pic20,borderwidth=0,border=0,bg="#000000")
             coke_img.place(x=635,y=458)
@@ -855,8 +869,8 @@ def login():
                 Frame(main, width=100,height=100,bg="#000000").place(x=447,y=630)
                 def coke():
                     my_coke.config(image=new_pic2,bg="#000000",border=0,borderwidth=0)
-                image2 = Image.open("coke.png")
-                resized = image2.resize((60,85), Image.ANTIALIAS)
+                image2 = Image.open("public/Coke.png")
+                resized = image2.resize((60,85), Image.Resampling.LANCZOS)
                 new_pic2 = ImageTk.PhotoImage(resized)
                 coke_img = Label(main, image=new_pic2,borderwidth=0,border=0,bg="#000000")
                 coke_img.place(x=335,y=90)
@@ -867,8 +881,8 @@ def login():
 
                 def coke():
                     my_coke.config(image=new_pic3,bg="#000000",border=0,borderwidth=0)
-                image3 = Image.open("coke.png")
-                resized = image3.resize((60,85), Image.ANTIALIAS)
+                image3 = Image.open("public/Coke.png")
+                resized = image3.resize((60,85), Image.Resampling.LANCZOS)
                 new_pic3 = ImageTk.PhotoImage(resized)
                 coke_img = Label(main, image=new_pic3,borderwidth=0,border=0,bg="#000000")
                 coke_img.place(x=435,y=90)
@@ -879,8 +893,8 @@ def login():
 
                 def coke():
                     my_coke.config(image=new_pic4,bg="#000000",border=0,borderwidth=0)
-                image4 = Image.open("coke.png")
-                resized = image4.resize((60,85), Image.ANTIALIAS)
+                image4 = Image.open("public/Coke.png")
+                resized = image4.resize((60,85), Image.Resampling.LANCZOS)
                 new_pic4 = ImageTk.PhotoImage(resized)
                 coke_img = Label(main, image=new_pic4,borderwidth=0,border=0,bg="#000000")
                 coke_img.place(x=537,y=90)
@@ -891,8 +905,8 @@ def login():
 
                 def coke():
                     my_coke.config(image=new_pic5,bg="#000000",border=0,borderwidth=0)
-                image5 = Image.open("coke.png")
-                resized = image5.resize((60,85), Image.ANTIALIAS)
+                image5 = Image.open("public/Coke.png")
+                resized = image5.resize((60,85), Image.Resampling.LANCZOS)
                 new_pic5 = ImageTk.PhotoImage(resized)
                 coke_img = Label(main, image=new_pic5,borderwidth=0,border=0,bg="#000000")
                 coke_img.place(x=635,y=90)
@@ -904,8 +918,8 @@ def login():
 
                 def coke():
                     my_coke.config(image=new_pic7,bg="#000000",border=0,borderwidth=0)
-                image7 = Image.open("coke.png")
-                resized = image7.resize((60,85), Image.ANTIALIAS)
+                image7 = Image.open("public/Coke.png")
+                resized = image7.resize((60,85), Image.Resampling.LANCZOS)
                 new_pic7 = ImageTk.PhotoImage(resized)
                 coke_img = Label(main, image=new_pic7,borderwidth=0,border=0,bg="#000000")
                 coke_img.place(x=335,y=220)
@@ -916,8 +930,8 @@ def login():
 
                 def coke():
                     my_coke.config(image=new_pic8,bg="#000000",border=0,borderwidth=0)
-                image8 = Image.open("coke.png")
-                resized = image3.resize((60,85), Image.ANTIALIAS)
+                image8 = Image.open("public/Coke.png")
+                resized = image3.resize((60,85), Image.Resampling.LANCZOS)
                 new_pic8 = ImageTk.PhotoImage(resized)
                 coke_img = Label(main, image=new_pic8,borderwidth=0,border=0,bg="#000000")
                 coke_img.place(x=435,y=220)
@@ -928,8 +942,8 @@ def login():
 
                 def coke():
                     my_coke.config(image=new_pic9,bg="#000000",border=0,borderwidth=0)
-                image9 = Image.open("coke.png")
-                resized = image9.resize((60,85), Image.ANTIALIAS)
+                image9 = Image.open("public/Coke.png")
+                resized = image9.resize((60,85), Image.Resampling.LANCZOS)
                 new_pic9 = ImageTk.PhotoImage(resized)
                 coke_img = Label(main, image=new_pic9,borderwidth=0,border=0,bg="#000000")
                 coke_img.place(x=537,y=220)
@@ -940,8 +954,8 @@ def login():
 
                 def coke():
                     my_coke.config(image=new_pic10,bg="#000000",border=0,borderwidth=0)
-                image10 = Image.open("coke.png")
-                resized = image5.resize((60,85), Image.ANTIALIAS)
+                image10 = Image.open("public/Coke.png")
+                resized = image5.resize((60,85), Image.Resampling.LANCZOS)
                 new_pic10 = ImageTk.PhotoImage(resized)
                 coke_img = Label(main, image=new_pic10,borderwidth=0,border=0,bg="#000000")
                 coke_img.place(x=635,y=220)
@@ -954,7 +968,7 @@ def login():
                 def Dorritos():
                     my_Dorritos.config(image=new_pic12,bg="#000000",border=0,borderwidth=0)
                 image12 = Image.open("Dorritos.png")
-                resized = image12.resize((80,85), Image.ANTIALIAS)
+                resized = image12.resize((80,85), Image.Resampling.LANCZOS)
                 new_pic12 = ImageTk.PhotoImage(resized)
                 Dorritos_img = Label(main, image=new_pic12,borderwidth=0,border=0,bg="#000000")
                 Dorritos_img.place(x=323,y=335)
@@ -966,7 +980,7 @@ def login():
                 def Lays():
                     my_Lays.config(image=new_pic13,bg="#000000",border=0,borderwidth=0)
                 image13 = Image.open("Lays.png")
-                resized = image13.resize((120,85), Image.ANTIALIAS)
+                resized = image13.resize((120,85), Image.Resampling.LANCZOS)
                 new_pic13 = ImageTk.PhotoImage(resized)
                 Lays_img = Label(main, image=new_pic13,borderwidth=0,border=0,bg="#000000")
                 Lays_img.place(x=410,y=335)
@@ -978,7 +992,7 @@ def login():
                 def Local_Chips():
                     my_Local_Chips.config(image=new_pic14,bg="#000000",border=0,borderwidth=0)
                 image14 = Image.open("Local Chips.png")
-                resized = image14.resize((80,100), Image.ANTIALIAS)
+                resized = image14.resize((80,100), Image.Resampling.LANCZOS)
                 new_pic14 = ImageTk.PhotoImage(resized)
                 Local_Chips_img = Label(main, image=new_pic14,borderwidth=0,border=0,bg="#000000")
                 Local_Chips_img.place(x=535,y=331)
@@ -990,7 +1004,7 @@ def login():
                 def Uncle_Chips():
                     my_Uncle_Chips.config(image=new_pic15,bg="#000000",border=0,borderwidth=0)
                 image15 = Image.open("Uncle Chips.png")
-                resized = image15.resize((80,85), Image.ANTIALIAS)
+                resized = image15.resize((80,85), Image.Resampling.LANCZOS)
                 new_pic15 = ImageTk.PhotoImage(resized)
                 Uncle_Chips_img = Label(main, image=new_pic15,borderwidth=0,border=0,bg="#000000")
                 Uncle_Chips_img.place(x=635,y=335)
@@ -1001,8 +1015,8 @@ def login():
 
                 def coke():
                     my_coke.config(image=new_pic17,bg="#000000",border=0,borderwidth=0)
-                image17 = Image.open("coke.png")
-                resized = image17.resize((60,85), Image.ANTIALIAS)
+                image17 = Image.open("public/Coke.png")
+                resized = image17.resize((60,85), Image.Resampling.LANCZOS)
                 new_pic17 = ImageTk.PhotoImage(resized)
                 coke_img = Label(main, image=new_pic17,borderwidth=0,border=0,bg="#000000")
                 coke_img.place(x=335,y=460)
@@ -1013,8 +1027,8 @@ def login():
 
                 def coke():
                     my_coke.config(image=new_pic18,bg="#000000",border=0,borderwidth=0)
-                image18 = Image.open("coke.png")
-                resized = image3.resize((60,85), Image.ANTIALIAS)
+                image18 = Image.open("public/Coke.png")
+                resized = image3.resize((60,85), Image.Resampling.LANCZOS)
                 new_pic18 = ImageTk.PhotoImage(resized)
                 coke_img = Label(main, image=new_pic18,borderwidth=0,border=0,bg="#000000")
                 coke_img.place(x=435,y=458)
@@ -1025,8 +1039,8 @@ def login():
 
                 def coke():
                     my_coke.config(image=new_pic19,bg="#000000",border=0,borderwidth=0)
-                image19 = Image.open("coke.png")
-                resized = image19.resize((60,85), Image.ANTIALIAS)
+                image19 = Image.open("public/Coke.png")
+                resized = image19.resize((60,85), Image.Resampling.LANCZOS)
                 new_pic19 = ImageTk.PhotoImage(resized)
                 coke_img = Label(main, image=new_pic19,borderwidth=0,border=0,bg="#000000")
                 coke_img.place(x=537,y=458)
@@ -1037,8 +1051,8 @@ def login():
 
                 def coke():
                     my_coke.config(image=new_pic20,bg="#000000",border=0,borderwidth=0)
-                image20 = Image.open("coke.png")
-                resized = image5.resize((60,85), Image.ANTIALIAS)
+                image20 = Image.open("public/Coke.png")
+                resized = image5.resize((60,85), Image.Resampling.LANCZOS)
                 new_pic20 = ImageTk.PhotoImage(resized)
                 coke_img = Label(main, image=new_pic20,borderwidth=0,border=0,bg="#000000")
                 coke_img.place(x=635,y=458)
