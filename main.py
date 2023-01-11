@@ -3,6 +3,7 @@ import seed
 import product
 import sqlite3 
 from tkinter import messagebox
+from PIL import Image,ImageTk
 
 main = Tk()
 main.state("zoomed")
@@ -11,392 +12,563 @@ main.config(bg="#000000")
 # this will add title
 main.title("Vending Machine")
 
-# this will create a label widget
-space1 = Label(main,padx=50,pady=20,bg="#000000").grid(row=0,column=0)
-space2 = Label(main,padx=50,pady=5,bg="#000000").grid(row=1,column=1)
+
+image    = Image.open("drinks.png")
+resized = image .resize((100,85), Image.ANTIALIAS)
+new_pic  = ImageTk.PhotoImage(resized)
+my_label = Label(main, image=new_pic    ,borderwidth=0,border=0,bg="#000000")
+my_label.place(x=180,y=90)
+
+image    = Image.open("drinks.png")
+resized = image .resize((100,85), Image.ANTIALIAS)
+new_pic6  = ImageTk.PhotoImage(resized)
+my_label = Label(main, image=new_pic6    ,borderwidth=0,border=0,bg="#000000")
+my_label.place(x=180,y=220)
+
+image    = Image.open("Chips.png")
+resized = image.resize((100,85), Image.ANTIALIAS)
+new_pic11  = ImageTk.PhotoImage(resized)
+my_label = Label(main, image=new_pic11    ,borderwidth=0,border=0,bg="#000000")
+my_label.place(x=180,y=335)
+
+image    = Image.open("drinks.png")
+resized = image.resize((100,85), Image.ANTIALIAS)
+new_pic16  = ImageTk.PhotoImage(resized)
+my_label = Label(main, image=new_pic16    ,borderwidth=0,border=0,bg="#000000")
+my_label.place(x=180,y=465)
+
 
 # create products table
 product.create_productTable()
 
-def register():
+def register():         
 
-    def drink():
-        a = Label(main,text="Values"+str(var.get()))
-        a.pack(anchor=S)
+    def coke():
+        my_coke.config(image=new_pic2,bg="#000000",border=0,borderwidth=0)
+    image2 = Image.open("coke.png")
+    resized = image2.resize((60,85), Image.ANTIALIAS)
+    new_pic2 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic2,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=335,y=90)
+    coke_btn = Button(main, image=new_pic2,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=335,y=90)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+    def coke():
+        my_coke.config(image=new_pic3,bg="#000000",border=0,borderwidth=0)
+    image3 = Image.open("coke.png")
+    resized = image3.resize((60,85), Image.ANTIALIAS)
+    new_pic3 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic3,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=435,y=90)
+    coke_btn = Button(main, image=new_pic3,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=435,y=90)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+    def coke():
+        my_coke.config(image=new_pic4,bg="#000000",border=0,borderwidth=0)
+    image4 = Image.open("coke.png")
+    resized = image4.resize((60,85), Image.ANTIALIAS)
+    new_pic4 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic4,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=537,y=90)
+    coke_btn = Button(main, image=new_pic4,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=537,y=90)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+    def coke():
+        my_coke.config(image=new_pic5,bg="#000000",border=0,borderwidth=0)
+    image5 = Image.open("coke.png")
+    resized = image5.resize((60,85), Image.ANTIALIAS)
+    new_pic5 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic5,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=635,y=90)
+    coke_btn = Button(main, image=new_pic5,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=635,y=90)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+
+    def coke():
+        my_coke.config(image=new_pic7,bg="#000000",border=0,borderwidth=0)
+    image7 = Image.open("coke.png")
+    resized = image7.resize((60,85), Image.ANTIALIAS)
+    new_pic7 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic7,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=335,y=220)
+    coke_btn = Button(main, image=new_pic7,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=335,y=220)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+    def coke():
+        my_coke.config(image=new_pic8,bg="#000000",border=0,borderwidth=0)
+    image8 = Image.open("coke.png")
+    resized = image3.resize((60,85), Image.ANTIALIAS)
+    new_pic8 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic8,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=435,y=220)
+    coke_btn = Button(main, image=new_pic8,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=435,y=220)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+    def coke():
+        my_coke.config(image=new_pic9,bg="#000000",border=0,borderwidth=0)
+    image9 = Image.open("coke.png")
+    resized = image9.resize((60,85), Image.ANTIALIAS)
+    new_pic9 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic9,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=537,y=220)
+    coke_btn = Button(main, image=new_pic9,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=537,y=220)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+    def coke():
+        my_coke.config(image=new_pic10,bg="#000000",border=0,borderwidth=0)
+    image10 = Image.open("coke.png")
+    resized = image5.resize((60,85), Image.ANTIALIAS)
+    new_pic10 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic10,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=635,y=220)
+    coke_btn = Button(main, image=new_pic10,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=635,y=220)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+    def Dorritos():
+        my_Dorritos.config(image=new_pic12,bg="#000000",border=0,borderwidth=0)
+    image12 = Image.open("Dorritos.png")
+    resized = image12.resize((80,85), Image.ANTIALIAS)
+    new_pic12 = ImageTk.PhotoImage(resized)
+    Dorritos_img = Label(main, image=new_pic12,borderwidth=0,border=0,bg="#000000")
+    Dorritos_img.place(x=323,y=335)
+    Dorritos_btn = Button(main, image=new_pic12,command=Dorritos,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    Dorritos_btn.place(x=323,y=335)
+    my_Dorritos = Label(main,image="",bg="#000000")
+    my_Dorritos.place(x=450,y=630)
+
+    def Lays():
+        my_Lays.config(image=new_pic13,bg="#000000",border=0,borderwidth=0)
+    image13 = Image.open("Lays.png")
+    resized = image13.resize((120,85), Image.ANTIALIAS)
+    new_pic13 = ImageTk.PhotoImage(resized)
+    Lays_img = Label(main, image=new_pic13,borderwidth=0,border=0,bg="#000000")
+    Lays_img.place(x=410,y=335)
+    Lays_btn = Button(main, image=new_pic13,command=Lays,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    Lays_btn.place(x=410,y=335)
+    my_Lays = Label(main,image="",bg="#000000")
+    my_Lays.place(x=450,y=630)
+
+    def Local_Chips():
+        my_Local_Chips.config(image=new_pic14,bg="#000000",border=0,borderwidth=0)
+    image14 = Image.open("Local Chips.png")
+    resized = image14.resize((80,100), Image.ANTIALIAS)
+    new_pic14 = ImageTk.PhotoImage(resized)
+    Local_Chips_img = Label(main, image=new_pic14,borderwidth=0,border=0,bg="#000000")
+    Local_Chips_img.place(x=535,y=324)
+    Local_Chips_btn = Button(main, image=new_pic14,command=Local_Chips,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    Local_Chips_btn.place(x=535,y=324)
+    my_Local_Chips = Label(main,image="",bg="#000000")
+    my_Local_Chips.place(x=450,y=630)
+
+    def Uncle_Chips():
+        my_Uncle_Chips.config(image=new_pic15,bg="#000000",border=0,borderwidth=0)
+    image15 = Image.open("Uncle Chips.png")
+    resized = image15.resize((80,85), Image.ANTIALIAS)
+    new_pic15 = ImageTk.PhotoImage(resized)
+    Uncle_Chips_img = Label(main, image=new_pic15,borderwidth=0,border=0,bg="#000000")
+    Uncle_Chips_img.place(x=635,y=335)
+    Uncle_Chips_btn = Button(main, image=new_pic15,command=Uncle_Chips,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    Uncle_Chips_btn.place(x=635,y=335)
+    my_Uncle_Chips = Label(main,image="",bg="#000000")
+    my_Uncle_Chips.place(x=450,y=630)
+
+    def coke():
+        my_coke.config(image=new_pic17,bg="#000000",border=0,borderwidth=0)
+    image17 = Image.open("coke.png")
+    resized = image17.resize((60,85), Image.ANTIALIAS)
+    new_pic17 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic17,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=335,y=460)
+    coke_btn = Button(main, image=new_pic17,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=335,y=460)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+    def coke():
+        my_coke.config(image=new_pic18,bg="#000000",border=0,borderwidth=0)
+    image18 = Image.open("coke.png")
+    resized = image3.resize((60,85), Image.ANTIALIAS)
+    new_pic18 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic18,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=435,y=458)
+    coke_btn = Button(main, image=new_pic18,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=435,y=458)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+    def coke():
+        my_coke.config(image=new_pic19,bg="#000000",border=0,borderwidth=0)
+    image19 = Image.open("coke.png")
+    resized = image19.resize((60,85), Image.ANTIALIAS)
+    new_pic19 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic19,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=537,y=458)
+    coke_btn = Button(main, image=new_pic19,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=537,y=458)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+    def coke():
+        my_coke.config(image=new_pic20,bg="#000000",border=0,borderwidth=0)
+    image20 = Image.open("coke.png")
+    resized = image5.resize((60,85), Image.ANTIALIAS)
+    new_pic20 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic20,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=635,y=458)
+    coke_btn = Button(main, image=new_pic20,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=635,y=458)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
     
-    def biscus():
-        b = Label(main,text="Values"+str(vari.get()))
-        b.pack(anchor=S)
-
-    def chi():
-        c = Label(main,text="Values"+str(varia.get()))
-        c.pack(anchor=S)
-        
-    def choco():
-        d = Label(main,text="Values"+str(variab.get()))
-        d.pack(anchor=S)  
-       
-              
-    var = IntVar()
-    drinks_img = Label(main, padx=40,pady=30)
-    drinks_img.grid(row=2,column=2)
-    drinks = Label(main, text="Drinks",bg="#000000",fg="white")
-    drinks.grid(row=3,column=2)
-    coke_img = Label(main, padx=40,pady=30)
-    coke_img.grid(row=2,column=3)
-    coke = Label(main,text="Coke",bg="#000000",fg="white")
-    coke.grid(row=3,column=3)
-    coke_click = Radiobutton(main,variable=var,value=1,command=drink,bg="#000000",fg="blue",state=DISABLED)
-    coke_click.grid(row=4,column=3)
-    fanta_img = Label(main, padx=40,pady=30)
-    fanta_img.grid(row=2,column=4)
-    fanta = Label(main,text="Fanta",bg="#000000",fg="white")
-    fanta.grid(row=3,column=4)
-    fanta_click = Radiobutton(main,variable=var,value=2,command=drink,bg="#000000",fg="blue",state=DISABLED)
-    fanta_click.grid(row=4,column=4)
-    sprite_img = Label(main, padx=40,pady=30)
-    sprite_img.grid(row=2,column=5)
-    sprite = Label(main,text="Sprite",bg="#000000",fg="white")
-    sprite.grid(row=3,column=5)
-    sprite_click = Radiobutton(main,variable=var,value=3,command=drink,bg="#000000",fg="blue",state=DISABLED)
-    sprite_click.grid(row=4,column=5)
-    slice_img = Label(main, padx=40,pady=30)
-    slice_img.grid(row=2,column=6)
-    slice = Label(main,text="Slice",bg="#000000",fg="white")
-    slice.grid(row=3,column=6)
-    slice_click = Radiobutton(main,variable=var,value=4,command=drink,bg="#000000",fg="blue",state=DISABLED)
-    slice_click.grid(row=4,column=6)
-
-
-    vari = IntVar()
-    biscuits_img = Label(main, padx=40,pady=30)
-    biscuits_img.grid(row=5,column=2)
-    biscuits = Label(main, text="Biscuits",bg="#000000",fg="white")
-    biscuits.grid(row=6,column=2)
-    bonbon_img = Label(main, padx=40,pady=30)
-    bonbon_img.grid(row=5,column=3)
-    bonbon = Label(main,text="Bonbon",bg="#000000",fg="white")
-    bonbon.grid(row=6,column=3)
-    bonbon_click = Radiobutton(main,variable=vari,value=5,command=biscus,bg="#000000",fg="blue",state=DISABLED)
-    bonbon_click.grid(row=7,column=3)
-    oreo_img = Label(main, padx=40,pady=30)
-    oreo_img.grid(row=5,column=4)
-    oreo = Label(main,text="Oreo",bg="#000000",fg="white")
-    oreo.grid(row=6,column=4)
-    oreo_click = Radiobutton(main,variable=vari,value=6,command=biscus,bg="#000000",fg="blue",state=DISABLED)
-    oreo_click.grid(row=7,column=4)
-    digestive_img = Label(main, padx=40,pady=30)
-    digestive_img.grid(row=5,column=5)
-    digestive = Label(main,text="Digestive",bg="#000000",fg="white")
-    digestive.grid(row=6,column=5)
-    digestive_click = Radiobutton(main,variable=vari,value=7,command=biscus,bg="#000000",fg="blue",state=DISABLED)
-    digestive_click.grid(row=7,column=5)
-    hide_and_sick_img = Label(main, padx=40,pady=30)
-    hide_and_sick_img.grid(row=5,column=6)
-    hide_and_sick = Label(main,text="Hide_and_Sick",bg="#000000",fg="white")
-    hide_and_sick.grid(row=6,column=6)
-    hide_and_sick_click = Radiobutton(main,variable=vari,value=8,command=biscus,bg="#000000",fg="blue",state=DISABLED)
-    hide_and_sick_click.grid(row=7,column=6)
-
-
-    varia = IntVar()
-    chips_img = Label(main, padx=40,pady=30)
-    chips_img.grid(row=8,column=2)
-    chips = Label(main, text="Chips",bg="#000000",fg="white")
-    chips.grid(row=9,column=2)
-    dorritos_img = Label(main, padx=40,pady=30)
-    dorritos_img.grid(row=8,column=3)
-    dorritos = Label(main,text="Dorritos",bg="#000000",fg="white")
-    dorritos.grid(row=9,column=3)
-    dorritos_click = Radiobutton(main,variable=varia,value=9,command=chi,bg="#000000",fg="blue",state=DISABLED)
-    dorritos_click.grid(row=10,column=3)
-    lays_img = Label(main, padx=40,pady=30)
-    lays_img.grid(row=8,column=4)
-    lays = Label(main,text="Lays",bg="#000000",fg="white")
-    lays.grid(row=9,column=4)
-    lays_click = Radiobutton(main,variable=varia,value=10,command=chi,bg="#000000",fg="blue",state=DISABLED)
-    lays_click.grid(row=10,column=4)
-    local_chips_img = Label(main, padx=40,pady=30)
-    local_chips_img.grid(row=8,column=5)
-    local_chips = Label(main,text="Local_Chips",bg="#000000",fg="white")
-    local_chips.grid(row=9,column=5)
-    local_chips_click = Radiobutton(main,variable=varia,value=11,command=chi,bg="#000000",fg="blue",state=DISABLED)
-    local_chips_click.grid(row=10,column=5)
-    uncle_chips_img = Label(main, padx=40,pady=30)
-    uncle_chips_img.grid(row=8,column=6)
-    uncle_chips = Label(main,text="Uncle_Chips",bg="#000000",fg="white")
-    uncle_chips.grid(row=9,column=6)
-    uncle_chips_click = Radiobutton(main,variable=varia,value=12,command=chi,bg="#000000",fg="blue",state=DISABLED)
-    uncle_chips_click.grid(row=10,column=6)
-
-
-
-    variab = IntVar()
-    chocolates_img = Label(main, padx=50,pady=30,bg="red")
-    chocolates_img.grid(row=11,column=2)
-    chocolates = Label(main, text="Chocolates",bg="#000000",fg="white")
-    chocolates.grid(row=12,column=2)
-    snickers_img = Label(main, padx=50,pady=30,bg="blue",state=DISABLED)
-    snickers_img.grid(row=11,column=3)
-    snickers = Label(main,text="Snickers",bg="#000000",fg="white")
-    snickers.grid(row=12,column=3)
-    snickers_click = Radiobutton(main,variable=variab,value=13,command=choco,bg="#000000",fg="blue",state=DISABLED)
-    snickers_click.grid(row=13,column=3)
-    twix_img = Label(main, padx=50,pady=30,bg="green")
-    twix_img.grid(row=11,column=4)
-    twix = Label(main,text="Twix",bg="#000000",fg="white")
-    twix.grid(row=12,column=4)
-    twix_click = Radiobutton(main,variable=variab,value=14,command=choco,bg="#000000",fg="blue",state=DISABLED)
-    twix_click.grid(row=13,column=4)
-    rafello_img = Label(main, padx=50,pady=30,bg="yellow")
-    rafello_img.grid(row=11,column=5)
-    rafello = Label(main,text="Rafello",bg="#000000",fg="white")
-    rafello.grid(row=12,column=5)
-    rafello_click = Radiobutton(main,variable=variab,value=15,command=choco,bg="#000000",fg="blue",state=DISABLED)
-    rafello_click.grid(row=13,column=5)
-    mars_img = Label(main, padx=50,pady=30,bg="purple")
-    mars_img.grid(row=11,column=6)
-    mars = Label(main,text="Mars",bg="#000000",fg="white")
-    mars.grid(row=12,column=6)
-    mars_click = Radiobutton(main,variable=variab,value=16,command=choco,bg="#000000",fg="blue",state=DISABLED)
-    mars_click.grid(row=13,column=6)
-
-
-    space3 = Label(main,padx=80,pady=5,bg="#000000")
-    space3.grid(row=0,column=7)
-    space4 = Label(main,padx=80,pady=5,bg="#000000")
-    space4.grid(row=0,column=8)
-    space5 = Label(main,padx=80,pady=5,bg="#000000")
-    space5.grid(row=0,column=9)
-
-    def ema(emaa):
-        email.config(state=NORMAL)
-        email.delete(0, END)
-    def use(useee):
+    Frame(main, width=100,height=100,bg="#000000").place(x=447,y=630)
+     
+    def use(usee):
         username.config(state=NORMAL)
         username.delete(0, END)
     def pas(passs):
         password.config(state=NORMAL)
         password.delete(0, END)
+        
+    def emai(emaii):
+        email.config(state=NORMAL)
+        email.delete(0, END)
+        
+    def top():
+        
+        if username.get() == "":
+            messagebox.showerror("error", "Username Should Not Be Empty")      
       
-    sign = Label(main, text="Become a member",font=("Arail",30,"bold"),fg="white",bg="black")
-    sign.place(x=1120,y=10)
-    email = Entry(main,bg="#202020",borderwidth=0,fg="white")
-    email.place(x=1170,y=70,height=40,width=250)
-    email.insert(0,"   Email")
-    email.bind("<Button-1>",ema)
-    username = Entry(main,bg="#202020",borderwidth=0,fg="white")
-    username.place(x=1170,y=130,height=40,width=250)
+        elif password.get() == "":
+            messagebox.showerror("error", "Password Should Not Be Empty")
+            
+        elif email.get() == "":
+            messagebox.showerror("error", "Email Should Not Be Empty")
+            
+        elif "@gmail.com" not in email.get():
+            messagebox.showerror("error","Email Must Have Ending With @gmail.com")
+            
+        elif "@" not in password.get():
+            messagebox.showerror("error","Password Must Contain @")
+            
+        elif len(password.get()) <8:
+            messagebox.showerror("error", "Password Must Be Of 8 Or More Character")
+            
+        elif  "   Username" in username.get():
+            messagebox.showerror("error", "Choose Username")
+
+        elif "email@gmail.com" in email.get() :
+            messagebox.showerror("error", "Choose Email")            
+            
+        elif "*******@" in password.get():
+            messagebox.showerror("error", "Choose Password")
+            
+
+            
+        else:
+            frame = Frame(main, width=400,height=400,bg="black",)
+            frame.place(x=1100, y=30)
+            Label(frame,text="Registration Successfull",font=("Arial",15,"bold"),fg="green",bg="#000000").place(x=130,y=50)
+            button = Button(frame, text= "Login",border=4,bg="#00FF7F",pady=2,command=login)
+            button.place(x=230, y=85)
+            
+
+    frame = Frame(main, width=400,height=400,bg="black",)
+    frame.place(x=1100, y=30)
+    Label(frame,text="Become a member",font=("Arial",25,"bold"),fg="white",bg="#000000").place(x=60,y=15)
+
+    username = Entry(frame, width=40)
+    username.place(x=80, y=80, height=30)
     username.insert(0,"   Username")
     username.bind("<Button-1>",use)
-    password = Entry(main,bg="#202020",borderwidth=0,fg="white",show="*")
-    password.place(x=1170,y=190,height=40,width=250)
-    password.insert(0,"   Password")
+
+    email = Entry(frame, width=40)
+    email.place(x=80, y=130, height=30)
+    email.insert(0,"   email@gmail.com")
+    email.bind("<Button-1>",emai)
+
+    password = Entry(frame, width=40,show="*")
+    password.place(x=80, y=180, height=30)
+    password.insert(0,"*******@")
     password.bind("<Button-1>",pas)
-    
 
-    
-    up = LabelFrame(main,bg="black",pady=15,borderwidth=0)
-    up.place(x=1155,y=235)
-    signip = Label(up, text= "Already have an account?",fg="white",bg="#202020",font=("Arial",10),borderwidth=0,justify="left").grid(padx=70,pady=37)
-    btn = Button(up, text="Sign In!",fg="#00FF7F",bg="#202020",borderwidth=0).place(x=225,y=35)
-    btn2 = Label(up, text="-------->",fg="#00FF7F",bg="#202020",borderwidth=0).place(x=13,y=37)
-    signup = Button(up,text="Sign up",bg="#00FF7F")
-    signup.place(x=120,y=2)
-    
-    
-    purchase = Button(main,text="Purchase",border=3,bg="#00FF7F",state=DISABLED)
-    purchase.grid(row=14,column=4,pady=30)
-    
-    spin_coke = Spinbox(main,from_=1,to=5,width=2,state=DISABLED)
-    spin_coke.place(x=380,y=190)
-    spin_fanta = Spinbox(main,from_=1,to=5,width=2,state=DISABLED)
-    spin_fanta.place(x=485,y=190)
-    spin_sprite = Spinbox(main,from_=1,to=5,width=2,state=DISABLED)
-    spin_sprite.place(x=590,y=190)
-    spin_slice = Spinbox(main,from_=1,to=5,width=2,state=DISABLED)
-    spin_slice.place(x=693,y=190)
-    
-    spin_bourborn = Spinbox(main,from_=1,to=5,width=2,state=DISABLED)
-    spin_bourborn.place(x=375,y=315)
-    spin_oreo = Spinbox(main,from_=1,to=5,width=2,state=DISABLED)
-    spin_oreo.place(x=480,y=315)
-    spin_dugestive = Spinbox(main,from_=1,to=5,width=2,state=DISABLED)
-    spin_dugestive.place(x=585,y=315)
-    spin_hide_and_sick = Spinbox(main,from_=1,to=5,width=2,state=DISABLED)
-    spin_hide_and_sick.place(x=687,y=315)
-    
-    spin_dorritos = Spinbox(main,from_=1,to=5,width=2,state=DISABLED)
-    spin_dorritos.place(x=375,y=440)
-    spin_lays = Spinbox(main,from_=1,to=5,width=2,state=DISABLED)
-    spin_lays.place(x=480,y=440)
-    spin_local_chips = Spinbox(main,from_=1,to=5,width=2,state=DISABLED)
-    spin_local_chips.place(x=585,y=440)
-    spin_uncle_chips = Spinbox(main,from_=1,to=5,width=2,state=DISABLED)
-    spin_uncle_chips.place(x=687,y=440)
-    
-    spin_snickers = Spinbox(main,from_=1,to=5,width=2,state=DISABLED)
-    spin_snickers.place(x=375,y=565)
-    spin_twix = Spinbox(main,from_=1,to=5,width=2,state=DISABLED)
-    spin_twix.place(x=480,y=565)
-    spin_rafello = Spinbox(main,from_=1,to=5,width=2,state=DISABLED)
-    spin_rafello.place(x=585,y=565)
-    spin_mars = Spinbox(main,from_=1,to=5,width=2,state=DISABLED)
-    spin_mars.place(x=687,y=565)
+    button = Button(frame, text= "Sign up",border=4,bg="#00FF7F",pady=2,command=top)
+    button.place(x=165, y=230)
 
+    Label(frame, text="Already have an account?",fg="white",bg="#000000").place(x=100, y=280)
+    Button(frame, text="Sign in!",fg="#00FF7F",bg="#000000",borderwidth=0,command=login).place(x=240, y=280)
 
 
 def login():
     
-    def drink():
-        a = Label(main,text="Values"+str(var.get()))
-        a.pack(anchor=S)
+    def coke():
+        my_coke.config(image=new_pic2,bg="#000000",border=0,borderwidth=0)
+    image2 = Image.open("coke.png")
+    resized = image2.resize((60,85), Image.ANTIALIAS)
+    new_pic2 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic2,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=335,y=90)
+    coke_btn = Button(main, image=new_pic2,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=335,y=90)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+    def coke():
+        my_coke.config(image=new_pic3,bg="#000000",border=0,borderwidth=0)
+    image3 = Image.open("coke.png")
+    resized = image3.resize((60,85), Image.ANTIALIAS)
+    new_pic3 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic3,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=435,y=90)
+    coke_btn = Button(main, image=new_pic3,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=435,y=90)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+    def coke():
+        my_coke.config(image=new_pic4,bg="#000000",border=0,borderwidth=0)
+    image4 = Image.open("coke.png")
+    resized = image4.resize((60,85), Image.ANTIALIAS)
+    new_pic4 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic4,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=537,y=90)
+    coke_btn = Button(main, image=new_pic4,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=537,y=90)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+    def coke():
+        my_coke.config(image=new_pic5,bg="#000000",border=0,borderwidth=0)
+    image5 = Image.open("coke.png")
+    resized = image5.resize((60,85), Image.ANTIALIAS)
+    new_pic5 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic5,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=635,y=90)
+    coke_btn = Button(main, image=new_pic5,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=635,y=90)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+
+    def coke():
+        my_coke.config(image=new_pic7,bg="#000000",border=0,borderwidth=0)
+    image7 = Image.open("coke.png")
+    resized = image7.resize((60,85), Image.ANTIALIAS)
+    new_pic7 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic7,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=335,y=220)
+    coke_btn = Button(main, image=new_pic7,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=335,y=220)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+    def coke():
+        my_coke.config(image=new_pic8,bg="#000000",border=0,borderwidth=0)
+    image8 = Image.open("coke.png")
+    resized = image3.resize((60,85), Image.ANTIALIAS)
+    new_pic8 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic8,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=435,y=220)
+    coke_btn = Button(main, image=new_pic8,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=435,y=220)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+    def coke():
+        my_coke.config(image=new_pic9,bg="#000000",border=0,borderwidth=0)
+    image9 = Image.open("coke.png")
+    resized = image9.resize((60,85), Image.ANTIALIAS)
+    new_pic9 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic9,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=537,y=220)
+    coke_btn = Button(main, image=new_pic9,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=537,y=220)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+    def coke():
+        my_coke.config(image=new_pic10,bg="#000000",border=0,borderwidth=0)
+    image10 = Image.open("coke.png")
+    resized = image5.resize((60,85), Image.ANTIALIAS)
+    new_pic10 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic10,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=635,y=220)
+    coke_btn = Button(main, image=new_pic10,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=635,y=220)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+
+    def Dorritos():
+        my_Dorritos.config(image=new_pic12,bg="#000000",border=0,borderwidth=0)
+    image12 = Image.open("Dorritos.png")
+    resized = image12.resize((80,85), Image.ANTIALIAS)
+    new_pic12 = ImageTk.PhotoImage(resized)
+    Dorritos_img = Label(main, image=new_pic12,borderwidth=0,border=0,bg="#000000")
+    Dorritos_img.place(x=323,y=335)
+    Dorritos_btn = Button(main, image=new_pic12,command=Dorritos,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    Dorritos_btn.place(x=323,y=335)
+    my_Dorritos = Label(main,image="",bg="#000000")
+    my_Dorritos.place(x=450,y=630)
+
+    def Lays():
+        my_Lays.config(image=new_pic13,bg="#000000",border=0,borderwidth=0)
+    image13 = Image.open("Lays.png")
+    resized = image13.resize((120,85), Image.ANTIALIAS)
+    new_pic13 = ImageTk.PhotoImage(resized)
+    Lays_img = Label(main, image=new_pic13,borderwidth=0,border=0,bg="#000000")
+    Lays_img.place(x=410,y=335)
+    Lays_btn = Button(main, image=new_pic13,command=Lays,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    Lays_btn.place(x=410,y=335)
+    my_Lays = Label(main,image="",bg="#000000")
+    my_Lays.place(x=450,y=630)
+
+    def Local_Chips():
+        my_Local_Chips.config(image=new_pic14,bg="#000000",border=0,borderwidth=0)
+    image14 = Image.open("Local Chips.png")
+    resized = image14.resize((80,100), Image.ANTIALIAS)
+    new_pic14 = ImageTk.PhotoImage(resized)
+    Local_Chips_img = Label(main, image=new_pic14,borderwidth=0,border=0,bg="#000000")
+    Local_Chips_img.place(x=535,y=331)
+    Local_Chips_btn = Button(main, image=new_pic14,command=Local_Chips,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    Local_Chips_btn.place(x=535,y=331)
+    my_Local_Chips = Label(main,image="",bg="#000000")
+    my_Local_Chips.place(x=450,y=630)
+
+    def Uncle_Chips():
+        my_Uncle_Chips.config(image=new_pic15,bg="#000000",border=0,borderwidth=0)
+    image15 = Image.open("Uncle Chips.png")
+    resized = image15.resize((80,85), Image.ANTIALIAS)
+    new_pic15 = ImageTk.PhotoImage(resized)
+    Uncle_Chips_img = Label(main, image=new_pic15,borderwidth=0,border=0,bg="#000000")
+    Uncle_Chips_img.place(x=635,y=335)
+    Uncle_Chips_btn = Button(main, image=new_pic15,command=Uncle_Chips,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    Uncle_Chips_btn.place(x=635,y=335)
+    my_Uncle_Chips = Label(main,image="",bg="#000000")
+    my_Uncle_Chips.place(x=450,y=630)
+
+    def coke():
+        my_coke.config(image=new_pic17,bg="#000000",border=0,borderwidth=0)
+    image17 = Image.open("coke.png")
+    resized = image17.resize((60,85), Image.ANTIALIAS)
+    new_pic17 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic17,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=335,y=460)
+    coke_btn = Button(main, image=new_pic17,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=335,y=460)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+    def coke():
+        my_coke.config(image=new_pic18,bg="#000000",border=0,borderwidth=0)
+    image18 = Image.open("coke.png")
+    resized = image3.resize((60,85), Image.ANTIALIAS)
+    new_pic18 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic18,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=435,y=458)
+    coke_btn = Button(main, image=new_pic18,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=435,y=458)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+    def coke():
+        my_coke.config(image=new_pic19,bg="#000000",border=0,borderwidth=0)
+    image19 = Image.open("coke.png")
+    resized = image19.resize((60,85), Image.ANTIALIAS)
+    new_pic19 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic19,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=537,y=458)
+    coke_btn = Button(main, image=new_pic19,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=537,y=458)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
+
+    def coke():
+        my_coke.config(image=new_pic20,bg="#000000",border=0,borderwidth=0)
+    image20 = Image.open("coke.png")
+    resized = image5.resize((60,85), Image.ANTIALIAS)
+    new_pic20 = ImageTk.PhotoImage(resized)
+    coke_img = Label(main, image=new_pic20,borderwidth=0,border=0,bg="#000000")
+    coke_img.place(x=635,y=458)
+    coke_btn = Button(main, image=new_pic20,command=coke,border=0,borderwidth=0,bg="#000000",state=DISABLED)
+    coke_btn.place(x=635,y=458)
+    my_coke = Label(main,image="",bg="#000000")
+    my_coke.place(x=450,y=630)
     
-    def biscus():
-        b = Label(main,text="Values"+str(vari.get()))
-        b.pack(anchor=S)
-
-    def chi():
-        c = Label(main,text="Values"+str(varia.get()))
-        c.pack(anchor=S)
-        
-    def choco():
-        d = Label(main,text="Values"+str(variab.get()))
-        d.pack(anchor=S) 
-
-
-              
-    var = IntVar()
-    drinks_img = Label(main, padx=40,pady=30)
-    drinks_img.grid(row=2,column=2)
     drinks = Label(main, text="Drinks",bg="#000000",fg="white")
-    drinks.grid(row=3,column=2)
-    coke_img = Label(main, padx=40,pady=30)
-    coke_img.grid(row=2,column=3)
+    drinks.place(x=210,y=180)
+
     coke = Label(main,text="Coke",bg="#000000",fg="white")
-    coke.grid(row=3,column=3)
-    coke_click = Radiobutton(main,variable=var,value=1,command=drink,bg="#000000",fg="blue")
-    coke_click.grid(row=4,column=3)
-    fanta_img = Label(main, padx=40,pady=30)
-    fanta_img.grid(row=2,column=4)
+    coke.place(x=350,y=180)
+
     fanta = Label(main,text="Fanta",bg="#000000",fg="white")
-    fanta.grid(row=3,column=4)
-    fanta_click = Radiobutton(main,variable=var,value=2,command=drink,bg="#000000",fg="blue")
-    fanta_click.grid(row=4,column=4)
-    sprite_img = Label(main, padx=40,pady=30)
-    sprite_img.grid(row=2,column=5)
+    fanta.place(x=450,y=180)
+
     sprite = Label(main,text="Sprite",bg="#000000",fg="white")
-    sprite.grid(row=3,column=5)
-    sprite_click = Radiobutton(main,variable=var,value=3,command=drink,bg="#000000",fg="blue")
-    sprite_click.grid(row=4,column=5)
-    slice_img = Label(main, padx=40,pady=30)
-    slice_img.grid(row=2,column=6)
+    sprite.place(x=550,y=180)
+
     slice = Label(main,text="Slice",bg="#000000",fg="white")
-    slice.grid(row=3,column=6)
-    slice_click = Radiobutton(main,variable=var,value=4,command=drink,bg="#000000",fg="blue")
-    slice_click.grid(row=4,column=6)
+    slice.place(x=650,y=180)
 
-
-    vari = IntVar()
-    biscuits_img = Label(main, padx=40,pady=30)
-    biscuits_img.grid(row=5,column=2)
     biscuits = Label(main, text="Biscuits",bg="#000000",fg="white")
-    biscuits.grid(row=6,column=2)
-    bonbon_img = Label(main, padx=40,pady=30)
-    bonbon_img.grid(row=5,column=3)
+    biscuits.place(x=210,y=300)
+
     bonbon = Label(main,text="Bonbon",bg="#000000",fg="white")
-    bonbon.grid(row=6,column=3)
-    bonbon_click = Radiobutton(main,variable=vari,value=5,command=biscus,bg="#000000",fg="blue")
-    bonbon_click.grid(row=7,column=3)
-    oreo_img = Label(main, padx=40,pady=30)
-    oreo_img.grid(row=5,column=4)
+    bonbon.place(x=340,y=300)
+
     oreo = Label(main,text="Oreo",bg="#000000",fg="white")
-    oreo.grid(row=6,column=4)
-    oreo_click = Radiobutton(main,variable=vari,value=6,command=biscus,bg="#000000",fg="blue")
-    oreo_click.grid(row=7,column=4)
-    digestive_img = Label(main, padx=40,pady=30)
-    digestive_img.grid(row=5,column=5)
+    oreo.place(x=450,y=300)
+
     digestive = Label(main,text="Digestive",bg="#000000",fg="white")
-    digestive.grid(row=6,column=5)
-    digestive_click = Radiobutton(main,variable=vari,value=7,command=biscus,bg="#000000",fg="blue")
-    digestive_click.grid(row=7,column=5)
-    hide_and_sick_img = Label(main, padx=40,pady=30)
-    hide_and_sick_img.grid(row=5,column=6)
+    digestive.place(x=540,y=300)
+
     hide_and_sick = Label(main,text="Hide and Sick",bg="#000000",fg="white")
-    hide_and_sick.grid(row=6,column=6)
-    hide_and_sick_click = Radiobutton(main,variable=vari,value=8,command=biscus,bg="#000000",fg="blue")
-    hide_and_sick_click.grid(row=7,column=6)
+    hide_and_sick.place(x=630,y=300)
 
-
-    varia = IntVar()
-    chips_img = Label(main, padx=40,pady=30)
-    chips_img.grid(row=8,column=2)
     chips = Label(main, text="Chips",bg="#000000",fg="white")
-    chips.grid(row=9,column=2)
-    dorritos_img = Label(main, padx=40,pady=30)
-    dorritos_img.grid(row=8,column=3)
+    chips.place(x=210,y=420)
+
     dorritos = Label(main,text="Dorritos",bg="#000000",fg="white")
-    dorritos.grid(row=9,column=3)
-    dorritos_click = Radiobutton(main,variable=varia,value=9,command=chi,bg="#000000",fg="blue")
-    dorritos_click.grid(row=10,column=3)
-    lays_img = Label(main, padx=40,pady=30)
-    lays_img.grid(row=8,column=4)
+    dorritos.place(x=340,y=420)
+
     lays = Label(main,text="Lays",bg="#000000",fg="white")
-    lays.grid(row=9,column=4)
-    lays_click = Radiobutton(main,variable=varia,value=10,command=chi,bg="#000000",fg="blue")
-    lays_click.grid(row=10,column=4)
-    local_chips_img = Label(main, padx=40,pady=30)
-    local_chips_img.grid(row=8,column=5)
+    lays.place(x=450,y=420)
+
     local_chips = Label(main,text="Local Chips",bg="#000000",fg="white")
-    local_chips.grid(row=9,column=5)
-    local_chips_click = Radiobutton(main,variable=varia,value=11,command=chi,bg="#000000",fg="blue")
-    local_chips_click.grid(row=10,column=5)
-    uncle_chips_img = Label(main, padx=40,pady=30)
-    uncle_chips_img.grid(row=8,column=6)
+    local_chips.place(x=540,y=420)
+
     uncle_chips = Label(main,text="Uncle Chips",bg="#000000",fg="white")
-    uncle_chips.grid(row=9,column=6)
-    uncle_chips_click = Radiobutton(main,variable=varia,value=12,command=chi,bg="#000000",fg="blue")
-    uncle_chips_click.grid(row=10,column=6)
+    uncle_chips.place(x=640,y=420)
 
-
-
-    variab = IntVar()
-    chocolates_img = Label(main, padx=50,pady=30,bg="red")
-    chocolates_img.grid(row=11,column=2)
     chocolates = Label(main, text="Chocolates",bg="#000000",fg="white")
-    chocolates.grid(row=12,column=2)
-    snickers_img = Label(main, padx=50,pady=30,bg="blue")
-    snickers_img.grid(row=11,column=3)
+    chocolates.place(x=195,y=540)
+
     snickers = Label(main,text="Snickers",bg="#000000",fg="white")
-    snickers.grid(row=12,column=3)
-    snickers_click = Radiobutton(main,variable=variab,value=13,command=choco,bg="#000000",fg="blue")
-    snickers_click.grid(row=13,column=3)
-    twix_img = Label(main, padx=50,pady=30,bg="green")
-    twix_img.grid(row=11,column=4)
+    snickers.place(x=340,y=540)
+
     twix = Label(main,text="Twix",bg="#000000",fg="white")
-    twix.grid(row=12,column=4)
-    twix_click = Radiobutton(main,variable=variab,value=14,command=choco,bg="#000000",fg="blue")
-    twix_click.grid(row=13,column=4)
-    rafello_img = Label(main, padx=50,pady=30,bg="yellow")
-    rafello_img.grid(row=11,column=5)
+    twix.place(x=450,y=540)
+
     rafello = Label(main,text="Rafello",bg="#000000",fg="white")
-    rafello.grid(row=12,column=5)
-    rafello_click = Radiobutton(main,variable=variab,value=15,command=choco,bg="#000000",fg="blue")
-    rafello_click.grid(row=13,column=5)
-    mars_img = Label(main, padx=50,pady=30,bg="purple")
-    mars_img.grid(row=11,column=6)
+    rafello.place(x=550,y=540)
+
     mars = Label(main,text="Mars",bg="#000000",fg="white")
-    mars.grid(row=12,column=6)
-    mars_click = Radiobutton(main,variable=variab,value=16,command=choco,bg="#000000",fg="blue")
-    mars_click.grid(row=13,column=6)
-
-
-    space3 = Label(main,padx=80,pady=5,bg="#000000")
-    space3.grid(row=0,column=7)
-    space4 = Label(main,padx=80,pady=5,bg="#000000")
-    space4.grid(row=0,column=8)
-    space5 = Label(main,padx=80,pady=5,bg="#000000")
-    space5.grid(row=0,column=9)
+    mars.place(x=650,y=540)
 
     def use(usee):
         username.config(state=NORMAL)
@@ -404,88 +576,568 @@ def login():
     def pas(passs):
         password.config(state=NORMAL)
         password.delete(0, END)
-      
+        
     def top():
-        if username.get() == "":
-            messagebox.showerror("error", "All Fields Required")
-        elif password.get() == "":
-            messagebox.showerror("error", "All Fields Required")
-        elif len(password.get()) <8:
-            messagebox.showerror("error", "Password Must Be Of 8 Or More Character")
-        
 
-        
-    sign = Label(main, text="Sign In",font=("Arail",30,"bold"),fg="white",bg="black")
-    sign.place(x=1220,y=10)
-    username = Entry(main,bg="#202020",borderwidth=0,fg="white")
-    username.place(x=1170,y=70,height=40,width=250)
+        if username.get() == "":
+            messagebox.showerror("error", "Username Should Not Be Empty")
+        elif password.get() == "":
+            messagebox.showerror("error", "Password Should Not Be Empty")
+            
+        elif len(password.get()) <8:
+            messagebox.showerror("error", "Wrong Password")
+            
+        elif "@" not in password.get():
+            messagebox.showerror("error","Wrong Password")
+                    
+        elif  "   Username" in username.get():
+            messagebox.showerror("error", "Enter Username")       
+            
+        elif "*******@" in password.get():
+            messagebox.showerror("error", "Enter Password")   
+            
+        else:        
+            def coke():
+                my_coke.config(image=new_pic2,bg="#000000",border=0,borderwidth=0)
+            image2 = Image.open("coke.png")
+            resized = image2.resize((60,85), Image.ANTIALIAS)
+            new_pic2 = ImageTk.PhotoImage(resized)
+            coke_img = Label(main, image=new_pic2,borderwidth=0,border=0,bg="#000000")
+            coke_img.place(x=335,y=90)
+            coke_btn = Button(main, image=new_pic2,command=coke,border=0,borderwidth=0,bg="#000000")
+            coke_btn.place(x=335,y=90)
+            my_coke = Label(main,image="",bg="#000000")
+            my_coke.place(x=450,y=630)
+
+            def coke():
+                my_coke.config(image=new_pic3,bg="#000000",border=0,borderwidth=0)
+            image3 = Image.open("coke.png")
+            resized = image3.resize((60,85), Image.ANTIALIAS)
+            new_pic3 = ImageTk.PhotoImage(resized)
+            coke_img = Label(main, image=new_pic3,borderwidth=0,border=0,bg="#000000")
+            coke_img.place(x=435,y=90)
+            coke_btn = Button(main, image=new_pic3,command=coke,border=0,borderwidth=0,bg="#000000")
+            coke_btn.place(x=435,y=90)
+            my_coke = Label(main,image="",bg="#000000")
+            my_coke.place(x=450,y=630)
+
+            def coke():
+                my_coke.config(image=new_pic4,bg="#000000",border=0,borderwidth=0)
+            image4 = Image.open("coke.png")
+            resized = image4.resize((60,85), Image.ANTIALIAS)
+            new_pic4 = ImageTk.PhotoImage(resized)
+            coke_img = Label(main, image=new_pic4,borderwidth=0,border=0,bg="#000000")
+            coke_img.place(x=537,y=90)
+            coke_btn = Button(main, image=new_pic4,command=coke,border=0,borderwidth=0,bg="#000000")
+            coke_btn.place(x=537,y=90)
+            my_coke = Label(main,image="",bg="#000000")
+            my_coke.place(x=450,y=630)
+
+            def coke():
+                my_coke.config(image=new_pic5,bg="#000000",border=0,borderwidth=0)
+            image5 = Image.open("coke.png")
+            resized = image5.resize((60,85), Image.ANTIALIAS)
+            new_pic5 = ImageTk.PhotoImage(resized)
+            coke_img = Label(main, image=new_pic5,borderwidth=0,border=0,bg="#000000")
+            coke_img.place(x=635,y=90)
+            coke_btn = Button(main, image=new_pic5,command=coke,border=0,borderwidth=0,bg="#000000")
+            coke_btn.place(x=635,y=90)
+            my_coke = Label(main,image="",bg="#000000")
+            my_coke.place(x=450,y=630)
+
+
+            def coke():
+                my_coke.config(image=new_pic7,bg="#000000",border=0,borderwidth=0)
+            image7 = Image.open("coke.png")
+            resized = image7.resize((60,85), Image.ANTIALIAS)
+            new_pic7 = ImageTk.PhotoImage(resized)
+            coke_img = Label(main, image=new_pic7,borderwidth=0,border=0,bg="#000000")
+            coke_img.place(x=335,y=220)
+            coke_btn = Button(main, image=new_pic7,command=coke,border=0,borderwidth=0,bg="#000000")
+            coke_btn.place(x=335,y=220)
+            my_coke = Label(main,image="",bg="#000000")
+            my_coke.place(x=450,y=630)
+
+            def coke():
+                my_coke.config(image=new_pic8,bg="#000000",border=0,borderwidth=0)
+            image8 = Image.open("coke.png")
+            resized = image3.resize((60,85), Image.ANTIALIAS)
+            new_pic8 = ImageTk.PhotoImage(resized)
+            coke_img = Label(main, image=new_pic8,borderwidth=0,border=0,bg="#000000")
+            coke_img.place(x=435,y=220)
+            coke_btn = Button(main, image=new_pic8,command=coke,border=0,borderwidth=0,bg="#000000")
+            coke_btn.place(x=435,y=220)
+            my_coke = Label(main,image="",bg="#000000")
+            my_coke.place(x=450,y=630)
+
+            def coke():
+                my_coke.config(image=new_pic9,bg="#000000",border=0,borderwidth=0)
+            image9 = Image.open("coke.png")
+            resized = image9.resize((60,85), Image.ANTIALIAS)
+            new_pic9 = ImageTk.PhotoImage(resized)
+            coke_img = Label(main, image=new_pic9,borderwidth=0,border=0,bg="#000000")
+            coke_img.place(x=537,y=220)
+            coke_btn = Button(main, image=new_pic9,command=coke,border=0,borderwidth=0,bg="#000000")
+            coke_btn.place(x=537,y=220)
+            my_coke = Label(main,image="",bg="#000000")
+            my_coke.place(x=450,y=630)
+
+            def coke():
+                my_coke.config(image=new_pic10,bg="#000000",border=0,borderwidth=0)
+            image10 = Image.open("coke.png")
+            resized = image5.resize((60,85), Image.ANTIALIAS)
+            new_pic10 = ImageTk.PhotoImage(resized)
+            coke_img = Label(main, image=new_pic10,borderwidth=0,border=0,bg="#000000")
+            coke_img.place(x=635,y=220)
+            coke_btn = Button(main, image=new_pic10,command=coke,border=0,borderwidth=0,bg="#000000")
+            coke_btn.place(x=635,y=220)
+            my_coke = Label(main,image="",bg="#000000")
+            my_coke.place(x=450,y=630)
+
+
+            def Dorritos():
+                my_Dorritos.config(image=new_pic12,bg="#000000",border=0,borderwidth=0)
+            image12 = Image.open("Dorritos.png")
+            resized = image12.resize((80,85), Image.ANTIALIAS)
+            new_pic12 = ImageTk.PhotoImage(resized)
+            Dorritos_img = Label(main, image=new_pic12,borderwidth=0,border=0,bg="#000000")
+            Dorritos_img.place(x=323,y=335)
+            Dorritos_btn = Button(main, image=new_pic12,command=Dorritos,border=0,borderwidth=0,bg="#000000")
+            Dorritos_btn.place(x=323,y=335)
+            my_Dorritos = Label(main,image="",bg="#000000")
+            my_Dorritos.place(x=450,y=630)
+
+            def Lays():
+                my_Lays.config(image=new_pic13,bg="#000000",border=0,borderwidth=0)
+            image13 = Image.open("Lays.png")
+            resized = image13.resize((120,85), Image.ANTIALIAS)
+            new_pic13 = ImageTk.PhotoImage(resized)
+            Lays_img = Label(main, image=new_pic13,borderwidth=0,border=0,bg="#000000")
+            Lays_img.place(x=410,y=335)
+            Lays_btn = Button(main, image=new_pic13,command=Lays,border=0,borderwidth=0,bg="#000000")
+            Lays_btn.place(x=410,y=335)
+            my_Lays = Label(main,image="",bg="#000000")
+            my_Lays.place(x=450,y=630)
+
+            def Local_Chips():
+                my_Local_Chips.config(image=new_pic14,bg="#000000",border=0,borderwidth=0)
+            image14 = Image.open("Local Chips.png")
+            resized = image14.resize((80,100), Image.ANTIALIAS)
+            new_pic14 = ImageTk.PhotoImage(resized)
+            Local_Chips_img = Label(main, image=new_pic14,borderwidth=0,border=0,bg="#000000")
+            Local_Chips_img.place(x=535,y=331)
+            Local_Chips_btn = Button(main, image=new_pic14,command=Local_Chips,border=0,borderwidth=0,bg="#000000")
+            Local_Chips_btn.place(x=535,y=331)
+            my_Local_Chips = Label(main,image="",bg="#000000")
+            my_Local_Chips.place(x=450,y=630)
+
+            def Uncle_Chips():
+                my_Uncle_Chips.config(image=new_pic15,bg="#000000",border=0,borderwidth=0)
+            image15 = Image.open("Uncle Chips.png")
+            resized = image15.resize((80,85), Image.ANTIALIAS)
+            new_pic15 = ImageTk.PhotoImage(resized)
+            Uncle_Chips_img = Label(main, image=new_pic15,borderwidth=0,border=0,bg="#000000")
+            Uncle_Chips_img.place(x=635,y=335)
+            Uncle_Chips_btn = Button(main, image=new_pic15,command=Uncle_Chips,border=0,borderwidth=0,bg="#000000")
+            Uncle_Chips_btn.place(x=635,y=335)
+            my_Uncle_Chips = Label(main,image="",bg="#000000")
+            my_Uncle_Chips.place(x=450,y=630)
+
+            def coke():
+                my_coke.config(image=new_pic17,bg="#000000",border=0,borderwidth=0)
+            image17 = Image.open("coke.png")
+            resized = image17.resize((60,85), Image.ANTIALIAS)
+            new_pic17 = ImageTk.PhotoImage(resized)
+            coke_img = Label(main, image=new_pic17,borderwidth=0,border=0,bg="#000000")
+            coke_img.place(x=335,y=460)
+            coke_btn = Button(main, image=new_pic17,command=coke,border=0,borderwidth=0,bg="#000000")
+            coke_btn.place(x=335,y=460)
+            my_coke = Label(main,image="",bg="#000000")
+            my_coke.place(x=450,y=630)
+
+            def coke():
+                my_coke.config(image=new_pic18,bg="#000000",border=0,borderwidth=0)
+            image18 = Image.open("coke.png")
+            resized = image3.resize((60,85), Image.ANTIALIAS)
+            new_pic18 = ImageTk.PhotoImage(resized)
+            coke_img = Label(main, image=new_pic18,borderwidth=0,border=0,bg="#000000")
+            coke_img.place(x=435,y=458)
+            coke_btn = Button(main, image=new_pic18,command=coke,border=0,borderwidth=0,bg="#000000")
+            coke_btn.place(x=435,y=458)
+            my_coke = Label(main,image="",bg="#000000")
+            my_coke.place(x=450,y=630)
+
+            def coke():
+                my_coke.config(image=new_pic19,bg="#000000",border=0,borderwidth=0)
+            image19 = Image.open("coke.png")
+            resized = image19.resize((60,85), Image.ANTIALIAS)
+            new_pic19 = ImageTk.PhotoImage(resized)
+            coke_img = Label(main, image=new_pic19,borderwidth=0,border=0,bg="#000000")
+            coke_img.place(x=537,y=458)
+            coke_btn = Button(main, image=new_pic19,command=coke,border=0,borderwidth=0,bg="#000000")
+            coke_btn.place(x=537,y=458)
+            my_coke = Label(main,image="",bg="#000000")
+            my_coke.place(x=450,y=630)
+
+            def coke():
+                my_coke.config(image=new_pic20,bg="#000000",border=0,borderwidth=0)
+            image20 = Image.open("coke.png")
+            resized = image5.resize((60,85), Image.ANTIALIAS)
+            new_pic20 = ImageTk.PhotoImage(resized)
+            coke_img = Label(main, image=new_pic20,borderwidth=0,border=0,bg="#000000")
+            coke_img.place(x=635,y=458)
+            coke_btn = Button(main, image=new_pic20,command=coke,border=0,borderwidth=0,bg="#000000")
+            coke_btn.place(x=635,y=458)
+            my_coke = Label(main,image="",bg="#000000")
+            my_coke.place(x=450,y=630)
+            
+            drinks = Label(main, text="Drinks",bg="#000000",fg="white")
+            drinks.place(x=210,y=180)
+
+            coke = Label(main,text="Coke",bg="#000000",fg="white")
+            coke.place(x=350,y=180)
+
+            fanta = Label(main,text="Fanta",bg="#000000",fg="white")
+            fanta.place(x=450,y=180)
+
+            sprite = Label(main,text="Sprite",bg="#000000",fg="white")
+            sprite.place(x=550,y=180)
+
+            slice = Label(main,text="Slice",bg="#000000",fg="white")
+            slice.place(x=650,y=180)
+
+            biscuits = Label(main, text="Biscuits",bg="#000000",fg="white")
+            biscuits.place(x=210,y=300)
+
+            bonbon = Label(main,text="Bonbon",bg="#000000",fg="white")
+            bonbon.place(x=340,y=300)
+
+            oreo = Label(main,text="Oreo",bg="#000000",fg="white")
+            oreo.place(x=450,y=300)
+
+            digestive = Label(main,text="Digestive",bg="#000000",fg="white")
+            digestive.place(x=540,y=300)
+
+            hide_and_sick = Label(main,text="Hide and Sick",bg="#000000",fg="white")
+            hide_and_sick.place(x=630,y=300)
+
+            chips = Label(main, text="Chips",bg="#000000",fg="white")
+            chips.place(x=210,y=420)
+
+            dorritos = Label(main,text="Dorritos",bg="#000000",fg="white")
+            dorritos.place(x=340,y=420)
+
+            lays = Label(main,text="Lays",bg="#000000",fg="white")
+            lays.place(x=450,y=420)
+
+            local_chips = Label(main,text="Local Chips",bg="#000000",fg="white")
+            local_chips.place(x=540,y=420)
+
+            uncle_chips = Label(main,text="Uncle Chips",bg="#000000",fg="white")
+            uncle_chips.place(x=640,y=420)
+
+            chocolates = Label(main, text="Chocolates",bg="#000000",fg="white")
+            chocolates.place(x=195,y=540)
+
+            snickers = Label(main,text="Snickers",bg="#000000",fg="white")
+            snickers.place(x=340,y=540)
+
+            twix = Label(main,text="Twix",bg="#000000",fg="white")
+            twix.place(x=450,y=540)
+
+            rafello = Label(main,text="Rafello",bg="#000000",fg="white")
+            rafello.place(x=550,y=540)
+
+            mars = Label(main,text="Mars",bg="#000000",fg="white")
+            mars.place(x=650,y=540)
+            
+            def cancel():
+                Frame(main, width=100,height=100,bg="#000000").place(x=447,y=630)
+                def coke():
+                    my_coke.config(image=new_pic2,bg="#000000",border=0,borderwidth=0)
+                image2 = Image.open("coke.png")
+                resized = image2.resize((60,85), Image.ANTIALIAS)
+                new_pic2 = ImageTk.PhotoImage(resized)
+                coke_img = Label(main, image=new_pic2,borderwidth=0,border=0,bg="#000000")
+                coke_img.place(x=335,y=90)
+                coke_btn = Button(main, image=new_pic2,command=coke,border=0,borderwidth=0,bg="#000000")
+                coke_btn.place(x=335,y=90)
+                my_coke = Label(main,image="",bg="#000000")
+                my_coke.place(x=450,y=630)
+
+                def coke():
+                    my_coke.config(image=new_pic3,bg="#000000",border=0,borderwidth=0)
+                image3 = Image.open("coke.png")
+                resized = image3.resize((60,85), Image.ANTIALIAS)
+                new_pic3 = ImageTk.PhotoImage(resized)
+                coke_img = Label(main, image=new_pic3,borderwidth=0,border=0,bg="#000000")
+                coke_img.place(x=435,y=90)
+                coke_btn = Button(main, image=new_pic3,command=coke,border=0,borderwidth=0,bg="#000000")
+                coke_btn.place(x=435,y=90)
+                my_coke = Label(main,image="",bg="#000000")
+                my_coke.place(x=450,y=630)
+
+                def coke():
+                    my_coke.config(image=new_pic4,bg="#000000",border=0,borderwidth=0)
+                image4 = Image.open("coke.png")
+                resized = image4.resize((60,85), Image.ANTIALIAS)
+                new_pic4 = ImageTk.PhotoImage(resized)
+                coke_img = Label(main, image=new_pic4,borderwidth=0,border=0,bg="#000000")
+                coke_img.place(x=537,y=90)
+                coke_btn = Button(main, image=new_pic4,command=coke,border=0,borderwidth=0,bg="#000000")
+                coke_btn.place(x=537,y=90)
+                my_coke = Label(main,image="",bg="#000000")
+                my_coke.place(x=450,y=630)
+
+                def coke():
+                    my_coke.config(image=new_pic5,bg="#000000",border=0,borderwidth=0)
+                image5 = Image.open("coke.png")
+                resized = image5.resize((60,85), Image.ANTIALIAS)
+                new_pic5 = ImageTk.PhotoImage(resized)
+                coke_img = Label(main, image=new_pic5,borderwidth=0,border=0,bg="#000000")
+                coke_img.place(x=635,y=90)
+                coke_btn = Button(main, image=new_pic5,command=coke,border=0,borderwidth=0,bg="#000000")
+                coke_btn.place(x=635,y=90)
+                my_coke = Label(main,image="",bg="#000000")
+                my_coke.place(x=450,y=630)
+
+
+                def coke():
+                    my_coke.config(image=new_pic7,bg="#000000",border=0,borderwidth=0)
+                image7 = Image.open("coke.png")
+                resized = image7.resize((60,85), Image.ANTIALIAS)
+                new_pic7 = ImageTk.PhotoImage(resized)
+                coke_img = Label(main, image=new_pic7,borderwidth=0,border=0,bg="#000000")
+                coke_img.place(x=335,y=220)
+                coke_btn = Button(main, image=new_pic7,command=coke,border=0,borderwidth=0,bg="#000000")
+                coke_btn.place(x=335,y=220)
+                my_coke = Label(main,image="",bg="#000000")
+                my_coke.place(x=450,y=630)
+
+                def coke():
+                    my_coke.config(image=new_pic8,bg="#000000",border=0,borderwidth=0)
+                image8 = Image.open("coke.png")
+                resized = image3.resize((60,85), Image.ANTIALIAS)
+                new_pic8 = ImageTk.PhotoImage(resized)
+                coke_img = Label(main, image=new_pic8,borderwidth=0,border=0,bg="#000000")
+                coke_img.place(x=435,y=220)
+                coke_btn = Button(main, image=new_pic8,command=coke,border=0,borderwidth=0,bg="#000000")
+                coke_btn.place(x=435,y=220)
+                my_coke = Label(main,image="",bg="#000000")
+                my_coke.place(x=450,y=630)
+
+                def coke():
+                    my_coke.config(image=new_pic9,bg="#000000",border=0,borderwidth=0)
+                image9 = Image.open("coke.png")
+                resized = image9.resize((60,85), Image.ANTIALIAS)
+                new_pic9 = ImageTk.PhotoImage(resized)
+                coke_img = Label(main, image=new_pic9,borderwidth=0,border=0,bg="#000000")
+                coke_img.place(x=537,y=220)
+                coke_btn = Button(main, image=new_pic9,command=coke,border=0,borderwidth=0,bg="#000000")
+                coke_btn.place(x=537,y=220)
+                my_coke = Label(main,image="",bg="#000000")
+                my_coke.place(x=450,y=630)
+
+                def coke():
+                    my_coke.config(image=new_pic10,bg="#000000",border=0,borderwidth=0)
+                image10 = Image.open("coke.png")
+                resized = image5.resize((60,85), Image.ANTIALIAS)
+                new_pic10 = ImageTk.PhotoImage(resized)
+                coke_img = Label(main, image=new_pic10,borderwidth=0,border=0,bg="#000000")
+                coke_img.place(x=635,y=220)
+                coke_btn = Button(main, image=new_pic10,command=coke,border=0,borderwidth=0,bg="#000000")
+                coke_btn.place(x=635,y=220)
+                my_coke = Label(main,image="",bg="#000000")
+                my_coke.place(x=450,y=630)
+
+
+                def Dorritos():
+                    my_Dorritos.config(image=new_pic12,bg="#000000",border=0,borderwidth=0)
+                image12 = Image.open("Dorritos.png")
+                resized = image12.resize((80,85), Image.ANTIALIAS)
+                new_pic12 = ImageTk.PhotoImage(resized)
+                Dorritos_img = Label(main, image=new_pic12,borderwidth=0,border=0,bg="#000000")
+                Dorritos_img.place(x=323,y=335)
+                Dorritos_btn = Button(main, image=new_pic12,command=Dorritos,border=0,borderwidth=0,bg="#000000")
+                Dorritos_btn.place(x=323,y=335)
+                my_Dorritos = Label(main,image="",bg="#000000")
+                my_Dorritos.place(x=450,y=630)
+
+                def Lays():
+                    my_Lays.config(image=new_pic13,bg="#000000",border=0,borderwidth=0)
+                image13 = Image.open("Lays.png")
+                resized = image13.resize((120,85), Image.ANTIALIAS)
+                new_pic13 = ImageTk.PhotoImage(resized)
+                Lays_img = Label(main, image=new_pic13,borderwidth=0,border=0,bg="#000000")
+                Lays_img.place(x=410,y=335)
+                Lays_btn = Button(main, image=new_pic13,command=Lays,border=0,borderwidth=0,bg="#000000")
+                Lays_btn.place(x=410,y=335)
+                my_Lays = Label(main,image="",bg="#000000")
+                my_Lays.place(x=450,y=630)
+
+                def Local_Chips():
+                    my_Local_Chips.config(image=new_pic14,bg="#000000",border=0,borderwidth=0)
+                image14 = Image.open("Local Chips.png")
+                resized = image14.resize((80,100), Image.ANTIALIAS)
+                new_pic14 = ImageTk.PhotoImage(resized)
+                Local_Chips_img = Label(main, image=new_pic14,borderwidth=0,border=0,bg="#000000")
+                Local_Chips_img.place(x=535,y=331)
+                Local_Chips_btn = Button(main, image=new_pic14,command=Local_Chips,border=0,borderwidth=0,bg="#000000")
+                Local_Chips_btn.place(x=535,y=331)
+                my_Local_Chips = Label(main,image="",bg="#000000")
+                my_Local_Chips.place(x=450,y=630)
+
+                def Uncle_Chips():
+                    my_Uncle_Chips.config(image=new_pic15,bg="#000000",border=0,borderwidth=0)
+                image15 = Image.open("Uncle Chips.png")
+                resized = image15.resize((80,85), Image.ANTIALIAS)
+                new_pic15 = ImageTk.PhotoImage(resized)
+                Uncle_Chips_img = Label(main, image=new_pic15,borderwidth=0,border=0,bg="#000000")
+                Uncle_Chips_img.place(x=635,y=335)
+                Uncle_Chips_btn = Button(main, image=new_pic15,command=Uncle_Chips,border=0,borderwidth=0,bg="#000000")
+                Uncle_Chips_btn.place(x=635,y=335)
+                my_Uncle_Chips = Label(main,image="",bg="#000000")
+                my_Uncle_Chips.place(x=450,y=630)
+
+                def coke():
+                    my_coke.config(image=new_pic17,bg="#000000",border=0,borderwidth=0)
+                image17 = Image.open("coke.png")
+                resized = image17.resize((60,85), Image.ANTIALIAS)
+                new_pic17 = ImageTk.PhotoImage(resized)
+                coke_img = Label(main, image=new_pic17,borderwidth=0,border=0,bg="#000000")
+                coke_img.place(x=335,y=460)
+                coke_btn = Button(main, image=new_pic17,command=coke,border=0,borderwidth=0,bg="#000000")
+                coke_btn.place(x=335,y=460)
+                my_coke = Label(main,image="",bg="#000000")
+                my_coke.place(x=450,y=630)
+
+                def coke():
+                    my_coke.config(image=new_pic18,bg="#000000",border=0,borderwidth=0)
+                image18 = Image.open("coke.png")
+                resized = image3.resize((60,85), Image.ANTIALIAS)
+                new_pic18 = ImageTk.PhotoImage(resized)
+                coke_img = Label(main, image=new_pic18,borderwidth=0,border=0,bg="#000000")
+                coke_img.place(x=435,y=458)
+                coke_btn = Button(main, image=new_pic18,command=coke,border=0,borderwidth=0,bg="#000000")
+                coke_btn.place(x=435,y=458)
+                my_coke = Label(main,image="",bg="#000000")
+                my_coke.place(x=450,y=630)
+
+                def coke():
+                    my_coke.config(image=new_pic19,bg="#000000",border=0,borderwidth=0)
+                image19 = Image.open("coke.png")
+                resized = image19.resize((60,85), Image.ANTIALIAS)
+                new_pic19 = ImageTk.PhotoImage(resized)
+                coke_img = Label(main, image=new_pic19,borderwidth=0,border=0,bg="#000000")
+                coke_img.place(x=537,y=458)
+                coke_btn = Button(main, image=new_pic19,command=coke,border=0,borderwidth=0,bg="#000000")
+                coke_btn.place(x=537,y=458)
+                my_coke = Label(main,image="",bg="#000000")
+                my_coke.place(x=450,y=630)
+
+                def coke():
+                    my_coke.config(image=new_pic20,bg="#000000",border=0,borderwidth=0)
+                image20 = Image.open("coke.png")
+                resized = image5.resize((60,85), Image.ANTIALIAS)
+                new_pic20 = ImageTk.PhotoImage(resized)
+                coke_img = Label(main, image=new_pic20,borderwidth=0,border=0,bg="#000000")
+                coke_img.place(x=635,y=458)
+                coke_btn = Button(main, image=new_pic20,command=coke,border=0,borderwidth=0,bg="#000000")
+                coke_btn.place(x=635,y=458)
+                my_coke = Label(main,image="",bg="#000000")
+                my_coke.place(x=450,y=630)
+                
+                drinks = Label(main, text="Drinks",bg="#000000",fg="white")
+                drinks.place(x=210,y=180)
+
+                coke = Label(main,text="Coke",bg="#000000",fg="white")
+                coke.place(x=350,y=180)
+
+                fanta = Label(main,text="Fanta",bg="#000000",fg="white")
+                fanta.place(x=450,y=180)
+
+                sprite = Label(main,text="Sprite",bg="#000000",fg="white")
+                sprite.place(x=550,y=180)
+
+                slice = Label(main,text="Slice",bg="#000000",fg="white")
+                slice.place(x=650,y=180)
+
+                biscuits = Label(main, text="Biscuits",bg="#000000",fg="white")
+                biscuits.place(x=210,y=300)
+
+                bonbon = Label(main,text="Bonbon",bg="#000000",fg="white")
+                bonbon.place(x=340,y=300)
+
+                oreo = Label(main,text="Oreo",bg="#000000",fg="white")
+                oreo.place(x=450,y=300)
+
+                digestive = Label(main,text="Digestive",bg="#000000",fg="white")
+                digestive.place(x=540,y=300)
+
+                hide_and_sick = Label(main,text="Hide and Sick",bg="#000000",fg="white")
+                hide_and_sick.place(x=630,y=300)
+
+                chips = Label(main, text="Chips",bg="#000000",fg="white")
+                chips.place(x=210,y=420)
+
+                dorritos = Label(main,text="Dorritos",bg="#000000",fg="white")
+                dorritos.place(x=340,y=420)
+
+                lays = Label(main,text="Lays",bg="#000000",fg="white")
+                lays.place(x=450,y=420)
+
+                local_chips = Label(main,text="Local Chips",bg="#000000",fg="white")
+                local_chips.place(x=540,y=420)
+
+                uncle_chips = Label(main,text="Uncle Chips",bg="#000000",fg="white")
+                uncle_chips.place(x=640,y=420)
+
+                chocolates = Label(main, text="Chocolates",bg="#000000",fg="white")
+                chocolates.place(x=195,y=540)
+
+                snickers = Label(main,text="Snickers",bg="#000000",fg="white")
+                snickers.place(x=340,y=540)
+
+                twix = Label(main,text="Twix",bg="#000000",fg="white")
+                twix.place(x=450,y=540)
+
+                rafello = Label(main,text="Rafello",bg="#000000",fg="white")
+                rafello.place(x=550,y=540)
+
+                mars = Label(main,text="Mars",bg="#000000",fg="white")
+                mars.place(x=650,y=540)
+
+                
+            frame = Frame(main, width=400,height=400,bg="black",)
+            frame.place(x=1100, y=30)
+            button = Button(frame, text= "Logout",border=4,bg="#00FF7F",pady=2,command=login)
+            button.place(x=165, y=180)
+            button = Button(frame, text= "Buy Again",border=4,bg="#00FF7F",pady=2,command=cancel)
+            button.place(x=155, y=250)
+                
+
+
+    frame = Frame(main, width=400,height=400,bg="black",)
+    frame.place(x=1100, y=30)
+    Label(frame,text="Sign in",font=("Arial",30,"bold"),fg="white",bg="#000000").place(x=130,y=15)
+    
+    username = Entry(frame, width=40)
+    username.place(x=80, y=80, height=30)
     username.insert(0,"   Username")
     username.bind("<Button-1>",use)
-    password = Entry(main,bg="#202020",borderwidth=0,fg="white",show="*")
-    password.place(x=1170,y=130,height=40,width=250)
-    password.insert(0,"password")
+
+    password = Entry(frame, width=40,show="*")
+    password.place(x=80, y=130, height=30)
+    password.insert(0,"*******@")
     password.bind("<Button-1>",pas)
+    Frame(main, width=100,height=100,bg="#000000").place(x=447,y=630)
 
-    button = Button(main, text= "Sign In",border=4,bg="#00FF7F",command=top)
-    button.place(x=1270,y=190)
-    
-    up = LabelFrame(main,bg="#202020")
-    up.place(x=1170,y=235)
-    signip = Label(up, text= "Don't have an account?",fg="white",bg="#202020",font=("Arial",10),borderwidth=0,justify="left").grid(padx=60,pady=5)
-    btn = Button(up, text="Sign Up!",fg="#00FF7F",bg="#202020",borderwidth=0,command=register).place(x=200,y=3)
-    btn2 = Label(up, text="------>",fg="#00FF7F",bg="#202020",borderwidth=0).place(x=10,y=3)
-    
-    
+    button = Button(frame, text= "Sign In",border=4,bg="#00FF7F",pady=2,command=top)
+    button.place(x=165, y=180)
 
+    Label(frame, text="Don't have an account?",fg="white",bg="#000000").place(x=100, y=230)
+    Button(frame, text="Sign up!",fg="#00FF7F",bg="#000000",borderwidth=0,command=register).place(x=230, y=230)
 
-    def pur():
-        
-        bought.config(text=spin_coke.get())
-
-    spin_coke = Spinbox(main,from_=1,to=5,width=2)
-    spin_coke.place(x=380,y=190)
-    spin_fanta = Spinbox(main,from_=1,to=5,width=2)
-    spin_fanta.place(x=485,y=190)
-    spin_sprite = Spinbox(main,from_=1,to=5,width=2)
-    spin_sprite.place(x=590,y=190)
-    spin_slice = Spinbox(main,from_=1,to=5,width=2)
-    spin_slice.place(x=693,y=190)
-
-    spin_bourborn = Spinbox(main,from_=1,to=5,width=2)
-    spin_bourborn.place(x=375,y=315)
-    spin_oreo = Spinbox(main,from_=1,to=5,width=2)
-    spin_oreo.place(x=480,y=315)
-    spin_digestive = Spinbox(main,from_=1,to=5,width=2)
-    spin_digestive.place(x=585,y=315)
-    spin_hide_and_sick = Spinbox(main,from_=1,to=5,width=2)
-    spin_hide_and_sick.place(x=687,y=315)
-
-    spin_dorritos = Spinbox(main,from_=1,to=5,width=2)
-    spin_dorritos.place(x=375,y=440)
-    spin_lays = Spinbox(main,from_=1,to=5,width=2)
-    spin_lays.place(x=480,y=440)
-    spin_local_chips = Spinbox(main,from_=1,to=5,width=2)
-    spin_local_chips.place(x=585,y=440)
-    spin_uncle_chips = Spinbox(main,from_=1,to=5,width=2)
-    spin_uncle_chips.place(x=687,y=440)
-
-    spin_snickers = Spinbox(main,from_=1,to=5,width=2)
-    spin_snickers.place(x=375,y=565)
-    spin_twix = Spinbox(main,from_=1,to=5,width=2)
-    spin_twix.place(x=480,y=565)
-    spin_rafello = Spinbox(main,from_=1,to=5,width=2)
-    spin_rafello.place(x=585,y=565)
-    spin_mars = Spinbox(main,from_=1,to=5,width=2)
-    spin_mars.place(x=687,y=565)
-
-
-
-    purchase = Button(main,text="Purchase",border=3,bg="#00FF7F",command=pur)
-    purchase.grid(row=14,column=4,pady=30)
-
-    bought = Label(main,text="",bg="#000000",fg="white")
-    bought.grid(row=15,column=4)
-    
 login()
 
 main.mainloop()
