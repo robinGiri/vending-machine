@@ -1,28 +1,28 @@
-from main import con
-from main import cur
-
-cur.execute("""CREATE TABLE Drinks (
+from main import *
+con = sqlite3.connect("vending_machine.db")
+cur = con.cursor()
+cur.execute("""CREATE TABLE TABLE IF NOT EXISTS Drinks (
     ID INT(50),
     Name VARCHAR(10),
     Price INT(10),
     Quantity INT(10)
 )
 """)
-cur.execute("""CREATE TABLE Biscuits(
+cur.execute("""CREATE TABLE IF NOT EXISTS Biscuits(
     ID INT(50),
     Name VARCHAR(10),
     Price INT(10),
     Quantity INT(10)
 )
 """)
-cur.execute("""CREATE TABLE Chips(
+cur.execute("""CREATE TABLE IF NOT EXISTS TABLE Chips(
     ID INT(50),
     Name VARCHAR(10),
     Price INT(10),
     Quantity INT(10)
 )
 """)
-cur.execute("""CREATE TABLE Chocolates(
+cur.execute("""CREATE TABLE TABLE IF NOT EXISTS Chocolates(
     ID INT(50),
     Name VARCHAR(10),
     Price INT(10),
