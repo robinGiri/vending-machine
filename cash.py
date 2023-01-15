@@ -30,10 +30,30 @@ def query_all():
     
     c.execute("SELECT * FROM Cash") 
     cashes = c.fetchall()
+
+    return cashes
+
+def insert_cash(ID, Value, Quantity):
+    conn = sqlite3.connect("vending_machine.db")
+    c = conn.cursor() 
     
-    cash_value = ''
-    cash_quantity = ''
-    for record in cashes:
-        cash_value += str(record[1]) + "\n"
-        cash_quantity += str(record[2]) + "\n"
-    return cash_value, cash_quantity
+    c.execute("insert into Cash values (NULL,?, ?)",
+                        (ID, Value, Quantity))
+    c.commit()
+
+def remove(ID):
+    conn = sqlite3.connect("vending_machine.db")
+    c = conn.cursor() 
+
+    c.execute("delete from Cash where ID=?", (ID,))
+    c.commit()
+
+def update(ID, Value, Quantity):
+    conn = sqlite3.connect("vending_machine.db")
+    c = conn.cursor() 
+
+    c.execute(
+        "update Cash set ID=? Value=?, Quantity=?",
+        (ID, Value, Quantity))
+    c.commit()
+
