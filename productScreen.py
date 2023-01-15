@@ -1,9 +1,14 @@
 from tkinter import *
-from tkinter import messagebox
+import seed
 from PIL import Image,ImageTk
 
 def products(main, vendingState):
     print(vendingState)
+    
+    productList = seed.productList
+    
+    # TODO call product list and 
+    # productList = beautiful changes :)
 
     def coke():
         my_coke.config(image=new_pic2,bg="#000000",border=0,borderwidth=0)
@@ -205,6 +210,23 @@ def products(main, vendingState):
     coke = Label(main,text="Coke",bg="#000000",fg="white")
     coke.place(x=350,y=180)
 
+
+    # TODO call rest in simlar patter 
+    def name(start, end, name ):
+        name_lable = Label(main, bg="#000000",fg="white")
+        name_lable.config(text=name)
+        name_lable.place(x=start,y=end)
+    
+    def price(start, end, name ):
+        price_lable = Label(main, bg="#000000",fg="white")
+        price_lable.config(text="Price: {}".format(name))
+        price_lable.place(x=start,y=end)
+    
+    def quantity(start, end, name ):
+        quantity_lable = Label(main, bg="#000000",fg="white")
+        quantity_lable.config(text="Quantity: {}".format(name))
+        quantity_lable.place(x=start,y=end)
+
     fanta = Label(main,text="Fanta",bg="#000000",fg="white")
     fanta.place(x=450,y=180)
 
@@ -253,8 +275,12 @@ def products(main, vendingState):
     twix = Label(main,text="Twix",bg="#000000",fg="white")
     twix.place(x=450,y=540)
 
-    rafello = Label(main,text="Rafello",bg="#000000",fg="white")
-    rafello.place(x=550,y=540)
 
-    mars = Label(main,text="Mars",bg="#000000",fg="white")
-    mars.place(x=650,y=540)
+    name(550, 540, productList['Chocolates']['Rafaello']["name"])
+    price(550, 560, productList['Chocolates']['Rafaello']["price"])
+    quantity(550, 580, productList['Chocolates']['Rafaello']["quantity"])
+
+    name(650, 540, productList['Chocolates']['Mars']["name"])
+    price(640, 560, productList['Chocolates']['Mars']["price"])
+    quantity(640, 580, productList['Chocolates']['Mars']["quantity"])
+
