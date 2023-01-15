@@ -3,7 +3,7 @@ from tkinter import messagebox
 from PIL import Image,ImageTk
 import register
 
-def login(main, vendingState):
+def login(main):
 
     global state
     state = main
@@ -35,8 +35,6 @@ def login(main, vendingState):
             messagebox.showerror("error", "Enter Password")   
             
         else:
-            
-            vendingState["is_authenticated"] = "true"     
             
             def cancel():
                 Frame(main, width=100,height=100,bg="#000000").place(x=447,y=630)

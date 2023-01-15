@@ -25,29 +25,17 @@ vendingState = {
 main.title("Vending Machine")
 
 # first 2 gr
-image    = Image.open("public/Drinks.png")
-resized = image .resize((100,85), Image.Resampling.LANCZOS)
-new_pic  = ImageTk.PhotoImage(resized)
-my_label = Label(main, image=new_pic    ,borderwidth=0,border=0,bg="#000000")
-my_label.place(x=180,y=90)
+new_pic1 = ImageTk.PhotoImage(Image.open("public/Drinks.png").resize((100,85), Image.Resampling.LANCZOS))
+my_label = Label(main, image=new_pic1 ,borderwidth=0,border=0,bg="#000000").place(x=180,y=90)
 
-image    = Image.open("public/Drinks.png")
-resized = image .resize((100,85), Image.Resampling.LANCZOS)
-new_pic6  = ImageTk.PhotoImage(resized)
-my_label = Label(main, image=new_pic6    ,borderwidth=0,border=0,bg="#000000")
-my_label.place(x=180,y=220)
+new_pic6 = ImageTk.PhotoImage(Image.open("public/Drinks.png").resize((100,85), Image.Resampling.LANCZOS))
+my_label = Label(main, image=new_pic6 ,borderwidth=0,border=0,bg="#000000").place(x=180,y=220)
 
-image    = Image.open("public/Chips.png")
-resized = image.resize((100,85), Image.Resampling.LANCZOS)
-new_pic11  = ImageTk.PhotoImage(resized)
-my_label = Label(main, image=new_pic11    ,borderwidth=0,border=0,bg="#000000")
-my_label.place(x=180,y=335)
+new_pic11 = ImageTk.PhotoImage(Image.open("public/Chips.png").resize((100,85), Image.Resampling.LANCZOS))
+my_label = Label(main, image=new_pic11    ,borderwidth=0,border=0,bg="#000000").place(x=180,y=335)
 
-image    = Image.open("public/Drinks.png")
-resized = image.resize((100,85), Image.Resampling.LANCZOS)
-new_pic16  = ImageTk.PhotoImage(resized)
-my_label = Label(main, image=new_pic16    ,borderwidth=0,border=0,bg="#000000")
-my_label.place(x=180,y=465)
+new_pic16 = ImageTk.PhotoImage(Image.open("public/Drinks.png").resize((100,85), Image.Resampling.LANCZOS))
+my_label = Label(main, image=new_pic16 ,borderwidth=0,border=0,bg="#000000").place(x=180,y=465)
 
 def activate(vendingState):
     '''
@@ -86,8 +74,8 @@ def activate(vendingState):
     cash.add_cash(4, 'hundred', 10)
 
     # query all currenty
-    value, quantity = cash.query_all()
-    print(value, quantity)
+    row = cash.query_all()
+    print(row)
     
     # query individual Product
     # 
@@ -99,7 +87,7 @@ def activate(vendingState):
     
 
     productScreen.products(main, vendingState)
-    login.login(main, vendingState)
+    login.login(main)
 
 activate(vendingState)
 

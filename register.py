@@ -2,13 +2,10 @@ from tkinter import *
 from tkinter import messagebox
 from PIL import Image,ImageTk
 import login
-import productScreen
 
 def register(main):
     global reg_state
     reg_state = main 
-    
-    productScreen.products(main)
     
     Frame(main, width=100,height=100,bg="#000000").place(x=447,y=630)
      
