@@ -2,11 +2,24 @@ from tkinter import *
 import product
 import cash
 import login
+import productScreen
 from PIL import Image,ImageTk
 
 main = Tk()
 main.state("zoomed")
 main.config(bg="#000000")
+
+# initial state of vending machine
+vendingState = {
+    "is_authenticated": "false",
+    "is_admin": "false",
+    "total_cart_amoutn": 0,
+    # watch for input currency
+    "input_currency": 500,
+    "expense_amount": 0,
+    # amount_to_return = input_currency - expense_amount
+    "amount_to_return": 0,
+}
 
 # this will add title
 main.title("Vending Machine")
@@ -36,7 +49,7 @@ new_pic16  = ImageTk.PhotoImage(resized)
 my_label = Label(main, image=new_pic16    ,borderwidth=0,border=0,bg="#000000")
 my_label.place(x=180,y=465)
 
-def activate():
+def activate(vendingState):
     '''
     create table of Auth, Product, Currency
     add and query Currency
@@ -83,9 +96,11 @@ def activate():
     # delete individual Product
     # 
     # 
+    
 
-    login.login(main)
+    productScreen.products(main, vendingState)
+    login.login(main, vendingState)
 
-activate()
+activate(vendingState)
 
 main.mainloop()
