@@ -3,6 +3,7 @@ import product
 import cash
 import login
 import productScreen
+import cashScreen
 from PIL import Image,ImageTk
 
 main = Tk()
@@ -88,6 +89,7 @@ def activate(vendingState):
 
     productScreen.products(main, vendingState)
     login.login(main)
+    cashScreen.cash(main)
 
 activate(vendingState)
 
