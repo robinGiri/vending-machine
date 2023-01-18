@@ -59,8 +59,8 @@ def login(main):
                 
 
 
-    frame = Frame(main, width=400,height=400,bg="black",)
-    frame.place(x=1100, y=30)
+    frame = Frame(main, width=400,height=310,bg="#000000")
+    frame.place(x=880, y=15)
     Label(frame,text="Sign in",font=("Arial",30,"bold"),fg="white",bg="#000000").place(x=130,y=15)
     
     username = Entry(frame, width=40)
@@ -72,13 +72,14 @@ def login(main):
     password.place(x=80, y=130, height=30)
     password.insert(0,"*******@")
     password.bind("<Button-1>",pas)
-    Frame(main, width=100,height=100,bg="#000000").place(x=447,y=630)
 
-    button = Button(frame, text= "Sign In",border=4,bg="#00FF7F",pady=2,command=getSignIn)
+    button = Button(frame, text= "Sign In",border=4,bg="#00FF7F",pady=2,command=getSignIn,activebackground="#000000",activeforeground="#FFFFFF")
     button.place(x=165, y=180)
-
-    Label(frame, text="Don't have an account?",fg="white",bg="#000000").place(x=100, y=230)
-    Button(frame, text="Sign up!",fg="#00FF7F",bg="#000000",borderwidth=0,command=sign_up).place(x=230, y=230)
+    
+    donot = LabelFrame(frame,width=300,height=40,bg="#000000")
+    donot.place(x=55,y=230)
+    Label(donot, text="Don't have an account?",fg="white",bg="#000000").place(x=40, y=6)
+    Button(donot, text="Sign up!",fg="#00FF7F",bg="#000000",borderwidth=0,command=sign_up,activebackground="#000000",activeforeground="#FFFFFF").place(x=170, y=6)
     
 def sign_up():
     register.register(state)
