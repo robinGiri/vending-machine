@@ -6,8 +6,7 @@ import login
 def register(main):
     global reg_state
     reg_state = main 
-    
-    Frame(main, width=100,height=100,bg="#000000").place(x=447,y=630)
+
      
     def use(usee):
         username.config(state=NORMAL)
@@ -59,8 +58,8 @@ def register(main):
             button.place(x=230, y=85)
             
 
-    frame = Frame(main, width=400,height=400,bg="black",)
-    frame.place(x=1100, y=30)
+    frame = Frame(main, width=400,height=310,bg="#000000",)
+    frame.place(x=880, y=15)
     Label(frame,text="Become a member",font=("Arial",25,"bold"),fg="white",bg="#000000").place(x=60,y=15)
 
     username = Entry(frame, width=40)
@@ -78,11 +77,13 @@ def register(main):
     password.insert(0,"*******@")
     password.bind("<Button-1>",pas)
 
-    button = Button(frame, text= "Sign up",border=4,bg="#00FF7F",pady=2,command=getRegistered)
-    button.place(x=165, y=230)
+    button = Button(frame, text= "Sign up",border=4,bg="#00FF7F",pady=2,command=getRegistered,activebackground="#000000",activeforeground="#FFFFFF")
+    button.place(x=165, y=225)
 
-    Label(frame, text="Already have an account?",fg="white",bg="#000000").place(x=100, y=280)
-    Button(frame, text="Sign in!",fg="#00FF7F",bg="#000000",borderwidth=0,command=sign_in).place(x=240, y=280)
+    already = LabelFrame(frame,width=300,height=40,bg="#000000")
+    already.place(x=50, y=265)
+    Label(already, text="Already have an account?",fg="white",bg="#000000").place(x=40, y=6)
+    Button(already, text="Sign in!",fg="#00FF7F",bg="#000000",borderwidth=0,command=sign_in,activebackground="#000000",activeforeground="#FFFFFF").place(x=180, y=6)
 
 def sign_in():
     login.login(reg_state)

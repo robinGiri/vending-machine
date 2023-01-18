@@ -7,7 +7,7 @@ def cash(main):
     
     
     frame = Frame(main, width=517,height=427,bg="#000000")
-    frame.place(x=900, y=350)
+    frame.place(x=880, y=350)
     
     def ten():
         my_ten.config(image=new_pic21,bg="#000000",border=0,borderwidth=0)
