@@ -35,27 +35,12 @@ def login(main):
             messagebox.showerror("error", "Enter Password")   
             
         else:
-            
-            def cancel():
-                Frame(main, width=100,height=100,bg="#000000").place(x=447,y=630)
-                def coke():
-                    my_coke.config(image=new_pic2,bg="#000000",border=0,borderwidth=0)
-                image2 = Image.open("public/Coke.png")
-                resized = image2.resize((60,85), Image.Resampling.LANCZOS)
-                new_pic2 = ImageTk.PhotoImage(resized)
-                coke_img = Label(main, image=new_pic2,borderwidth=0,border=0,bg="#000000")
-                coke_img.place(x=335,y=90)
-                coke_btn = Button(main, image=new_pic2,command=coke,border=0,borderwidth=0,bg="#000000")
-                coke_btn.place(x=335,y=90)
-                my_coke = Label(main,image="",bg="#000000")
-                my_coke.place(x=450,y=630)
-                
-            frame = Frame(main, width=400,height=400,bg="black",)
-            frame.place(x=1100, y=30)
-            button = Button(frame, text= "Logout",border=4,bg="#00FF7F",pady=2,command=login)
-            button.place(x=165, y=180)
-            button = Button(frame, text= "Buy Again",border=4,bg="#00FF7F",pady=2,command=cancel)
-            button.place(x=155, y=250)
+
+            frame = Frame(main, width=400,height=310,bg="#000000")
+            frame.place(x=880, y=15)
+            button = Button(frame, text= "Logout",border=4,bg="#00FF7F",pady=2,command=login,activebackground="#000000",activeforeground="#FFFFFF")
+            button.place(x=165, y=100)
+
                 
 
 
