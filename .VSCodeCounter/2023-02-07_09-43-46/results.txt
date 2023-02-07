@@ -1,0 +1,32 @@
+Date : 2023-02-07 09:43:46
+Directory : c:\Users\ghimi\Desktop\LED Project\vending-machine
+Total : 8 files,  655 codes, 141 comments, 168 blanks, all 964 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Python   |          8 |        655 |        141 |        168 |        964 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                   |          8 |        655 |        141 |        168 |        964 |
++---------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                            | language | code       | comment    | blank      | total      |
++---------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Users\ghimi\Desktop\LED Project\vending-machine\cash.py          | Python   |         42 |          4 |         14 |         60 |
+| c:\Users\ghimi\Desktop\LED Project\vending-machine\cashScreen.py    | Python   |         52 |          0 |         17 |         69 |
+| c:\Users\ghimi\Desktop\LED Project\vending-machine\login.py         | Python   |         50 |          0 |         21 |         71 |
+| c:\Users\ghimi\Desktop\LED Project\vending-machine\main.py          | Python   |         32 |         34 |         18 |         84 |
+| c:\Users\ghimi\Desktop\LED Project\vending-machine\product.py       | Python   |         14 |         20 |          1 |         35 |
+| c:\Users\ghimi\Desktop\LED Project\vending-machine\productScreen.py | Python   |        276 |         77 |         64 |        417 |
+| c:\Users\ghimi\Desktop\LED Project\vending-machine\register.py      | Python   |         71 |          6 |         29 |        106 |
+| c:\Users\ghimi\Desktop\LED Project\vending-machine\seed.py          | Python   |        118 |          0 |          4 |        122 |
+| Total                                                               |          |        655 |        141 |        168 |        964 |
++---------------------------------------------------------------------+----------+------------+------------+------------+------------+

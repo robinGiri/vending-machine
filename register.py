@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from PIL import Image,ImageTk
 import login
+import auth
 
 def register(main):
     global reg_state
@@ -51,6 +52,7 @@ def register(main):
 
             
         else:
+            auth.create_user(username.get(), email.get(), password.get())
             frame = Frame(main, width=400,height=400,bg="black",)
             frame.place(x=1100, y=30)
             Label(frame,text="Registration Successfull",font=("Arial",15,"bold"),fg="green",bg="#000000").place(x=130,y=50)
