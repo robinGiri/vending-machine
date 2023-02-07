@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from PIL import Image,ImageTk
 import register
+import auth
 
 def login(main):
 
@@ -35,11 +36,13 @@ def login(main):
             messagebox.showerror("error", "Enter Password")   
             
         else:
-
+            isLogin = auth.isLogin(username.get(), password.get())
+            print(isLogin)
             frame = Frame(main, width=400,height=310,bg="#000000")
             frame.place(x=880, y=15)
             button = Button(frame, text= "Logout",border=4,bg="#00FF7F",pady=2,command=login,activebackground="#000000",activeforeground="#FFFFFF")
             button.place(x=165, y=100)
+            
 
                 
 

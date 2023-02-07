@@ -4,6 +4,7 @@ import cash
 import login
 import productScreen
 import cashScreen
+import auth
 from PIL import Image,ImageTk
 
 main = Tk()
@@ -77,6 +78,8 @@ def activate(vendingState):
     productScreen.products(main, vendingState)
     login.login(main)
     cashScreen.cash(main)
+    auth.create_users_table()
+    auth.query_all_users()
 
 activate(vendingState)
 
