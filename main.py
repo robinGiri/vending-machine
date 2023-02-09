@@ -59,7 +59,6 @@ def activate(vendingState):
     # product.delete_chocolate()
     # product.delete_biscuit()
 
-
     # create cash table
     cash.create_cash_table()
 

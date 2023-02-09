@@ -209,6 +209,7 @@ def delete_biscuit(ID):
 
 def update_biscuit(ID,Name,Price,Quantity):
     """Update any biscuit in the database"""
+
     conn = sqlite3.connect("vending_machine.db")
     c = conn.cursor() 
 
