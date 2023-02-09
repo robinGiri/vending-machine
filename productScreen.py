@@ -17,10 +17,10 @@ def products(main, vendingState):
   
 
     goods = Frame(main, width=600,height=570,bg="#000000")
-    goods.place(x=220,y=40)
+    goods.place(x=135,y=40)
 
     item = Frame(main, width=600,height=130,bg="#000000")
-    item.place(x=220,y=640)
+    item.place(x=135,y=640)
 
     item1 = Frame(item, width=100,height=110,bg="#000000")
     item1.place(x=20,y=10)

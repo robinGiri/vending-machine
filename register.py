@@ -53,37 +53,37 @@ def register(main):
             
         else:
             auth.create_user(username.get(), email.get(), password.get())
-            frame = Frame(main, width=400,height=400,bg="black",)
-            frame.place(x=1100, y=30)
-            Label(frame,text="Registration Successfull",font=("Arial",15,"bold"),fg="green",bg="#000000").place(x=130,y=50)
-            button = Button(frame, text= "Login",border=4,bg="#00FF7F",pady=2,command=login)
-            button.place(x=230, y=85)
+            frame = Frame(main, width=600,height=285,bg="black",)
+            frame.place(x=765, y=40)
+            Label(frame,text="Registration Successfull",font=("Arial",15,"bold"),fg="green",bg="#000000").place(x=50,y=20)
+            button = Button(frame, text= "Logout",border=4,bg="#00FF7F",pady=2,command=login)
+            button.place(x=530, y=250)
             
 
-    frame = Frame(main, width=400,height=310,bg="#000000",)
-    frame.place(x=880, y=15)
-    Label(frame,text="Become a member",font=("Arial",25,"bold"),fg="white",bg="#000000").place(x=60,y=15)
+    frame = Frame(main, width=600,height=285,bg="#000000",)
+    frame.place(x=765, y=40)
+    Label(frame,text="Become a member",font=("Arial",25,"bold"),fg="white",bg="#000000").place(x=160,y=5)
 
     username = Entry(frame, width=40)
-    username.place(x=80, y=80, height=30)
+    username.place(x=180, y=60, height=30)
     username.insert(0,"   Username")
     username.bind("<Button-1>",use)
 
     email = Entry(frame, width=40)
-    email.place(x=80, y=130, height=30)
+    email.place(x=180, y=110, height=30)
     email.insert(0,"   email@gmail.com")
     email.bind("<Button-1>",emai)
 
     password = Entry(frame, width=40,show="*")
-    password.place(x=80, y=180, height=30)
+    password.place(x=180, y=160, height=30)
     password.insert(0,"*******@")
     password.bind("<Button-1>",pas)
 
     button = Button(frame, text= "Sign up",border=4,bg="#00FF7F",pady=2,command=getRegistered,activebackground="#000000",activeforeground="#FFFFFF")
-    button.place(x=165, y=225)
+    button.place(x=265, y=205)
 
     already = LabelFrame(frame,width=300,height=40,bg="#000000")
-    already.place(x=50, y=265)
+    already.place(x=150, y=245)
     Label(already, text="Already have an account?",fg="white",bg="#000000").place(x=40, y=6)
     Button(already, text="Sign in!",fg="#00FF7F",bg="#000000",borderwidth=0,command=sign_in,activebackground="#000000",activeforeground="#FFFFFF").place(x=180, y=6)
 
