@@ -4,11 +4,11 @@ from PIL import Image,ImageTk
 import login
 import auth
 
-def register(main):
-    global reg_state
-    reg_state = main 
+def register(main, vendingState):
 
-     
+    def sign_in():
+        login.login(main, vendingState)
+
     def use(usee):
         username.config(state=NORMAL)
         username.delete(0, END)
@@ -21,21 +21,12 @@ def register(main):
         email.delete(0, END)
         
     def getRegistered():
-        
-        if username.get() == "":
-            messagebox.showerror("error", "Username Should Not Be Empty")      
-      
-        elif password.get() == "":
-            messagebox.showerror("error", "Password Should Not Be Empty")
-            
-        elif email.get() == "":
-            messagebox.showerror("error", "Email Should Not Be Empty")
-            
-        elif "@gmail.com" not in email.get():
-            messagebox.showerror("error","Email Must Have Ending With @gmail.com")
-            
-        elif "@" not in password.get():
-            messagebox.showerror("error","Password Must Contain @")
+        if username.get() == "" or password.get() == "" or email.get() == "":
+            messagebox.showerror("error", "Username OR Password OR Email Should Not Be Empty")
+            return
+ 
+        elif "@softwarica.edu.np" not in email.get():
+            messagebox.showerror("error","Email Must BE Ending With @softwarica.edu.np")
             
         elif len(password.get()) <8:
             messagebox.showerror("error", "Password Must Be Of 8 Or More Character")
@@ -48,11 +39,10 @@ def register(main):
             
         elif "*******@" in password.get():
             messagebox.showerror("error", "Choose Password")
-            
 
-            
         else:
             auth.create_user(username.get(), email.get(), password.get())
+            vendingState["is_authenticated"] = True
             frame = Frame(main, width=600,height=285,bg="black",)
             frame.place(x=765, y=40)
             Label(frame,text="Registration Successfull",font=("Arial",15,"bold"),fg="green",bg="#000000").place(x=50,y=20)
@@ -86,6 +76,3 @@ def register(main):
     already.place(x=150, y=245)
     Label(already, text="Already have an account?",fg="white",bg="#000000").place(x=40, y=6)
     Button(already, text="Sign in!",fg="#00FF7F",bg="#000000",borderwidth=0,command=sign_in,activebackground="#000000",activeforeground="#FFFFFF").place(x=180, y=6)
-
-def sign_in():
-    login.login(reg_state)

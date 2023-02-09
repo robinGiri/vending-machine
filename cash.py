@@ -33,14 +33,6 @@ def query_all():
 
     return cashes
 
-def insert_cash(ID, Value, Quantity):
-    conn = sqlite3.connect("vending_machine.db")
-    c = conn.cursor() 
-    
-    c.execute("insert into Cash values (NULL,?, ?)",
-                        (ID, Value, Quantity))
-    c.commit()
-
 def remove(ID):
     conn = sqlite3.connect("vending_machine.db")
     c = conn.cursor() 
@@ -56,4 +48,3 @@ def update(ID, Value, Quantity):
         "update Cash set ID=? Value=?, Quantity=?",
         (ID, Value, Quantity))
     c.commit()
-
