@@ -36,21 +36,21 @@ def activate(vendingState):
     product.create_productTable()
 
     # TODO 4 types Product
-    # 
+    # product.add_into_drinksTable(1,'Coke',120,10)
     # 
     # 
     # 
     
     # query all Products
-    # 
+    # product.query_all_drinks()
     # 
     
-    # query individual Product
-    # 
+    # update individual Product
+    # product.update_drink(1,'Coke',100,4)
     # 
     
     # delete individual Product
-    # 
+    # product.delete_drink("Coke")
     # 
 
     # create cash table
