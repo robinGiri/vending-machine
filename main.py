@@ -13,11 +13,11 @@ main.config(bg="#141414")
 
 # initial state of vending machine
 vendingState = {
-    "is_authenticated": "false",
+    "is_authenticated": False,
     "is_admin": "false",
     "total_cart_amoutn": 0,
     # watch for input currency
-    "input_currency": 500,
+    "input_currency": 0,
     "expense_amount": 0,
     # amount_to_return = input_currency - expense_amount
     "amount_to_return": 0,
@@ -76,8 +76,8 @@ def activate(vendingState):
     
 
     productScreen.products(main, vendingState)
-    login.login(main)
-    cashScreen.cash(main)
+    login.login(main, vendingState)
+    cashScreen.cash(main, vendingState)
     auth.create_users_table()
     auth.query_all_users()
 

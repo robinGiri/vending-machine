@@ -4,47 +4,34 @@ from PIL import Image,ImageTk
 import register
 import auth
 
-def login(main):
+def login(main, vendingState):
 
-    global state
-    state = main
-    
+    def sign_up():
+        register.register(main, vendingState)
+
     def use(usee):
         username.config(state=NORMAL)
         username.delete(0, END)
+
     def pas(passs):
         password.config(state=NORMAL)
         password.delete(0, END)
         
-    def getSignIn():
+    def get_sign_in():
+        if username.get() == "" or password.get() == "":
+            messagebox.showerror("error", "Username OR Password Should Not Be Empty")
+            return
 
-        if username.get() == "":
-            messagebox.showerror("error", "Username Should Not Be Empty")
-        elif password.get() == "":
-            messagebox.showerror("error", "Password Should Not Be Empty")
-            
-        elif len(password.get()) <8:
-            messagebox.showerror("error", "Wrong Password")
-            
-        elif "@" not in password.get():
-            messagebox.showerror("error","Wrong Password")
-                    
-        elif  "   Username" in username.get():
-            messagebox.showerror("error", "Enter Username")       
-            
-        elif "*******@" in password.get():
-            messagebox.showerror("error", "Enter Password")   
-            
+        isLogin = auth.isLogin(username.get(), password.get())
+        if isLogin == None:
+            messagebox.showerror("error", "User Name OR Password is wrong")
+            return
         else:
-            isLogin = auth.isLogin(username.get(), password.get())
-            print(isLogin)
+            vendingState["is_authenticated"] = True
             frame = Frame(main, width=600,height=285,bg="#000000")
             frame.place(x=765, y=40)
             button = Button(frame, text= "Logout",border=4,bg="#00FF7F",pady=2,command=login,activebackground="#000000",activeforeground="#FFFFFF")
             button.place(x=530, y=250)
-            
-
-                
 
     frame = Frame(main, width=600,height=285,bg="#000000")
     frame.place(x=765, y=40)
@@ -60,13 +47,11 @@ def login(main):
     password.insert(0,"*******@")
     password.bind("<Button-1>",pas)
 
-    button = Button(frame, text= "Sign In",border=4,bg="#00FF7F",pady=2,command=getSignIn,activebackground="#000000",activeforeground="#FFFFFF")
+    button = Button(frame, text= "Sign In",border=4,bg="#00FF7F",pady=2,command=get_sign_in,activebackground="#000000",activeforeground="#FFFFFF")
     button.place(x=265, y=180)
     
     donot = LabelFrame(frame,width=300,height=40,bg="#000000")
     donot.place(x=155,y=230)
     Label(donot, text="Don't have an account?",fg="white",bg="#000000").place(x=40, y=6)
     Button(donot, text="Sign up!",fg="#00FF7F",bg="#000000",borderwidth=0,command=sign_up,activebackground="#000000",activeforeground="#FFFFFF").place(x=180, y=6)
-    
-def sign_up():
-    register.register(state)
+
