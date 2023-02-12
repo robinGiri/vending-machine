@@ -14,7 +14,7 @@ main.config(bg="#141414")
 # initial state of vending machine
 vendingState = {
     "is_authenticated": False,
-    "is_admin": "false",
+    "is_admin": False,
     "total_cart_amoutn": 0,
     # watch for input currency
     "input_currency": 0,

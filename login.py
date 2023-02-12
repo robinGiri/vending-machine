@@ -22,12 +22,13 @@ def login(main, vendingState):
             messagebox.showerror("error", "Username OR Password Should Not Be Empty")
             return
 
-        isLogin = auth.isLogin(username.get(), password.get())
+        isLogin, isAdmin = auth.isLogin(username.get(), password.get())
         if isLogin == None:
             messagebox.showerror("error", "User Name OR Password is wrong")
             return
         else:
             vendingState["is_authenticated"] = True
+            vendingState["is_admin"] = isAdmin 
             frame = Frame(main, width=600,height=285,bg="#000000")
             frame.place(x=765, y=40)
             button = Button(frame, text= "Logout",border=4,bg="#00FF7F",pady=2,command=login,activebackground="#000000",activeforeground="#FFFFFF")
