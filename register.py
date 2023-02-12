@@ -25,22 +25,34 @@ def register(main, vendingState):
             messagebox.showerror("error", "Username OR Password OR Email Should Not Be Empty")
             return
  
+        elif "email@softwatica.edu.np" in email.get() :
+            messagebox.showerror("error", "Choose Email")
+            return 
+
         elif "@softwarica.edu.np" not in email.get():
-            messagebox.showerror("error","Email Must BE Ending With @softwarica.edu.np")
+            messagebox.showerror("error", "Email Must BE Ending With @softwarica.edu.np")
+            return
             
         elif len(password.get()) <8:
             messagebox.showerror("error", "Password Must Be Of 8 Or More Character")
+            return
             
         elif  "   Username" in username.get():
             messagebox.showerror("error", "Choose Username")
+            return
 
-        elif "email@gmail.com" in email.get() :
-            messagebox.showerror("error", "Choose Email")            
-            
         elif "*******@" in password.get():
             messagebox.showerror("error", "Choose Password")
+            return
 
         else:
+            users = auth.query_all_users()
+            for user in users:
+                list1 = list(user)
+                if list1[1] == username.get():
+                    messagebox.showerror("error", "Username already exist.")
+                    return
+
             auth.create_user(username.get(), email.get(), password.get())
             vendingState["is_authenticated"] = True
             frame = Frame(main, width=600,height=285,bg="black",)
@@ -61,7 +73,7 @@ def register(main, vendingState):
 
     email = Entry(frame, width=40)
     email.place(x=180, y=110, height=30)
-    email.insert(0,"   email@gmail.com")
+    email.insert(0,"   email@softwatica.edu.np")
     email.bind("<Button-1>",emai)
 
     password = Entry(frame, width=40,show="*")

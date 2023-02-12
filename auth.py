@@ -14,7 +14,6 @@ def create_users_table():
     con.close()
 
 def create_user(username, email, password):
-    print(username, email, password)
     conn = sqlite3.connect('vending_machine.db')
     cursor = conn.cursor()
 
