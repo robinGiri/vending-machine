@@ -3,8 +3,11 @@ from tkinter import messagebox
 from PIL import Image,ImageTk
 import register
 import auth
+import adminMain
 
 def login(main, vendingState):
+    def go_to_admin():
+        adminMain.newpage(main)
 
     def sign_up():
         register.register(main, vendingState)
@@ -33,7 +36,8 @@ def login(main, vendingState):
             frame.place(x=765, y=40)
             button = Button(frame, text= "Logout",border=4,bg="#00FF7F",pady=2,command=login,activebackground="#000000",activeforeground="#FFFFFF")
             button.place(x=530, y=250)
-
+            button = Button(frame, text= "Go To Admin",border=4,bg="#00FF7F",pady=2,command=go_to_admin,activebackground="#000000",activeforeground="#FFFFFF")
+            button.place(x=430, y=250)
     frame = Frame(main, width=600,height=285,bg="#000000")
     frame.place(x=765, y=40)
     Label(frame,text="Sign in",font=("Arial",30,"bold"),fg="white",bg="#000000").place(x=230,y=15)
