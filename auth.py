@@ -37,7 +37,7 @@ def isLogin(username, password):
         list1 = list(user)
         if list1[1] == username and  list1[3] == password:
             # check if email list1[1] note.txt username == admin_<name> , return (True,True), else 
-            if "admin_robin" == username or "admin_abhishek" == username or "admin_anukul" == username or "admin_dilasha" == username :
+            if "admin_robin" == username or "admin_abhisek" == username or "admin_anukul" == username or "admin_dilasha" == username :
                 return True, True
             else:
                 return True, False
