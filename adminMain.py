@@ -9,9 +9,6 @@ import auth
 import adminMain
 
 
-
-
-
 def newpage(main):
     new = Toplevel(main)
     new.state("zoomed")
@@ -20,8 +17,7 @@ def newpage(main):
     frame.place(x=1, y=1)
     listbox = Listbox(new, width=130, height=35,bg="white")
     listbox.place(x=90,y=60)
-    
-    
+
     
     def record_of_users():
         frame1_1_1 = Frame(new, width=1700,height=800,bg="purple")
@@ -34,9 +30,9 @@ def newpage(main):
             add_user1.place(x=900, y=60)
             Label(add_user1,text="For Users",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=90,y=10)
             id = Entry(add_user1,width=30).place(x=30,y=40,height=20)        
-            Name = Entry(add_user1,width=30).place(x=30,y=70,height=20)
-            Price = Entry(add_user1,width=30).place(x=30,y=100,height=20)
-            Quantity = Entry(add_user1,width=30).place(x=30,y=130,height=20)
+            name = Entry(add_user1,width=30).place(x=30,y=70,height=20)
+            price = Entry(add_user1,width=30).place(x=30,y=100,height=20)
+            quantity = Entry(add_user1,width=30).place(x=30,y=130,height=20)
             Button(add_user1,text="Add User",fg="#00FF7F",bg="#000000",activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
             
         def show_user_record():
@@ -64,8 +60,6 @@ def newpage(main):
         Button(frame1_1_1, text="Delete Users Record").place(x=530,y=25)
 
 
-        
-
     def record_of_cashes():
         frame1_1 = Frame(new, width=1700,height=800,bg="gray")
         frame1_1.place(x=90, y=1)
@@ -76,9 +70,9 @@ def newpage(main):
             frame1_1.place(x=900, y=60)
             Label(frame1_1,text="For Cashes",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=90,y=10)
             id = Entry(frame1_1,width=30).place(x=30,y=40,height=20)        
-            Name = Entry(frame1_1,width=30).place(x=30,y=70,height=20)
-            Price = Entry(frame1_1,width=30).place(x=30,y=100,height=20)
-            Quantity = Entry(frame1_1,width=30).place(x=30,y=130,height=20)
+            name = Entry(frame1_1,width=30).place(x=30,y=70,height=20)
+            price = Entry(frame1_1,width=30).place(x=30,y=100,height=20)
+            quantity = Entry(frame1_1,width=30).place(x=30,y=130,height=20)
             Button(frame1_1,text="Add Cashes",fg="#00FF7F",bg="#000000",activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
             
         def show_cash_record():
@@ -105,10 +99,6 @@ def newpage(main):
         Button(frame1_1, text="Delete Cashes Record").place(x=530,y=25)
 
 
-
-        
-        
-    
     def record_of_drinks():
                 
         frame1 = Frame(new, width=1700,height=800,bg="red")
@@ -118,18 +108,20 @@ def newpage(main):
 
         def create_record_of_drinks():
             
-
+            def create_drinks():
+                product.add_drink(id.get(), name.get(), price.get(), quantity.get())
                 
-                # product.add_drink()
             frame1 = Frame(new, width=250,height=200,bg="#000000")
             frame1.place(x=900, y=60)
             Label(frame1,text="For Drinks",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=90,y=10)
-            ID = Entry(frame1,width=30).place(x=30,y=40,height=20)        
-            Name = Entry(frame1,width=30).place(x=30,y=70,height=20)
-            Price = Entry(frame1,width=30).place(x=30,y=100,height=20)
-            Quantity = Entry(frame1,width=30).place(x=30,y=130,height=20)
-            def create_drinks():
-                print(ID.get(), Name.get(), Price.get(), Quantity.get())
+            id = Entry(frame1,width=30)
+            id.place(x=30,y=40,height=20)        
+            name = Entry(frame1,width=30)
+            name.place(x=30,y=70,height=20)
+            price = Entry(frame1,width=30)
+            price.place(x=30,y=100,height=20)
+            quantity = Entry(frame1,width=30)
+            quantity.place(x=30,y=130,height=20)
             Button(frame1,text="Add Drink",fg="#00FF7F",bg="#000000",activebackground="#000000",activeforeground="#FFFFFF",command=create_drinks).place(x=90,y=160)
         Button(frame1, text="Create Record Of Drinks",command=create_record_of_drinks).place(x=95,y=25)        
         Button(frame1, text="Show Drinks Records").place(x=250,y=25)
@@ -146,9 +138,9 @@ def newpage(main):
             frame2.place(x=900, y=60)
             Label(frame2,text="For Biscuits",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=90,y=10)
             id = Entry(frame2,width=30).place(x=30,y=40,height=20)        
-            Name = Entry(frame2,width=30).place(x=30,y=70,height=20)
-            Price = Entry(frame2,width=30).place(x=30,y=100,height=20)
-            Quantity = Entry(frame2,width=30).place(x=30,y=130,height=20)
+            name = Entry(frame2,width=30).place(x=30,y=70,height=20)
+            price = Entry(frame2,width=30).place(x=30,y=100,height=20)
+            quantity = Entry(frame2,width=30).place(x=30,y=130,height=20)
             Button(frame2,text="Add Biscuits",fg="#00FF7F",bg="#000000",activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
         Button(frame2, text="Create Record Of Biscuits",command=create_record_of_biscuits).place(x=95,y=25)        
         Button(frame2, text="Show Biscuits Records").place(x=250,y=25)
@@ -165,9 +157,9 @@ def newpage(main):
             frame3.place(x=900, y=60)
             Label(frame3,text="For Chocolates",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=90,y=10)
             id = Entry(frame3,width=30).place(x=30,y=40,height=20)        
-            Name = Entry(frame3,width=30).place(x=30,y=70,height=20)
-            Price = Entry(frame3,width=30).place(x=30,y=100,height=20)
-            Quantity = Entry(frame3,width=30).place(x=30,y=130,height=20)
+            name = Entry(frame3,width=30).place(x=30,y=70,height=20)
+            price = Entry(frame3,width=30).place(x=30,y=100,height=20)
+            quantity = Entry(frame3,width=30).place(x=30,y=130,height=20)
             Button(frame3,text="Add Chocolates",fg="#00FF7F",bg="#000000",activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
         Button(frame3, text="Create Record Of Chocolates",command=create_record_of_chocolates).place(x=95,y=25)        
         Button(frame3, text="Show Chocolates Records").place(x=250,y=25)
@@ -184,9 +176,9 @@ def newpage(main):
             frame4.place(x=900, y=60)
             Label(frame4,text="For Chips",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=90,y=10)
             id = Entry(frame4,width=30).place(x=30,y=40,height=20)        
-            Name = Entry(frame4,width=30).place(x=30,y=70,height=20)
-            Price = Entry(frame4,width=30).place(x=30,y=100,height=20)
-            Quantity = Entry(frame4,width=30).place(x=30,y=130,height=20)
+            name = Entry(frame4,width=30).place(x=30,y=70,height=20)
+            price = Entry(frame4,width=30).place(x=30,y=100,height=20)
+            quantity = Entry(frame4,width=30).place(x=30,y=130,height=20)
             Button(frame4,text="Add Chips",fg="#00FF7F",bg="#000000",activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
         Button(frame4, text="Create Record Of Chips",command=create_record_of_chips).place(x=95,y=25)        
         Button(frame4, text="Show Chips Records").place(x=250,y=25)
@@ -200,12 +192,6 @@ def newpage(main):
     Button(frame, text="Biscuits",command=record_of_biscuits).place(x=10,y=260)
     Button(frame, text="Chocolates",command=record_of_chocolates).place(x=10,y=320)
     Button(frame, text="Chips",command=record_of_chips).place(x=10,y=380)
-
-    
-    
-
-
-
 
 
             

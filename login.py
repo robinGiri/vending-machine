@@ -7,7 +7,11 @@ import adminMain
 
 def login(main, vendingState):
     def go_to_admin():
-        adminMain.newpage(main)
+        if vendingState["is_admin"]:
+            adminMain.newpage(main)
+        else:
+            messagebox.showerror("error", "Please Login As Admin User")
+
 
     def sign_up():
         register.register(main, vendingState)
