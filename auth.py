@@ -31,6 +31,17 @@ def query_all_users():
     cashes = c.fetchall()
     return cashes
 
+def delete_user(ID):
+    conn = sqlite3.connect("vending_machine.db")
+    c = conn.cursor() 
+
+    c.execute("DELETE from users WHERE ID =:ID",
+    {
+        'ID':ID
+    }
+    )
+    conn.commit()
+
 def isLogin(username, password):
     users = query_all_users()
     for user in users:
@@ -41,6 +52,6 @@ def isLogin(username, password):
                 return True, True
             else:
                 return True, False
-    else:
-        False
+        else:
+            False, False
 

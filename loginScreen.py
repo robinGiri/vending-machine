@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 import registerScreen
 import auth
-import adminMain
+import adminScreen
 
 def login(main, vendingState):
 
@@ -16,7 +16,7 @@ def login(main, vendingState):
         '''
 
         if vendingState["is_admin"]:
-            adminMain.newWindow(main)
+            adminScreen.newWindow(main)
         else:
             messagebox.showerror("error", "Please Login As Admin User")
     # sign up page
