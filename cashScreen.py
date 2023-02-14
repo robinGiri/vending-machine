@@ -17,8 +17,8 @@ def cash(main, vendingState):
 
         else:
             vendingState["input_currency"] += amount
-            Label(frame2,text="You have added Rs. {}".format(amount), font="bold",fg="#00FF7F", bg="#6A6161").place(x=10,y=10)
-            Label(frame2, text="Your Current Amount is: {}".format(vendingState["input_currency"]), font="bold",fg="#00FF7F", bg="#6A6161").place(x=10,y=30)
+            Label(frame2,text="You have added Rs. {}".format(amount),fg="#00FF7F", bg="#6A6161").place(x=10,y=10)
+            Label(frame2, text="Your Current Amount is: {}".format(vendingState["input_currency"]),fg="#00FF7F", bg="#6A6161").place(x=10,y=30)
 
     frame = Frame(main, width=600,height=427,bg="#000000")
     frame.place(x=765, y=350)

@@ -5,6 +5,11 @@ import cash
 import auth
 
 def newWindow(main):
+    '''
+        @params: main
+        added a new window
+        if clicked admin pannel will show up
+    '''
 
     new = Toplevel(main)
     new.state("zoomed")
@@ -12,16 +17,27 @@ def newWindow(main):
 
     frame = Frame(new, width=1700,height=800,bg="#000000")
     frame.place(x=1, y=1)
-    listbox = Listbox(new, width=130, height=35,bg="#141414",fg="#FFFFFF")
+    listbox = Listbox(new, width=130, height=35,bg="#6A6161",fg="#FFFFFF")
     listbox.place(x=90,y=60)
 
     def record_of_users():
+        '''
+        @params: no
+        added record button
+        if clicked users window will be displayed
+        '''
+        
         frame1_1_1 = Frame(new, width=1700,height=800,bg="#000000")
         frame1_1_1.place(x=90, y=1)
-        listbox1_1_1 = Listbox(new, width=130, height=35,bg="#141414",fg="#FFFFFF")
+        listbox1_1_1 = Listbox(new, width=130, height=35,bg="#6A6161",fg="#FFFFFF")
         listbox1_1_1.place(x=90,y=60)
 
         def show_user_record():
+            '''
+            @params: no
+            added record button
+            if clicked record of user will show up
+            '''
 
             try:
                 records = auth.query_all_users()       
@@ -33,14 +49,21 @@ def newWindow(main):
                 print(e)
 
         def delete():
+
+            '''
+            @params: no
+            added delete button
+            if clicked it will delete record
+            '''
+            
             clear = Frame(new, width=250,height=200,bg="#141414")
             clear.place(x=900, y=60)
 
             def delete_selected_user_record():
                 try:
-                    auth.delete_user(user_id)     
                     selected_item = listbox1_1_1.get(ACTIVE)
                     user_id = selected_item[0]
+                    auth.delete_user(user_id)     
 
                     show_user_record()
 
@@ -50,20 +73,35 @@ def newWindow(main):
             Label(clear,text="Delete The Selected Record",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=40,y=20)
             Button(clear, text="Delete Record",command=delete_selected_user_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=85,y=60)
   
-        Button(frame1_1_1, text="Show Users Records",command=show_user_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=250,y=25)
+        Button(frame1_1_1, text="Show Users Records",command=show_user_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=100,y=25)
         Button(frame1_1_1, text="Delete Users Record",command=delete,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=530,y=25)
 
     def record_of_cashes():
+        
+        '''
+            @params: no
+            added record button
+            if clicked cash window will be displayed
+        '''
+
+        
         frame1_1 = Frame(new, width=1700,height=800,bg="#000000")
         frame1_1.place(x=90, y=1)
-        listbox1_1 = Listbox(new, width=130, height=35,bg="#141414",fg="#FFFFFF")
+        listbox1_1 = Listbox(new, width=130, height=35,bg="#6A6161",fg="#FFFFFF")
         listbox1_1.place(x=90,y=60)
 
         def update_record_of_cashes():
+            
+            '''
+            @params: no
+            added update button
+            if clicked update form appears
+            '''
+
             add_user1 = Frame(new, width=250,height=200,bg="#141414")
             add_user1.place(x=900, y=60)
             
-            def create_cash_button():                                 
+            def create_cash_button():                                
                 
                 cash.add_cash(ID.get(), Value.get(), Quantity.get())                
 
@@ -99,6 +137,13 @@ def newWindow(main):
             Button(add_user1,text="Update Cash",command=create_cash_button,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
 
         def create_record_of_cashes():
+            
+            '''
+            @params: no
+            added create button
+            if clicked create form appears
+            '''
+
             add_user1 = Frame(new, width=250,height=200,bg="#141414")
             add_user1.place(x=900, y=60)
              
@@ -150,39 +195,57 @@ def newWindow(main):
             except sqlite3.Error as e:
                 print(e)
   
+ 
         def delete():
+            '''
+                @params: no
+                added delete button
+                if clicked delete the records
+            '''    
+            
             clear = Frame(new, width=250,height=200,bg="#141414")
             clear.place(x=900, y=60)
-        
+
             def delete_selected_user_record():
                 try:
-                    cash.delete_cash(user_id)
-
                     selected_item = listbox1_1.get(ACTIVE)
                     user_id = selected_item[0]
+                    cash.delete_cash(user_id)     
 
                     show_cash_record()
-                    
+
                 except sqlite3.Error as e:
                     print(e)
+
+
 
             Label(clear,text="Delete The Selected Record",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=40,y=20)
             Button(clear, text="Delete Record",command=delete_selected_user_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=85,y=60)
 
         Button(frame1_1, text="Create Record Of Cashes",command=create_record_of_cashes,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=95,y=25)        
-        Button(frame1_1, text="Show Cashes Records",command=show_cash_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=250,y=25)
-        Button(frame1_1, text="Update Cashes Record",command=update_record_of_cashes,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=385,y=25)
-        Button(frame1_1, text="Delete Cashes Record",command=delete,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=530,y=25)
+        Button(frame1_1, text="Show Cashes Records",command=show_cash_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=255,y=25)
+        Button(frame1_1, text="Update Cashes Record",command=update_record_of_cashes,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=398,y=25)
+        Button(frame1_1, text="Delete Cashes Record",command=delete,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=547,y=25)
 
     def record_of_drinks():
+        '''
+            @params: no
+            added drinks button
+            if clicked drinks window appears
+        '''
                 
         frame1 = Frame(new, width=1700,height=800,bg="#000000")
         frame1.place(x=90, y=1)
-        listbox1 = Listbox(new, width=130, height=35,bg="#141414",fg="#FFFFFF")
+        listbox1 = Listbox(new, width=130, height=35,bg="#6A6161",fg="#FFFFFF")
         listbox1.place(x=90,y=60)
 
 
-        def update_record_of_drinks():                  
+        def update_record_of_drinks():
+            '''
+                @params: no
+                added update button
+                if clicked update form appears
+            '''                  
             frame1 = Frame(new, width=250,height=200,bg="#141414")
             frame1.place(x=900, y=60)
                 
@@ -230,7 +293,12 @@ def newWindow(main):
             quantity.bind("<Button-1>",quantityy)  
             Button(frame1,text="Update Drink",command=create_drink_button,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
  
-        def create_record_of_drinks():                  
+        def create_record_of_drinks():
+            '''
+                @params: no
+                added create button
+                if clicked create form appears
+            '''                  
             frame1 = Frame(new, width=250,height=200,bg="#141414")
             frame1.place(x=900, y=60)
                 
@@ -277,6 +345,11 @@ def newWindow(main):
             quantity.bind("<Button-1>",quantityy)  
             Button(frame1,text="Add Drink",command=create_drink_button,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
         def show_drink_record():
+            '''
+                @params: no
+                added show record button
+                if clicked it will show records of drinks
+            '''
             try:
 
                 records = product.query_all_drinks()   
@@ -289,38 +362,54 @@ def newWindow(main):
                 print(e)
 
         def delete():
+            '''
+                @params: no
+                added delete button
+                if clicked records will be deleted
+            '''
             clear = Frame(new, width=250,height=200,bg="#141414")
             clear.place(x=900, y=60)
-        
+
             def delete_selected_user_record():
                 try:
-                    product.delete_drink(user_id)
-
                     selected_item = listbox1.get(ACTIVE)
                     user_id = selected_item[0]
+                    product.delete_drink(user_id)     
 
                     show_drink_record()
 
                 except sqlite3.Error as e:
                     print(e)
 
+
+
+
             Label(clear,text="Delete The Selected Record",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=40,y=20)
             Button(clear, text="Delete Record",command=delete_selected_user_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=85,y=60)
 
         Button(frame1, text="Create Record Of Drinks",command=create_record_of_drinks,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=95,y=25)        
         Button(frame1, text="Show Drinks Records",command=show_drink_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=250,y=25)
-        Button(frame1, text="Update Drinks Record",command=update_record_of_drinks,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=385,y=25)
+        Button(frame1, text="Update Drinks Record",command=update_record_of_drinks,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=388,y=25)
         Button(frame1, text="Delete Drinks Record",command=delete,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=530,y=25)
 
     def record_of_biscuits():
-                        
+        '''
+        @params: no
+        added record button
+        if clicked biscuits window appear
+        '''
         frame2 = Frame(new, width=1700,height=800,bg="#000000")
         frame2.place(x=90, y=1)
-        listbox2 = Listbox(new, width=130, height=35,bg="#141414",fg="#FFFFFF")
+        listbox2 = Listbox(new, width=130, height=35,bg="#6A6161",fg="#FFFFFF")
         listbox2.place(x=90,y=60)
 
 
-        def update_record_of_biscuits():                  
+        def update_record_of_biscuits(): 
+            '''
+                @params: no
+                added update button
+                if clicked update form appears
+            '''                 
             frame2 = Frame(new, width=250,height=200,bg="#141414")
             frame2.place(x=900, y=60)
                 
@@ -370,7 +459,12 @@ def newWindow(main):
             quantity.bind("<Button-1>",quantityy)  
             Button(frame2,text="Update Biscuits",command=create_biscuits_button,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
 
-        def create_record_of_biscuits():                  
+        def create_record_of_biscuits():
+            '''
+                @params: no
+                added create button
+                if clicked create form appears
+            '''                  
             frame2 = Frame(new, width=250,height=200,bg="#141414")
             frame2.place(x=900, y=60)
                 
@@ -419,6 +513,11 @@ def newWindow(main):
 
 
         def show_biscuits_record():
+            '''
+                @params: no
+                added show record button
+                if clicked record will be shown
+            '''
             try:
                 records = product.query_all_biscuits()
                 listbox2.delete(0, END)
@@ -428,17 +527,21 @@ def newWindow(main):
                     
             except sqlite3.Error as e:
                 print(e)
-
+                
         def delete():
+            '''
+                @params: no
+                added delete button
+                if clicked records will be deleted
+            '''
             clear = Frame(new, width=250,height=200,bg="#141414")
             clear.place(x=900, y=60)
 
             def delete_selected_user_record():
                 try:
-                    product.delete_biscuit(user_id)
-
                     selected_item = listbox2.get(ACTIVE)
                     user_id = selected_item[0]
+                    product.delete_biscuit(user_id)     
 
                     show_biscuits_record()
 
@@ -449,19 +552,29 @@ def newWindow(main):
             Button(clear, text="Delete Record",command=delete_selected_user_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=85,y=60)
 
         Button(frame2, text="Create Record Of Biscuits",command=create_record_of_biscuits,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=95,y=25)        
-        Button(frame2, text="Show Biscuits Records",command=show_biscuits_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=250,y=25)
-        Button(frame2, text="Update Biscuits Record",command=update_record_of_biscuits,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=385,y=25)
-        Button(frame2, text="Delete Biscuits Record",command=delete,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=530,y=25)
+        Button(frame2, text="Show Biscuits Records",command=show_biscuits_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=255,y=25)
+        Button(frame2, text="Update Biscuits Record",command=update_record_of_biscuits,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=397,y=25)
+        Button(frame2, text="Delete Biscuits Record",command=delete,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=547,y=25)
       
-    def record_of_chocolates():       
+    def record_of_chocolates(): 
+        '''
+        @params: no
+        added chocolate button
+        if clicked chocolate window appears
+        '''      
                        
         frame3 = Frame(new, width=1700,height=800,bg="#000000")
         frame3.place(x=90, y=1)
-        listbox3 = Listbox(new, width=130, height=35,bg="#141414",fg="#FFFFFF")
+        listbox3 = Listbox(new, width=130, height=35,bg="#6A6161",fg="#FFFFFF")
         listbox3.place(x=90,y=60)
 
 
-        def update_record_of_chocolates():                  
+        def update_record_of_chocolates():
+            '''
+                @params: no
+                added update button
+                if clicked update form appears
+            '''                  
             frame3 = Frame(new, width=250,height=200,bg="#141414")
             frame3.place(x=900, y=60)
                 
@@ -508,7 +621,12 @@ def newWindow(main):
             quantity.bind("<Button-1>",quantityy)  
             Button(frame3,text="Update Chocolates",command=create_chocolates_button,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
  
-        def create_record_of_chocolates():                  
+        def create_record_of_chocolates():
+            '''
+                @params: no
+                added create button
+                if clicked create form appears
+            '''                  
             frame3 = Frame(new, width=250,height=200,bg="#141414")
             frame3.place(x=900, y=60)
                 
@@ -556,6 +674,11 @@ def newWindow(main):
             Button(frame3,text="Add Chocolates",command=create_chocolates_button,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
  
         def show_chocolates_record():
+            '''
+                @params: no
+                added show record button
+                if clicked records will be shown
+            '''
             try:
                 records = product.query_all_chocolates()         
                 listbox3.delete(0, END)
@@ -567,15 +690,19 @@ def newWindow(main):
                 print(e)
 
         def delete():
+            '''
+                @params: no
+                added delete button
+                if clicked records will be deleted
+            '''
             clear = Frame(new, width=250,height=200,bg="#141414")
             clear.place(x=900, y=60)
-        
+
             def delete_selected_user_record():
                 try:
-                    product.delete_chocolate(user_id)
-
                     selected_item = listbox3.get(ACTIVE)
                     user_id = selected_item[0]
+                    product.delete_chocolate(user_id)     
 
                     show_chocolates_record()
 
@@ -585,23 +712,34 @@ def newWindow(main):
             Label(clear,text="Delete The Selected Record",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=40,y=20)
             Button(clear, text="Delete Record",command=delete_selected_user_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=85,y=60)
 
-        Button(frame3, text="Create Record Of Chocolates",command=create_record_of_chocolates,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=75,y=25)        
-        Button(frame3, text="Show Chocolates Records",command=show_chocolates_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=260,y=25)
-        Button(frame3, text="Update Chocolates Record",command=update_record_of_chocolates,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=420,y=25)
-        Button(frame3, text="Delete Chocolates Record",command=delete,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=580,y=25)
+        Button(frame3, text="Create Record Of Chocolates",command=create_record_of_chocolates,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=78,y=25)        
+        Button(frame3, text="Show Chocolates Records",command=show_chocolates_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=257,y=25)
+        Button(frame3, text="Update Chocolates Record",command=update_record_of_chocolates,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=418,y=25)
+        Button(frame3, text="Delete Chocolates Record",command=delete,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=582,y=25)
        
     def record_of_chips():
+        '''
+                @params: no
+                added record button
+                if clicked chips window will be displayed
+        '''
                        
         frame4 = Frame(new, width=1700,height=800,bg="#000000")
         frame4.place(x=90, y=1)
-        listbox4 = Listbox(new, width=130, height=35,bg="#141414",fg="#FFFFFF")
+        listbox4 = Listbox(new, width=130, height=35,bg="#6A6161",fg="#FFFFFF")
         listbox4.place(x=90,y=60)
 
-        def update_record_of_chips():                  
+        def update_record_of_chips(): 
+            '''
+                @params: no
+                added update button
+                if clicked update form appears
+            '''                 
             frame4 = Frame(new, width=250,height=200,bg="#141414")
             frame4.place(x=900, y=60)
                 
             def create_chips_button(): 
+
                 product.add_chips(id.get(), name.get(), price.get(), quantity.get())                              
 
                 added_user = Frame(new, width=250,height=200,bg="#000000")
@@ -644,7 +782,14 @@ def newWindow(main):
             quantity.bind("<Button-1>",quantityy)  
             Button(frame4,text="Update Chips",command=create_chips_button,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
 
-        def create_record_of_chips():                  
+        def create_record_of_chips():
+            
+            '''
+                @params: no
+                added create button
+                if clicked create form appears
+            '''            
+                              
             frame4 = Frame(new, width=250,height=200,bg="#141414")
             frame4.place(x=900, y=60)
                 
@@ -692,6 +837,11 @@ def newWindow(main):
             Button(frame4,text="Add Chips",command=create_chips_button,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
 
         def show_chips_record():
+            '''
+                @params: no
+                added show record button
+                if clicked records will be shown
+            '''
             try:
                 records = product.query_all_chips()       
                 listbox4.delete(0, END)
@@ -703,15 +853,20 @@ def newWindow(main):
                 print(e)
 
         def delete():
+            '''
+                @params: no
+                added delete button
+                if clicked records will be deleted
+            '''
+            
             clear = Frame(new, width=250,height=200,bg="#141414")
             clear.place(x=900, y=60)
-
+            
             def delete_selected_user_record():
                 try:
-                    product.delete_chips(user_id)
-
                     selected_item = listbox4.get(ACTIVE)
                     user_id = selected_item[0]
+                    product.delete_chips(user_id)     
 
                     show_chips_record()
 
@@ -722,14 +877,14 @@ def newWindow(main):
             Button(clear, text="Delete Record",command=delete_selected_user_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=85,y=60)
 
         Button(frame4, text="Create Record Of Chips",command=create_record_of_chips,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=95,y=25)        
-        Button(frame4, text="Show Chips Records",command=show_chips_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=250,y=25)
+        Button(frame4, text="Show Chips Records",command=show_chips_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=247,y=25)
         Button(frame4, text="Update Chips Record",command=update_record_of_chips,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=385,y=25)
-        Button(frame4, text="Delete Chips Record",command=delete,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=530,y=25)
+        Button(frame4, text="Delete Chips Record",command=delete,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=527,y=25)
   
 #   buttons on left site bar
-    Button(frame, text="Users",command=record_of_users,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=10,y=80)
-    Button(frame, text="Cashes",command=record_of_cashes,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=10,y=140)
-    Button(frame, text="Drinks",command=record_of_drinks,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=10,y=200)
-    Button(frame, text="Biscuits",command=record_of_biscuits,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=10,y=260)
-    Button(frame, text="Chocolates",command=record_of_chocolates,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=10,y=320)
-    Button(frame, text="Chips",command=record_of_chips,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=10,y=380)
+    Button(frame, text="Users",command=record_of_users,padx=17,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=10,y=80)
+    Button(frame, text="Cashes",command=record_of_cashes,padx=13,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=10,y=140)
+    Button(frame, text="Drinks",command=record_of_drinks,padx=15,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=10,y=200)
+    Button(frame, text="Biscuits",command=record_of_biscuits,padx=11,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=10,y=260)
+    Button(frame, text="Chocolates",command=record_of_chocolates,padx=2,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=10,y=320)
+    Button(frame, text="Chips",command=record_of_chips,padx=16,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=10,y=380)
