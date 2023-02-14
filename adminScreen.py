@@ -58,7 +58,7 @@ def newWindow(main):
         frame1_1.place(x=90, y=1)
         listbox1_1 = Listbox(new, width=130, height=35,bg="#141414",fg="#FFFFFF")
         listbox1_1.place(x=90,y=60)
-        
+
         def update_record_of_cashes():
             add_user1 = Frame(new, width=250,height=200,bg="#141414")
             add_user1.place(x=900, y=60)
@@ -141,11 +141,7 @@ def newWindow(main):
          
         def show_cash_record():
             try:
-                conn = sqlite3.connect("vending_machine.db")
-                c = conn.cursor() 
-
-                c.execute("SELECT * FROM Cash") 
-                records = c.fetchall()        
+                records = cash.query_all_cashes()
                 listbox1_1.delete(0, END)
 
                 for record in records:
@@ -153,33 +149,23 @@ def newWindow(main):
                     
             except sqlite3.Error as e:
                 print(e)
-                
-            finally:
-                conn.close() 
-
-                
+  
         def delete():
             clear = Frame(new, width=250,height=200,bg="#141414")
             clear.place(x=900, y=60)
         
             def delete_selected_user_record():
                 try:
-                    conn = sqlite3.connect("vending_machine.db")
-                    c = conn.cursor() 
+                    cash.delete_cash(user_id)
 
                     selected_item = listbox1_1.get(ACTIVE)
                     user_id = selected_item[0]
 
-                    c.execute("DELETE FROM Cash WHERE id=?", (user_id,))
-                    conn.commit()
-                    
                     show_cash_record()
                     
                 except sqlite3.Error as e:
                     print(e)
-                    
-                finally:
-                    conn.close()
+
             Label(clear,text="Delete The Selected Record",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=40,y=20)
             Button(clear, text="Delete Record",command=delete_selected_user_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=85,y=60)
 
@@ -292,21 +278,15 @@ def newWindow(main):
             Button(frame1,text="Add Drink",command=create_drink_button,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
         def show_drink_record():
             try:
-                conn = sqlite3.connect("vending_machine.db")
-                c = conn.cursor() 
 
-                c.execute("SELECT * FROM Drinks") 
-                records = c.fetchall()        
+                records = product.query_all_drinks()   
                 listbox1.delete(0, END)
 
                 for record in records:
                     listbox1.insert(END, record)
-                    
+
             except sqlite3.Error as e:
                 print(e)
-                
-            finally:
-                conn.close() 
 
         def delete():
             clear = Frame(new, width=250,height=200,bg="#141414")
@@ -314,22 +294,16 @@ def newWindow(main):
         
             def delete_selected_user_record():
                 try:
-                    conn = sqlite3.connect("vending_machine.db")
-                    c = conn.cursor() 
+                    product.delete_drink(user_id)
 
                     selected_item = listbox1.get(ACTIVE)
                     user_id = selected_item[0]
 
-                    c.execute("DELETE FROM Drinks WHERE id=?", (user_id,))
-                    conn.commit()
-                    
                     show_drink_record()
-                    
+
                 except sqlite3.Error as e:
                     print(e)
-                    
-                finally:
-                    conn.close()
+
             Label(clear,text="Delete The Selected Record",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=40,y=20)
             Button(clear, text="Delete Record",command=delete_selected_user_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=85,y=60)
 
@@ -446,11 +420,7 @@ def newWindow(main):
 
         def show_biscuits_record():
             try:
-                conn = sqlite3.connect("vending_machine.db")
-                c = conn.cursor() 
-
-                c.execute("SELECT * FROM Biscuits") 
-                records = c.fetchall()        
+                records = product.query_all_biscuits()
                 listbox2.delete(0, END)
 
                 for record in records:
@@ -458,32 +428,23 @@ def newWindow(main):
                     
             except sqlite3.Error as e:
                 print(e)
-                
-            finally:
-                conn.close() 
 
         def delete():
             clear = Frame(new, width=250,height=200,bg="#141414")
             clear.place(x=900, y=60)
-        
+
             def delete_selected_user_record():
                 try:
-                    conn = sqlite3.connect("vending_machine.db")
-                    c = conn.cursor() 
+                    product.delete_biscuit(user_id)
 
                     selected_item = listbox2.get(ACTIVE)
                     user_id = selected_item[0]
 
-                    c.execute("DELETE FROM Biscuits WHERE id=?", (user_id,))
-                    conn.commit()
-                    
                     show_biscuits_record()
-                    
+
                 except sqlite3.Error as e:
                     print(e)
-                    
-                finally:
-                    conn.close()
+
             Label(clear,text="Delete The Selected Record",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=40,y=20)
             Button(clear, text="Delete Record",command=delete_selected_user_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=85,y=60)
 
@@ -596,21 +557,14 @@ def newWindow(main):
  
         def show_chocolates_record():
             try:
-                conn = sqlite3.connect("vending_machine.db")
-                c = conn.cursor() 
-
-                c.execute("SELECT * FROM Chocolates") 
-                records = c.fetchall()        
+                records = product.query_all_chocolates()         
                 listbox3.delete(0, END)
 
                 for record in records:
                     listbox3.insert(END, record)
-                    
+
             except sqlite3.Error as e:
                 print(e)
-                
-            finally:
-                conn.close()
 
         def delete():
             clear = Frame(new, width=250,height=200,bg="#141414")
@@ -618,22 +572,16 @@ def newWindow(main):
         
             def delete_selected_user_record():
                 try:
-                    conn = sqlite3.connect("vending_machine.db")
-                    c = conn.cursor() 
+                    product.delete_chocolate(user_id)
 
                     selected_item = listbox3.get(ACTIVE)
                     user_id = selected_item[0]
 
-                    c.execute("DELETE FROM Chocolates WHERE id=?", (user_id,))
-                    conn.commit()
-                    
                     show_chocolates_record()
-                    
+
                 except sqlite3.Error as e:
                     print(e)
-                    
-                finally:
-                    conn.close()
+
             Label(clear,text="Delete The Selected Record",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=40,y=20)
             Button(clear, text="Delete Record",command=delete_selected_user_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=85,y=60)
 
@@ -668,15 +616,15 @@ def newWindow(main):
             def namee(passs):
                 name.config(state=NORMAL)
                 name.delete(0, END)
-                
+
             def pricee(emaii):
                 price.config(state=NORMAL)
                 price.delete(0, END)
-            
+
             def quantityy(e):
                 quantity.config(state=NORMAL)
                 quantity.delete(0, END) 
-                     
+
             Label(frame4,text="Update Chips",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=90,y=10)
             id = Entry(frame4,width=30)
             id.place(x=30,y=40,height=20)
@@ -703,7 +651,6 @@ def newWindow(main):
             def create_chips_button(): 
                 product.add_chips(id.get(), name.get(), price.get(), quantity.get())                              
 
-                
                 added_user = Frame(new, width=250,height=200,bg="#000000")
                 added_user.place(x=900, y=60)   
                 Label(added_user,text="Chips Has Been Added",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=15,y=10)
@@ -716,15 +663,15 @@ def newWindow(main):
             def namee(passs):
                 name.config(state=NORMAL)
                 name.delete(0, END)
-                
+
             def pricee(emaii):
                 price.config(state=NORMAL)
                 price.delete(0, END)
-            
+
             def quantityy(e):
                 quantity.config(state=NORMAL)
                 quantity.delete(0, END) 
-                     
+
             Label(frame4,text="For Chips",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=90,y=10)
             id = Entry(frame4,width=30)
             id.place(x=30,y=40,height=20)
@@ -743,48 +690,34 @@ def newWindow(main):
             quantity.insert(0,"   Quantity")
             quantity.bind("<Button-1>",quantityy)  
             Button(frame4,text="Add Chips",command=create_chips_button,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
-     
-     
+
         def show_chips_record():
             try:
-                conn = sqlite3.connect("vending_machine.db")
-                c = conn.cursor() 
-
-                c.execute("SELECT * FROM Chips") 
-                records = c.fetchall()        
+                records = product.query_all_chips()       
                 listbox4.delete(0, END)
 
                 for record in records:
                     listbox4.insert(END, record)
-                    
+
             except sqlite3.Error as e:
                 print(e)
-                
-            finally:
-                conn.close() 
-       
+
         def delete():
             clear = Frame(new, width=250,height=200,bg="#141414")
             clear.place(x=900, y=60)
-        
+
             def delete_selected_user_record():
                 try:
-                    conn = sqlite3.connect("vending_machine.db")
-                    c = conn.cursor() 
+                    product.delete_chips(user_id)
 
                     selected_item = listbox4.get(ACTIVE)
                     user_id = selected_item[0]
 
-                    c.execute("DELETE FROM Chips WHERE id=?", (user_id,))
-                    conn.commit()
-                    
                     show_chips_record()
-                    
+
                 except sqlite3.Error as e:
                     print(e)
-                    
-                finally:
-                    conn.close()
+
             Label(clear,text="Delete The Selected Record",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=40,y=20)
             Button(clear, text="Delete Record",command=delete_selected_user_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=85,y=60)
 
