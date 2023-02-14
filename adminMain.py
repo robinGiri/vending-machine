@@ -3,22 +3,19 @@ import sqlite3
 import product
 from tkinter import messagebox
 import cash
-from PIL import Image,ImageTk
-import register
 import auth
-import adminMain
 
+def newWindow(main):
 
-def newpage(main):
     new = Toplevel(main)
     new.state("zoomed")
-    new.title("Records")
+    new.title("Vending Admin Pannel")
+
     frame = Frame(new, width=1700,height=800,bg="#000000")
     frame.place(x=1, y=1)
     listbox = Listbox(new, width=130, height=35,bg="#141414",fg="#FFFFFF")
     listbox.place(x=90,y=60)
 
-    
     def record_of_users():
         frame1_1_1 = Frame(new, width=1700,height=800,bg="#000000")
         frame1_1_1.place(x=90, y=1)
@@ -63,9 +60,6 @@ def newpage(main):
             password.insert(0,"*******@")
             password.bind("<Button-1>",pas)
             Button(add_user1,text="Update User",command=create_user_update_button,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
-
-
-        
         
         def create_record_of_user():
             add_user1 = Frame(new, width=250,height=200,bg="#141414")
@@ -148,12 +142,7 @@ def newpage(main):
                     conn.close()
             Label(clear,text="Delete The Selected Record",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=40,y=20)
             Button(clear, text="Delete Record",command=delete_selected_user_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=85,y=60)
-            
-
-
-
- 
-             
+  
         Button(frame1_1_1, text="Create Record Of Users",command=create_record_of_user,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=95,y=25)        
         Button(frame1_1_1, text="Show Users Records",command=show_user_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=250,y=25)
         Button(frame1_1_1, text="Update Users Record",command=create_update,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=385,y=25)

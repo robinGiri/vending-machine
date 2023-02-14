@@ -1,13 +1,12 @@
 from tkinter import *
 from tkinter import messagebox
-from PIL import Image,ImageTk
-import login
+import loginScreen
 import auth
 
 def register(main, vendingState):
 
     def sign_in():
-        login.login(main, vendingState)
+        loginScreen.login(main, vendingState)
 
     def use(usee):
         username.config(state=NORMAL)
