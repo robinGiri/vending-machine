@@ -1,13 +1,99 @@
 from tkinter import *
 import seed
 from PIL import Image,ImageTk
+import sqlite3
 
 
 def products(main, vendingState):
     print(vendingState)
     
+
     def delete():
         my_coke.place_forget()
+        
+    
+    def checkout_product():
+
+        # reduce one quantity from list
+        def drinks_quantity(drinks,quantity_drinks):
+            """Reduces quantity of the chosen drink"""
+            conn = sqlite3.connect("vending_machine.db")
+            cur = conn.cursor()
+            cur.execute("SELECT * FROM Drinks")
+            records=cur.fetchall()
+            for drink in records[3]:
+                if drinks=='Coke':
+                    quantity_drinks=drink-1
+                elif drinks=='Fanta':
+                    quantity_drinks=drink-1
+                elif drinks=='Sprite':
+                    quantity_drinks=drink-1
+                elif drinks=='Slice':
+                    quantity_drinks=drink-1
+                return quantity_drinks
+        def biscuits_quantity(biscuits,quantity_biscuits):
+            """Reduces quantity of the chosen biscuit"""
+            conn = sqlite3.connect("vending_machine.db")
+            cur = conn.cursor()
+            cur.execute("SELECT * FROM Biscuits")
+            records=cur.fetchall()
+            for biscuit in records[3]:
+                if biscuits=='Bourbon':
+                    quantity_biscuits=biscuit-1
+                elif biscuits=='Oreo':
+                    quantity_biscuits=biscuit-1
+                elif biscuits=='Digestive':
+                    quantity_biscuits=biscuit-1
+                elif biscuits=='Hide&Seek':
+                    quantity_biscuits=biscuit-1
+                return quantity_biscuits
+        def chips_quantity(chips,quantity_chips):
+            """Reduces quantity of the chosen Chips"""
+            conn = sqlite3.connect("vending_machine.db")
+            cur = conn.cursor()
+            cur.execute("SELECT * FROM Chips")
+            records=cur.fetchall()
+            for chip in records[3]:
+                if chips=='Dorritos':
+                    quantity_chips=chip-1
+                elif chips=='Lays':
+                    quantity_chips=chip-1
+                elif chips=='Local-Chips':
+                    quantity_chips=chip-1
+                elif chips=='Uncle Chips':
+                    quantity_chips=chip-1
+            return quantity_chips
+        def drinks_quantity(chocolates,quantity_chocolates):
+            """Reduces quantity of the chosen chocolates"""
+            conn = sqlite3.connect("vending_machine.db")
+            cur = conn.cursor()
+            cur.execute("SELECT * FROM Chocolates")
+            records=cur.fetchall()
+            for chocolate in records[3]:
+                if chocolates=='Coke':
+                    quantity_chocolates=chocolate-1
+                    vendingState["input_currency"]=- 120
+                elif chocolates=='Fanta':
+                    quantity_chocolates=chocolate-1
+                    vendingState["input_currency"]=- 120
+                elif chocolates=='Sprite':
+                    quantity_chocolates=chocolate-1
+                    vendingState["input_currency"]=- 120
+                elif chocolates=='Slice':
+                    quantity_chocolates=chocolate-1
+                    vendingState["input_currency"]=- 120
+                return quantity_chocolates
+        
+
+        # update vending state of cash 
+        
+
+
+
+# Cash Testing
+
+
+        # show new cash in the side bar
         
         
     
@@ -146,7 +232,11 @@ def products(main, vendingState):
     my_Bonbon = Label(item2,image="",bg="#000000")
     my_Bonbon.place(x=10,y=10)
 
+
+
     def Oreo():
+        checkout_product()
+
         my_Oreo.config(image=new_pic8,bg="#000000",border=0,borderwidth=0)
     image8 = Image.open("public/Coke.png")
     resized = image3.resize((60,85), Image.Resampling.LANCZOS)
