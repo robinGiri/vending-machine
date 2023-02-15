@@ -16,7 +16,7 @@ def login(main, vendingState):
         '''
 
         if vendingState["is_admin"]:
-            adminScreen.newWindow(main)
+            adminScreen.newWindow(main, vendingState)
         else:
             messagebox.showerror("error", "Please Login As Admin User")
     # sign up page
@@ -35,6 +35,10 @@ def login(main, vendingState):
         '''
         vendingState["is_authenticated"] = False
         vendingState["is_admin"] = False
+        registerScreen.register(main, vendingState)
+        
+        
+                
 
     # configure username input
     def username_input(user):

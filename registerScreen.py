@@ -19,6 +19,8 @@ def register(main, vendingState):
         removes auth from vending machine
         '''
         vendingState["is_authenticated"] = False
+        loginScreen.login(main, vendingState)
+        
 
     # configure username input
     def username_input(user):
