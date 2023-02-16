@@ -1,11 +1,10 @@
-from tkinter import messagebox
 from tkinter import *
 import sqlite3
 import auth
 
-def record_of_users(main, vendingState):
+def record_of_users(main):
     '''
-    @params: no
+    @params: main as param
     added record button
     if clicked users window will be displayed
     '''
@@ -32,7 +31,6 @@ def record_of_users(main, vendingState):
             print(e)
 
     def delete():
-
         '''
         @params: no
         added delete button
@@ -58,4 +56,3 @@ def record_of_users(main, vendingState):
 
     Button(frame1_1_1, text="Show Users Records",command=show_user_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=100,y=25)
     Button(frame1_1_1, text="Delete Users Record",command=delete,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=530,y=25)
-    

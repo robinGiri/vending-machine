@@ -1,16 +1,13 @@
 from tkinter import *
 import admin_user
 import admin_cashes
-import admin_drinks
-import admin_biscuits
-import admin_chocolates
 import admin_chips
 
-def newWindow(main, vendingState):
+def newWindow(main):
     '''
-        @params: main, vendingState
-        added a new window
-        if clicked admin pannel will show up
+    @params: main
+    added a new window
+    if clicked admin pannel will show up
     '''
 
     new = Toplevel(main)
@@ -28,26 +25,24 @@ def newWindow(main, vendingState):
         added record button
         if clicked users window will be displayed
         '''
-        admin_user.record_of_users(new, vendingState)
-        
+        admin_user.record_of_users(new)
 
     def record_of_cashes():
-        
         '''
-            @params: no
-            added record button
-            if clicked cash window will be displayed
+        @params: no
+        added record button
+        if clicked cash window will be displayed
         '''
-        admin_cashes.record_of_cashes(new, vendingState)        
+
+        admin_cashes.record_of_cashes(new)        
 
     def record_of_drinks():
         '''
-            @params: no
-            added drinks button
-            if clicked drinks window appears
+        @params: no
+        added drinks button
+        if clicked drinks window appears
         '''
-        admin_drinks.record_of_drinks(new, vendingState)
-        
+        admin_chips.record_of_chips(new, "Drinks")
 
     def record_of_biscuits():
         '''
@@ -55,23 +50,24 @@ def newWindow(main, vendingState):
         added record button
         if clicked biscuits window appear
         '''
-        admin_biscuits.record_of_biscuits(new, vendingState)
-         
+        admin_chips.record_of_chips(new, "Biscuits")
+
     def record_of_chocolates(): 
         '''
         @params: no
         added chocolate button
         if clicked chocolate window appears
-        '''      
-        admin_chocolates.record_of_chocolates(new, vendingState)
+        '''  
+        print("chocolate")
+        admin_chips.record_of_chips(new, "Chocolate")
+
     def record_of_chips():
         '''
-                @params: no
-                added record button
-                if clicked chips window will be displayed
+        @params: no
+        added record button
+        if clicked chips window will be displayed
         '''
-        admin_chips.record_of_chips(new,vendingState)
-        
+        admin_chips.record_of_chips(new, "Chips")
 
 #   buttons on left site bar
     Button(frame, text="Users",command=record_of_users,padx=17,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=10,y=80)

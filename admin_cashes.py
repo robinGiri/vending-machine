@@ -1,24 +1,20 @@
-from tkinter import messagebox
 from tkinter import *
 import sqlite3
 import cash
 
-def record_of_cashes(main, vendingState):
-    
+def record_of_cashes(main):
     '''
-        @params: no
-        added record button
-        if clicked cash window will be displayed
+    @params: main as param
+    added record button
+    if clicked cash window will be displayed
     '''
 
-    
     frame1_1 = Frame(main, width=1700,height=800,bg="#000000")
     frame1_1.place(x=90, y=1)
     listbox1_1 = Listbox(main, width=130, height=35,bg="#6A6161",fg="#FFFFFF")
     listbox1_1.place(x=90,y=60)
 
     def update_record_of_cashes():
-        
         '''
         @params: no
         added update button
@@ -27,9 +23,14 @@ def record_of_cashes(main, vendingState):
 
         add_user1 = Frame(main, width=250,height=200,bg="#141414")
         add_user1.place(x=900, y=60)
-        
+
         def create_cash_button():                                
-            
+            '''
+            @params: no
+            added create button
+            if clicked create cash in DB
+            '''
+
             cash.add_cash(ID.get(), Value.get(), Quantity.get())                
 
             added_user = Frame(main, width=250,height=200,bg="#000000")
@@ -64,7 +65,6 @@ def record_of_cashes(main, vendingState):
         Button(add_user1,text="Update Cash",command=create_cash_button,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
 
     def create_record_of_cashes():
-        
         '''
         @params: no
         added create button
@@ -77,13 +77,12 @@ def record_of_cashes(main, vendingState):
         def create_cash_button():                                 
             
             cash.add_cash(ID.get(), Value.get(), Quantity.get())                
-            
+
             added_user = Frame(main, width=250,height=200,bg="#000000")
             added_user.place(x=900, y=60)   
             Label(added_user,text="Cash Has Been Added",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=15,y=10)
             Label(added_user,text="Press Okey To Return Back To \n Cashes Info",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=15,y=30)
-                
-                            
+          
             Button(added_user,text="Add Cash Again",command=record_of_cashes,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
         def use(usee):
             ID.config(state=NORMAL)
@@ -112,6 +111,11 @@ def record_of_cashes(main, vendingState):
         Button(add_user1,text="Add Cash",command=create_cash_button,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
         
     def show_cash_record():
+        '''
+        @params: no
+        added show record button
+        if clicked it will show records of cashes
+        '''
         try:
             records = cash.query_all_cashes()
             listbox1_1.delete(0, END)
@@ -125,11 +129,11 @@ def record_of_cashes(main, vendingState):
 
     def delete():
         '''
-            @params: no
-            added delete button
-            if clicked delete the records
+        @params: no
+        added delete button
+        if clicked delete the records
         '''    
-        
+
         clear = Frame(main, width=250,height=200,bg="#141414")
         clear.place(x=900, y=60)
 
@@ -143,8 +147,6 @@ def record_of_cashes(main, vendingState):
 
             except sqlite3.Error as e:
                 print(e)
-
-
 
         Label(clear,text="Delete The Selected Record",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=40,y=20)
         Button(clear, text="Delete Record",command=delete_selected_user_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=85,y=60)
