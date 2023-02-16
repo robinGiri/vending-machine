@@ -1,50 +1,110 @@
 import sqlite3 
 
 def create_cash_table():
-    con = sqlite3.connect("vending_machine.db")
-    cur = con.cursor()
-    cur.execute("""CREATE TABLE IF NOT EXISTS Cash (
-        ID INT(50),
-        Value VARCHAR(10),
-        Quantity INT(10)
-    )
-    """)
-    con.commit()
-    con.close()
+    '''
+    @params: No Params
+    creates Cash table if there is no table
+    return None
+    '''
+
+    try:
+        conn = sqlite3.connect("vending_machine.db")
+        c = conn.cursor()
+        c.execute("""CREATE TABLE IF NOT EXISTS Cash (
+            ID INT(50),
+            Value VARCHAR(10),
+            Quantity INT(10)
+        )
+        """)
+        conn.commit()
+
+    except sqlite3.Error as e:
+        print(e)
+
+    finally:
+        conn.close()
 
 def add_cash(ID, Value, Quantity):
-    conn = sqlite3.connect("vending_machine.db")
-    c = conn.cursor()
-    c.execute("INSERT INTO Cash VALUES (:ID, :Value, :Quantity)",{
+    '''
+    @params: id, value, quantity
+    update cash
+    return None
+    '''
+
+    try:
+        conn = sqlite3.connect("vending_machine.db")
+        c = conn.cursor()
+        c.execute("INSERT INTO Cash VALUES (:ID, :Value, :Quantity)", {
                   'ID': ID,
                   'Value': Value,
                   'Quantity': Quantity,
               })
 
-    conn.commit()
-    conn.close()
+        conn.commit()
+    except sqlite3.Error as e:
+        print(e)
 
-def query_all():
-    conn = sqlite3.connect("vending_machine.db")
-    c = conn.cursor() 
-    
-    c.execute("SELECT * FROM Cash") 
-    cashes = c.fetchall()
+    finally:
+        conn.close()
 
-    return cashes
+def query_all_cashes():
+    '''
+    @params: No Params
+    query add cashes
+    return dict of cashes
+    '''
 
-def remove(ID):
-    conn = sqlite3.connect("vending_machine.db")
-    c = conn.cursor() 
+    try:
+        conn = sqlite3.connect("vending_machine.db")
+        c = conn.cursor()
+        c.execute("SELECT * FROM Cash")
+        cashes = c.fetchall()
+        return cashes
 
-    c.execute("delete from Cash where ID=?", (ID,))
-    c.commit()
+    except sqlite3.Error as e:
+        print(e)
 
-def update(ID, Value, Quantity):
-    conn = sqlite3.connect("vending_machine.db")
-    c = conn.cursor() 
+    finally:
+        conn.close()
 
-    c.execute(
-        "update Cash set ID=? Value=?, Quantity=?",
-        (ID, Value, Quantity))
-    c.commit()
+def update_cash(ID, Value, Quantity):
+    '''
+    @params: id, value, quantity
+    update cash 
+    return None
+    '''
+
+    try:
+        conn = sqlite3.connect("vending_machine.db")
+        c = conn.cursor()
+
+        c.execute(
+            "update Cash set ID=? Value=?, Quantity=?",
+            (ID, Value, Quantity))
+
+        conn.commit()
+    except sqlite3.Error as e:
+        print(e)
+
+    finally:
+        conn.close()
+
+def delete_cash(ID):
+    '''
+    @params: id
+    delete cash 
+    return None
+    '''
+
+    try:
+        conn = sqlite3.connect("vending_machine.db")
+        c = conn.cursor()
+        c.execute("delete from Cash where ID=?", (ID,))
+
+        conn.commit()
+    except sqlite3.Error as e:
+        print(e)
+
+    finally:
+        conn.close()
+
