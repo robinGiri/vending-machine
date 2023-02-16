@@ -1,106 +1,38 @@
 from tkinter import *
-import seed
+from tkinter import messagebox
 from PIL import Image,ImageTk
-import sqlite3
-
+import product
 
 def products(main, vendingState):
-    print(vendingState)
-    
+    '''
+    @params: main and vanding state are params
+    we are making main items clickable
+    after clicking delete quantity from DB
+    and reduce input currency
+    '''
 
-    def delete():
-        my_coke.place_forget()
+    def withdrawProduct(productType, itemType):
+        if vendingState["is_authenticated"] == False :
+            messagebox.showerror("error", "Please Login First")
+            return
+        '''
+        @param: ptoductType
+        reduce currency from vending store
+        delete product from DB
+        '''
+        if productType == "Drinks":
+            drinks = product.query_all_drinks()
+            for drink in drinks:
+                if itemType == drink[1]:
+                    product.update_drink(drink[0], drink[1], drink[2], drink[3]-1)
+                    vendingState["input_currency"]=- drink[2]
+        if productType == "Chips":
+            drinks = product.query_all_chips()
+            for chips in chips:
+                if itemType == chips[1]:
+                    product.update_chips(chips[0], chips[1], chips[2], chips[3]-1)
+                    vendingState["input_currency"]=- chips[2]
         
-    
-    def checkout_product():
-
-        # reduce one quantity from list
-        def drinks_quantity(drinks,quantity_drinks):
-            """Reduces quantity of the chosen drink"""
-            conn = sqlite3.connect("vending_machine.db")
-            cur = conn.cursor()
-            cur.execute("SELECT * FROM Drinks")
-            records=cur.fetchall()
-            for drink in records[3]:
-                if drinks=='Coke':
-                    quantity_drinks=drink-1
-                elif drinks=='Fanta':
-                    quantity_drinks=drink-1
-                elif drinks=='Sprite':
-                    quantity_drinks=drink-1
-                elif drinks=='Slice':
-                    quantity_drinks=drink-1
-                return quantity_drinks
-        def biscuits_quantity(biscuits,quantity_biscuits):
-            """Reduces quantity of the chosen biscuit"""
-            conn = sqlite3.connect("vending_machine.db")
-            cur = conn.cursor()
-            cur.execute("SELECT * FROM Biscuits")
-            records=cur.fetchall()
-            for biscuit in records[3]:
-                if biscuits=='Bourbon':
-                    quantity_biscuits=biscuit-1
-                elif biscuits=='Oreo':
-                    quantity_biscuits=biscuit-1
-                elif biscuits=='Digestive':
-                    quantity_biscuits=biscuit-1
-                elif biscuits=='Hide&Seek':
-                    quantity_biscuits=biscuit-1
-                return quantity_biscuits
-        def chips_quantity(chips,quantity_chips):
-            """Reduces quantity of the chosen Chips"""
-            conn = sqlite3.connect("vending_machine.db")
-            cur = conn.cursor()
-            cur.execute("SELECT * FROM Chips")
-            records=cur.fetchall()
-            for chip in records[3]:
-                if chips=='Dorritos':
-                    quantity_chips=chip-1
-                elif chips=='Lays':
-                    quantity_chips=chip-1
-                elif chips=='Local-Chips':
-                    quantity_chips=chip-1
-                elif chips=='Uncle Chips':
-                    quantity_chips=chip-1
-            return quantity_chips
-        def drinks_quantity(chocolates,quantity_chocolates):
-            """Reduces quantity of the chosen chocolates"""
-            conn = sqlite3.connect("vending_machine.db")
-            cur = conn.cursor()
-            cur.execute("SELECT * FROM Chocolates")
-            records=cur.fetchall()
-            for chocolate in records[3]:
-                if chocolates=='Coke':
-                    quantity_chocolates=chocolate-1
-                    vendingState["input_currency"]=- 120
-                elif chocolates=='Fanta':
-                    quantity_chocolates=chocolate-1
-                    vendingState["input_currency"]=- 120
-                elif chocolates=='Sprite':
-                    quantity_chocolates=chocolate-1
-                    vendingState["input_currency"]=- 120
-                elif chocolates=='Slice':
-                    quantity_chocolates=chocolate-1
-                    vendingState["input_currency"]=- 120
-                return quantity_chocolates
-        
-
-        # update vending state of cash 
-        
-
-
-
-# Cash Testing
-
-
-        # show new cash in the side bar
-        
-        
-    
-    productList = seed.productList
-    # TODO call product list and 
-    # productList = beautiful changes :)
-  
 
     goods = Frame(main, width=600,height=570,bg="#000000")
     goods.place(x=135,y=40)
@@ -120,58 +52,59 @@ def products(main, vendingState):
 
     item4 = Frame(item, width=100,height=110,bg="#000000")
     item4.place(x=470,y=10)
-    
-    def drinkk():
-        my_drinkk.config(image=new_pic1,bg="#000000",border=0,borderwidth=0)
+
+    # product side bare which are unclickable
+    def drinks_collection():
+        my_drinks_collection.config(image=new_pic1,bg="#000000",border=0,borderwidth=0)
     image1 = Image.open("public/Drinks.png")
     resized = image1.resize((100,85), Image.Resampling.LANCZOS)
     new_pic1 = ImageTk.PhotoImage(resized)
-    drinkk_img = Label(goods, image=new_pic1,borderwidth=0,border=0,bg="#000000")
-    drinkk_img.place(x=30,y=52)
-    drinkk_btn = Button(goods, image=new_pic1,command=drinkk,border=0,borderwidth=0,bg="#000000",activebackground="#000000")
-    drinkk_btn.place(x=30,y=52)
-    my_drinkk = Label(item1,image="",bg="#000000")
+    drinks_collection_img = Label(goods, image=new_pic1,borderwidth=0,border=0,bg="#000000")
+    drinks_collection_img.place(x=30,y=52)
+    drinks_collection_btn = Button(goods, image=new_pic1,command=drinks_collection,border=0,borderwidth=0,bg="#000000",activebackground="#000000")
+    drinks_collection_btn.place(x=30,y=52)
+    my_drinks_collection = Label(item1,image="",bg="#000000")
 
     
-    def biscuitss():
-        my_biscuitss.config(image=new_pic6,bg="#000000",border=0,borderwidth=0)
+    def biscuits_collection():
+        my_biscuits_collection.config(image=new_pic6,bg="#000000",border=0,borderwidth=0)
     image6 = Image.open("public/Drinks.png")
     resized = image6.resize((100,85), Image.Resampling.LANCZOS)
     new_pic6 = ImageTk.PhotoImage(resized)
-    biscuitss_img = Label(goods, image=new_pic6,borderwidth=0,border=0,bg="#000000")
-    biscuitss_img.place(x=30,y=172)
-    biscuitss_btn = Button(goods, image=new_pic6,command=biscuitss,border=0,borderwidth=0,bg="#000000",activebackground="#000000")
-    biscuitss_btn.place(x=30,y=172)
-    my_biscuitss = Label(item2,image="",bg="#000000")
+    biscuits_collection_img = Label(goods, image=new_pic6,borderwidth=0,border=0,bg="#000000")
+    biscuits_collection_img.place(x=30,y=172)
+    biscuits_collection_btn = Button(goods, image=new_pic6,command=biscuits_collection,border=0,borderwidth=0,bg="#000000",activebackground="#000000")
+    biscuits_collection_btn.place(x=30,y=172)
+    my_biscuits_collection = Label(item2,image="",bg="#000000")
     
-    
-        
-    def Chipss():
-        my_chipss.config(image=new_pic11,bg="#000000",border=0,borderwidth=0)
+ 
+    def Chips_collection():
+        my_chips_collection.config(image=new_pic11,bg="#000000",border=0,borderwidth=0)
     image11 = Image.open("public/Chips.png")
     resized = image11.resize((100,85), Image.Resampling.LANCZOS)
     new_pic11 = ImageTk.PhotoImage(resized)
-    chipss_img = Label(goods, image=new_pic11,borderwidth=0,border=0,bg="#000000")
-    chipss_img.place(x=30,y=292)
-    chipss_btn = Button(goods, image=new_pic11,command=Chipss,border=0,borderwidth=0,bg="#000000",activebackground="#000000")
-    chipss_btn.place(x=30,y=292)
-    my_chipss = Label(item2,image="",bg="#000000")
+    chips_collection_img = Label(goods, image=new_pic11,borderwidth=0,border=0,bg="#000000")
+    chips_collection_img.place(x=30,y=292)
+    chips_collection_btn = Button(goods, image=new_pic11,command=Chips_collection,border=0,borderwidth=0,bg="#000000",activebackground="#000000")
+    chips_collection_btn.place(x=30,y=292)
+    my_chips_collection = Label(item2,image="",bg="#000000")
     
     
-    def Chocolatess():
+    def Chocolates_collections():
         my_chocolates.config(image=new_pic16,bg="#000000",border=0,borderwidth=0)
     image16 = Image.open("public/Chips.png")
     resized = image16.resize((100,85), Image.Resampling.LANCZOS)
     new_pic16 = ImageTk.PhotoImage(resized)
     chocolates_img = Label(goods, image=new_pic16,borderwidth=0,border=0,bg="#000000")
     chocolates_img.place(x=30,y=412)
-    chocolates_btn = Button(goods, image=new_pic16,command=Chocolatess,border=0,borderwidth=0,bg="#000000",activebackground="#000000")
+    chocolates_btn = Button(goods, image=new_pic16,command=Chocolates_collections,border=0,borderwidth=0,bg="#000000",activebackground="#000000")
     chocolates_btn.place(x=30,y=412)
     my_chocolates = Label(item2,image="",bg="#000000")
 
-    
-    
+
+    # clickable individual products
     def coke():
+        withdrawProduct("Drinks", "Coke")
         my_coke.config(image=new_pic2,bg="#000000",border=0,borderwidth=0)
     image2 = Image.open("public/Coke.png")
     resized = image2.resize((60,85), Image.Resampling.LANCZOS)
@@ -184,6 +117,7 @@ def products(main, vendingState):
     my_coke.place(x=10,y=10)
 
     def Fanta():
+        withdrawProduct("Drinks", "Fanta")
         my_Fanta.config(image=new_pic3,bg="#000000",border=0,borderwidth=0)
     image3 = Image.open("public/Fanta.png")
     resized = image3.resize((60,85), Image.Resampling.LANCZOS)
@@ -196,6 +130,7 @@ def products(main, vendingState):
     my_Fanta.place(x=10,y=10)
 
     def Sprite():
+        withdrawProduct("Drinks", "Sprite")
         my_Sprite.config(image=new_pic4,bg="#000000",border=0,borderwidth=0)
     image4 = Image.open("public/Sprite.png")
     resized = image4.resize((130,90), Image.Resampling.LANCZOS)
@@ -208,6 +143,7 @@ def products(main, vendingState):
     my_Sprite.place(x=10,y=10)
 
     def Pepsi():
+        withdrawProduct("Drinks", "Pepsi")
         my_Pepsi.config(image=new_pic5,bg="#000000",border=0,borderwidth=0)
     image5 = Image.open("public/Pepsi.png")
     resized = image5.resize((90,85), Image.Resampling.LANCZOS)
@@ -232,11 +168,7 @@ def products(main, vendingState):
     my_Bonbon = Label(item2,image="",bg="#000000")
     my_Bonbon.place(x=10,y=10)
 
-
-
     def Oreo():
-        checkout_product()
-
         my_Oreo.config(image=new_pic8,bg="#000000",border=0,borderwidth=0)
     image8 = Image.open("public/Coke.png")
     resized = image3.resize((60,85), Image.Resampling.LANCZOS)
@@ -428,80 +360,3 @@ def products(main, vendingState):
 
     mars = Label(goods,text="Mars",bg="#000000",fg="white")
     mars.place(x=502,y=500)
-    
-    
-    """
-    # TODO call rest in simlar patter 
-    def name(start, end, name ):
-        name_lable = Label(main, bg="#000000",fg="white")
-        name_lable.config(text=name)
-        name_lable.place(x=start,y=end)
-    
-    def price(start, end, name ):
-        price_lable = Label(main, bg="#000000",fg="white")
-        price_lable.config(text="Price: {}".format(name))
-        price_lable.place(x=start,y=end)
-    
-    def quantity(start, end, name ):
-        quantity_lable = Label(main, bg="#000000",fg="white")
-        quantity_lable.config(text="Quantity: {}".format(name))
-        quantity_lable.place(x=start,y=end)
-
-    fanta = Label(main,text="Fanta",bg="#000000",fg="white")
-    fanta.place(x=450,y=180)
-
-    sprite = Label(main,text="Sprite",bg="#000000",fg="white")
-    sprite.place(x=550,y=180)
-
-    slice = Label(main,text="Slice",bg="#000000",fg="white")
-    slice.place(x=650,y=180)
-
-    biscuits = Label(main, text="Biscuits",bg="#000000",fg="white")
-    biscuits.place(x=210,y=300)
-
-    bonbon = Label(main,text="Bonbon",bg="#000000",fg="white")
-    bonbon.place(x=340,y=300)
-
-    oreo = Label(main,text="Oreo",bg="#000000",fg="white")
-    oreo.place(x=450,y=300)
-
-    digestive = Label(main,text="Digestive",bg="#000000",fg="white")
-    digestive.place(x=540,y=300)
-
-    hide_and_sick = Label(main,text="Hide and Sick",bg="#000000",fg="white")
-    hide_and_sick.place(x=630,y=300)
-
-    chips = Label(main, text="Chips",bg="#000000",fg="white")
-    chips.place(x=210,y=420)
-
-    dorritos = Label(main,text="Dorritos",bg="#000000",fg="white")
-    dorritos.place(x=340,y=420)
-
-    lays = Label(main,text="Lays",bg="#000000",fg="white")
-    lays.place(x=450,y=420)
-
-    local_chips = Label(main,text="Local Chips",bg="#000000",fg="white")
-    local_chips.place(x=540,y=420)
-
-    uncle_chips = Label(main,text="Uncle Chips",bg="#000000",fg="white")
-    uncle_chips.place(x=640,y=420)
-
-    chocolates = Label(main, text="Chocolates",bg="#000000",fg="white")
-    chocolates.place(x=195,y=540)
-
-    snickers = Label(main,text="Snickers",bg="#000000",fg="white")
-    snickers.place(x=340,y=540)
-
-    twix = Label(main,text="Twix",bg="#000000",fg="white")
-    twix.place(x=450,y=540)
-
-
-    name(550, 540, productList['Chocolates']['Rafaello']["name"])
-    price(550, 560, productList['Chocolates']['Rafaello']["price"])
-    quantity(550, 580, productList['Chocolates']['Rafaello']["quantity"])
-
-    name(650, 540, productList['Chocolates']['Mars']["name"])
-    price(640, 560, productList['Chocolates']['Mars']["price"])
-    quantity(640, 580, productList['Chocolates']['Mars']["quantity"])
-
-    """
