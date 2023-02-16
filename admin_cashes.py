@@ -2,7 +2,7 @@ from tkinter import *
 import sqlite3
 import cash
 
-def record_of_cashes(main):
+def record_of_cashes(main, vendingState):
     '''
     @params: main as param
     added record button

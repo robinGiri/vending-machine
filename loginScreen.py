@@ -16,7 +16,7 @@ def login(main, vendingState):
         '''
 
         if vendingState["is_admin"]:
-            adminScreen.newWindow(main)
+            adminScreen.newWindow(main, vendingState)
         else:
             messagebox.showerror("error", "Please Login As Admin User")
     # sign up page
@@ -25,7 +25,7 @@ def login(main, vendingState):
         params: no params
         redirects to register UI
         '''
-        registerScreen.register(main, vendingState)
+        registerScreen.register(main)
     
     # log out of vending machine 
     def log_out():

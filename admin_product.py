@@ -2,18 +2,17 @@ from tkinter import *
 import sqlite3
 import product
 
-def record_of_chips(main, type):
+def record_of_product(new, type):
     '''
-    @params: main as param
+    @params: new as param
     added record button
     if clicked chips window will be displayed
     '''
 
-    frame4 = Frame(main, width=1700,height=800,bg="#000000")
+    frame4 = Frame(new, width=1700,height=800,bg="#000000")
     frame4.place(x=90, y=1)
-    listbox4 = Listbox(main, width=130, height=35,bg="#6A6161",fg="#FFFFFF")
+    listbox4 = Listbox(new, width=130, height=35,bg="#6A6161",fg="#FFFFFF")
     listbox4.place(x=90,y=60)
-
     def update_record_of_products(): 
         '''
         @params: no
@@ -21,12 +20,12 @@ def record_of_chips(main, type):
         if clicked update form appears
         '''
 
-        frame4 = Frame(main, width=250,height=200,bg="#141414")
+        frame4 = Frame(new, width=250,height=200,bg="#141414")
         frame4.place(x=900, y=60)
             
         def create_products_button():
             if type == "Drinks" :
-                product.add_drink(id.get(), name.get(), price.get(), quantity.get())  
+                product.add_drink(id.get(), name.get(), price.get(), quantity.get())
 
             if type == "Biscuits" :
                 product.add_Biscuit(id.get(), name.get(), price.get(), quantity.get())
@@ -37,11 +36,11 @@ def record_of_chips(main, type):
             if type == "Chips" :
                 product.add_chips(id.get(), name.get(), price.get(), quantity.get())
     
-            added_user = Frame(main, width=250,height=200,bg="#000000")
+            added_user = Frame(new, width=250,height=200,bg="#000000")
             added_user.place(x=900, y=60)   
             Label(added_user,text="{} Has Been Updated".format(type),font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=15,y=10)
             Label(added_user,text="Press Okey To Return Back To \n {} Info".format(type),font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=15,y=30)                             
-            Button(added_user,text="Update {} Again".format(type), command=record_of_chips,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
+            Button(added_user,text="Update {} Again".format(type),command=record_of_product,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
 
         def idd(usee):
             id.config(state=NORMAL)
@@ -84,7 +83,7 @@ def record_of_chips(main, type):
         if clicked create form appears
         '''            
                             
-        frame4 = Frame(main, width=250,height=200,bg="#141414")
+        frame4 = Frame(new, width=250,height=200,bg="#141414")
         frame4.place(x=900, y=60)
             
         def create_products_button(): 
@@ -100,11 +99,11 @@ def record_of_chips(main, type):
             if type == "Chips" :
                 product.add_chips(id.get(), name.get(), price.get(), quantity.get())                             
 
-            added_user = Frame(main, width=250,height=200,bg="#000000")
+            added_user = Frame(new, width=250,height=200,bg="#000000")
             added_user.place(x=900, y=60)   
             Label(added_user,text="{} Has Been Added".format(type),font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=15,y=10)
             Label(added_user,text="Press Okey To Return Back To \n {} Info".format(type),font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=15,y=30)                             
-            Button(added_user,text="Add {} Again".format(type),command=record_of_chips,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
+            Button(added_user,text="Add {} Again".format(type),command=record_of_product,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=90,y=160)
 
         def idd(usee):
             id.config(state=NORMAL)
@@ -150,7 +149,7 @@ def record_of_chips(main, type):
         try:
             
             if type == "Drinks" :
-                records = product.query_all_chips()       
+                records = product.query_all_drinks()       
 
             if type == "Biscuits" :
                 records = product.query_all_biscuits()       
@@ -176,7 +175,7 @@ def record_of_chips(main, type):
         if clicked records will be deleted
         '''
 
-        clear = Frame(main, width=250,height=200,bg="#141414")
+        clear = Frame(new, width=250,height=200,bg="#141414")
         clear.place(x=900, y=60)
         
         def delete_selected_products_record():
@@ -199,8 +198,8 @@ def record_of_chips(main, type):
 
                 show_products_record()
 
-            except sqlite3.Error as e:
-                print(e)
+            except :
+                print("An Error Occured")
 
         Label(clear,text="Delete The Selected Record",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=40,y=20)
         Button(clear, text="Delete Record",command=delete_selected_products_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=85,y=60)

@@ -1,16 +1,16 @@
 from tkinter import *
 import admin_user
 import admin_cashes
-import admin_chips
+import admin_product
 
-def newWindow(main):
+def newWindow(new, vendingState):
     '''
     @params: main
     added a new window
     if clicked admin pannel will show up
     '''
 
-    new = Toplevel(main)
+    new = Toplevel(new)
     new.state("zoomed")
     new.title("Vending Admin Pannel")
 
@@ -26,7 +26,7 @@ def newWindow(main):
         if clicked users window will be displayed
         '''
         admin_user.record_of_users(new)
-
+    
     def record_of_cashes():
         '''
         @params: no
@@ -34,7 +34,7 @@ def newWindow(main):
         if clicked cash window will be displayed
         '''
 
-        admin_cashes.record_of_cashes(new)        
+        admin_cashes.record_of_cashes(new, vendingState)        
 
     def record_of_drinks():
         '''
@@ -42,7 +42,7 @@ def newWindow(main):
         added drinks button
         if clicked drinks window appears
         '''
-        admin_chips.record_of_chips(new, "Drinks")
+        admin_product.record_of_product(new, "Drinks")
 
     def record_of_biscuits():
         '''
@@ -50,7 +50,7 @@ def newWindow(main):
         added record button
         if clicked biscuits window appear
         '''
-        admin_chips.record_of_chips(new, "Biscuits")
+        admin_product.record_of_product(new, "Biscuits")
 
     def record_of_chocolates(): 
         '''
@@ -59,7 +59,7 @@ def newWindow(main):
         if clicked chocolate window appears
         '''  
         print("chocolate")
-        admin_chips.record_of_chips(new, "Chocolate")
+        admin_product.record_of_product(new, "Chocolate")
 
     def record_of_chips():
         '''
@@ -67,7 +67,7 @@ def newWindow(main):
         added record button
         if clicked chips window will be displayed
         '''
-        admin_chips.record_of_chips(new, "Chips")
+        admin_product.record_of_product(new, "Chips")
 
 #   buttons on left site bar
     Button(frame, text="Users",command=record_of_users,padx=17,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=10,y=80)
