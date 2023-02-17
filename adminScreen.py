@@ -59,7 +59,7 @@ def newWindow(new, vendingState):
         if clicked chocolate window appears
         '''  
         print("chocolate")
-        admin_product.record_of_product(new, "Chocolate")
+        admin_product.record_of_product(new, "Chocolates")
 
     def record_of_chips():
         '''
