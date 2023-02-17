@@ -26,13 +26,33 @@ def products(main, vendingState):
                 if itemType == drink[1]:
                     product.update_drink(drink[0], drink[1], drink[2], drink[3]-1)
                     vendingState["input_currency"]=- drink[2]
+                    vendingState["expense_amount"]=+ drink[2]
+                    vendingState["amount_to_return"]=vendingState["input_currency"]-vendingState["expense_amount"]
         if productType == "Chips":
-            drinks = product.query_all_chips()
+            chips = product.query_all_chips()
             for chips in chips:
                 if itemType == chips[1]:
                     product.update_chips(chips[0], chips[1], chips[2], chips[3]-1)
                     vendingState["input_currency"]=- chips[2]
-        
+                    vendingState["expense_amount"]=+ chips[2]
+                    vendingState["amount_to_return"]=vendingState["input_currency"]-vendingState["expense_amount"]
+        if productType == "Biscuits":
+            biscuits = product.query_all_biscuits()
+            for biscuit in biscuits:
+                if itemType == biscuit[1]:
+                    product.update_chips(biscuit[0], biscuit[1], biscuit[2], biscuit[3]-1)
+                    vendingState["input_currency"]=- biscuit[2]
+                    vendingState["expense_amount"]=+ biscuit[2]
+                    vendingState["amount_to_return"]=vendingState["input_currency"]-vendingState["expense_amount"]
+        if productType == "Chocolates":
+            chocolates = product.query_all_chocolates()
+            for chocolate in chocolates:
+                if itemType == chocolate[1]:
+                    product.update_chips(chocolate[0], chocolate[1], chocolate[2], chocolate[3]-1)
+                    vendingState["input_currency"]=- chocolate[2]
+                    vendingState["expense_amount"]=+ chocolate[2]
+                    vendingState["amount_to_return"]=vendingState["input_currency"]-vendingState["expense_amount"]
+                    
 
     goods = Frame(main, width=600,height=570,bg="#000000")
     goods.place(x=135,y=40)
@@ -157,6 +177,7 @@ def products(main, vendingState):
 
 
     def Bonbon():
+        withdrawProduct("Biscuits","Bourbon")
         my_Bonbon.config(image=new_pic7,bg="#000000",border=0,borderwidth=0)
     image7 = Image.open("public/Coke.png")
     resized = image7.resize((60,85), Image.Resampling.LANCZOS)
