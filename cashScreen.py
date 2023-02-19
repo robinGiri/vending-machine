@@ -86,8 +86,8 @@ def cash(main, vendingState):
 
         add_currency(100)
         my_Hundred.config(image=new_pic24,bg="#000000",border=0,borderwidth=0)
-    image2new_pic24 = Image.open("public/Hundred.png")
-    resized = image2new_pic24.resize((221,92), Image.Resampling.LANCZOS)
+    image2new_pic24 = Image.open("public/hundred.jpg")
+    resized = image2new_pic24.resize((221,120), Image.Resampling.LANCZOS)
     new_pic24 = ImageTk.PhotoImage(resized)
     Hundred_img = Label(frame, image=new_pic24,borderwidth=0,border=0,bg="#000000")
     Hundred_img.place(x=305,y=317)

@@ -25,7 +25,7 @@ def login(main, vendingState):
         params: no params
         redirects to register UI
         '''
-        registerScreen.register(main)
+        registerScreen.register(main, vendingState)
     
     # log out of vending machine 
     def log_out():
