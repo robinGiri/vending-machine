@@ -40,7 +40,7 @@ def cash(main, vendingState):
     ten_btn = Button(frame, image=new_pic21,command=ten,border=0,borderwidth=0,bg="#000000",activebackground="#000000")
     ten_btn.place(x=350,y=30)
     my_ten = Label(frame,image="",bg="#000000")
-    
+   
     def Twenty():
         '''
         @params: no
@@ -98,7 +98,7 @@ def cash(main, vendingState):
     frame1 = Frame(frame, width=227,height=387,bg="#D9D9D9")
     frame1.place(x=30, y=20)
 
-    Label(frame,text="Cash Output",font="bold",bg="#D9D9D9").place(x=60,y=50)
+    Label(frame,text="Cash Output",font="bold",bg="#D9D9D9").place(x=85,y=50)
 
     frame2 = Frame(frame, width=207,height=99,bg="#6A6161")
     frame2.place(x=40, y=100)
