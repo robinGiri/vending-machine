@@ -30,7 +30,7 @@ def record_of_product(new, type):
             if type == "Biscuits" :
                 product.add_Biscuit(id.get(), name.get(), price.get(), quantity.get())
 
-            if type == "Chocolate" :
+            if type == "Chocolates" :
                 product.add_chocolate(id.get(), name.get(), price.get(), quantity.get())                       
 
             if type == "Chips" :
@@ -93,7 +93,7 @@ def record_of_product(new, type):
             if type == "Biscuits" :
                 product.add_Biscuit(id.get(), name.get(), price.get(), quantity.get())
 
-            if type == "Chocolate" :
+            if type == "Chocolates" :
                 product.add_chocolate(id.get(), name.get(), price.get(), quantity.get())                       
 
             if type == "Chips" :
@@ -154,7 +154,7 @@ def record_of_product(new, type):
             if type == "Biscuits" :
                 records = product.query_all_biscuits()       
 
-            if type == "Chocolate" :
+            if type == "Chocolates" :
                 records = product.query_all_chocolates()       
 
             if type == "Chips" :
@@ -190,7 +190,7 @@ def record_of_product(new, type):
                 if type == "Biscuits" :
                     product.delete_biscuit(user_id)    
 
-                if type == "Chocolate" :
+                if type == "Chocolates" :
                     product.delete_chocolate(user_id)    
 
                 if type == "Chips" :

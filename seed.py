@@ -27,25 +27,25 @@ productList = {
     },
     'Biscuits': {
         'Bourbon' : {
-            'id': 1,
+            'id': 5,
             'name': 'Bourbon',
             "price":100,
             "quantity":5
         },
         'Oreo': {
-            'id': 2,
+            'id': 6,
             'name': 'Oreo',
             "price":100,
             "quantity":5
         },
         'Digestive': {
-            'id': 3,
+            'id': 7,
             'name': 'Digestive',
             "price":100,
             "quantity":5 
         },
         'Hide&Seek': {
-            'id': 4,
+            'id': 8,
             'name': 'Hide&Seek',
             "price":100,
             "quantity":5 
@@ -53,25 +53,25 @@ productList = {
     },
     'Chips': {
         'Dorritos': {
-            'id': 1,
+            'id': 9,
             'name': 'Chips',
             "price":80,
             "quantity":5
         },
         'Lays': {
-            'id': 2,
+            'id': 10,
             'name': 'Lays',
             "price":80,
             "quantity":5
         },
         'Local-Chips': {
-            'id': 3,
+            'id': 11,
             'name': 'Local-Chips',
             "price":80,
             "quantity":5
         },
         'Uncle Chips': {
-            'id': 4,
+            'id': 12,
             'name': 'Uncle Chips',
             "price":80,
             "quantity":5
@@ -79,25 +79,25 @@ productList = {
     },
     'Chocolates': {
         'Snickers': {
-            'id': 1,
+            'id': 13,
             'name': 'Snickers',
             "price":70,
             "quantity":5
         },
         'Twix': {
-            'id': 2,
+            'id': 14,
             'name': 'Twix',
             "price":70,
             "quantity":5
         },
         'Rafaello': {
-            'id': 3,
+            'id': 15,
             'name': 'Rafaello',
             "price":70,
             "quantity":5
         },
         'Mars': {
-            'id': 4,
+            'id': 16,
             'name': 'Mars',
             "price":70,
             "quantity":5
