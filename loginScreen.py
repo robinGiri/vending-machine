@@ -72,10 +72,7 @@ def login(main, vendingState):
             vendingState["is_admin"] = isAdmin
             frame = Frame(main, width=600,height=285,bg="#000000")
             frame.place(x=765, y=40)
-            # TODO add vending expense amount , input currency and return amount.
-
-
-            
+                       
             button = Button(frame, text= "Logout",border=4,bg="#00FF7F",pady=2,command=log_out,activebackground="#000000",activeforeground="#FFFFFF")
             button.place(x=530, y=250)
             button = Button(frame, text= "Go To Admin",border=4,bg="#00FF7F",pady=2,command=go_to_admin,activebackground="#000000",activeforeground="#FFFFFF")
