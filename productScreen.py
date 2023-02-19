@@ -5,7 +5,7 @@ import product
 
 def products(main, vendingState):
     '''
-    @params: main and vanding state are params
+    @params: main and vending state are params
     we are making main items clickable
     after clicking delete quantity from DB
     and reduce input currency
@@ -16,7 +16,7 @@ def products(main, vendingState):
             messagebox.showerror("error", "Please Login First")
             return
         '''
-        @param: ptoductType
+        @param: productType
         reduce currency from vending store
         delete product from DB
         '''
