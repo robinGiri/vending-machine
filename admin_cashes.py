@@ -31,7 +31,7 @@ def record_of_cashes(main, vendingState):
             if clicked create cash in DB
             '''
 
-            cash.add_cash(ID.get(), Value.get(), Quantity.get())                
+            cash.update_cash(ID.get(), Value.get(), Quantity.get())                
 
             added_user = Frame(main, width=250,height=200,bg="#000000")
             added_user.place(x=900, y=60)   

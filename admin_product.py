@@ -25,16 +25,16 @@ def record_of_product(new, type):
             
         def create_products_button():
             if type == "Drinks" :
-                product.add_drink(id.get(), name.get(), price.get(), quantity.get())
+                product.update_drink(id.get(), name.get(), price.get(), quantity.get())
 
             if type == "Biscuits" :
-                product.add_Biscuit(id.get(), name.get(), price.get(), quantity.get())
+                product.update_biscuit(id.get(), name.get(), price.get(), quantity.get())
 
             if type == "Chocolates" :
-                product.add_chocolate(id.get(), name.get(), price.get(), quantity.get())                       
+                product.update_chocolate(id.get(), name.get(), price.get(), quantity.get())                       
 
             if type == "Chips" :
-                product.add_chips(id.get(), name.get(), price.get(), quantity.get())
+                product.update_chips(id.get(), name.get(), price.get(), quantity.get())
     
             added_user = Frame(new, width=250,height=200,bg="#000000")
             added_user.place(x=900, y=60)   
@@ -204,7 +204,7 @@ def record_of_product(new, type):
         Label(clear,text="Delete The Selected Record",font=("Arial",10,"bold"),fg="white",bg="#000000").place(x=40,y=20)
         Button(clear, text="Delete Record",command=delete_selected_products_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=85,y=60)
 
-    Button(frame4, text="Create Record Of {}".format(type),command=create_record_of_products,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=95,y=25)        
-    Button(frame4, text="Show {} Records".format(type),command=show_products_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=247,y=25)
-    Button(frame4, text="Update {} Record".format(type),command=update_record_of_products,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=385,y=25)
-    Button(frame4, text="Delete {} Record".format(type),command=delete,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=527,y=25)
+    Button(frame4, text="Create Record Of {}".format(type),command=create_record_of_products,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=30,y=25)        
+    Button(frame4, text="Show {} Records".format(type),command=show_products_record,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=230,y=25)
+    Button(frame4, text="Update {} Record".format(type),command=update_record_of_products,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=410,y=25)
+    Button(frame4, text="Delete {} Record".format(type),command=delete,border=4,bg="#00FF7F",pady=2,activebackground="#000000",activeforeground="#FFFFFF").place(x=600,y=25)
