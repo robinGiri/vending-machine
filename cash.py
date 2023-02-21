@@ -79,8 +79,8 @@ def update_cash(ID, Value, Quantity):
         c = conn.cursor()
 
         c.execute(
-            "update Cash set ID=? Value=?, Quantity=?",
-            (ID, Value, Quantity))
+            "update Cash set Value=?, Quantity=? WHERE ID=?",
+            (Value, Quantity, ID))
 
         conn.commit()
     except sqlite3.Error as e:

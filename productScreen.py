@@ -10,7 +10,7 @@ def products(main, vendingState):
     after clicking delete quantity from DB
     and reduce input currency
     '''
-
+    
     def withdrawProduct(productType, itemType):
         if vendingState["is_authenticated"] == False :
             messagebox.showerror("error", "Please Login First")
@@ -61,7 +61,7 @@ def products(main, vendingState):
                     vendingState["expense_amount"]+= my_chocolate[2]
                     vendingState["amount_to_return"]=vendingState["input_currency"]-vendingState["expense_amount"]
                     update_vending_expense_amount()
-                    
+
 
     goods = Frame(main, width=600,height=570,bg="#000000")
     goods.place(x=135,y=40)

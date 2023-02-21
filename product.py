@@ -123,8 +123,8 @@ def update_drink(ID,Name,Price,Quantity):
         c = conn.cursor() 
 
         c.execute(
-            "UPDATE Drinks SET ID = ?,Name = ? , Price = ?, Quantity =? ",
-            (ID,Name,Price,Quantity))
+            "UPDATE Drinks SET Name = ? , Price = ?, Quantity =? WHERE ID=?",
+            (Name, Price, Quantity, ID))
         conn.commit()
     except sqlite3.Error as e:
         print(e)
@@ -201,7 +201,7 @@ def delete_chips(ID):
         conn.close()  
 
 
-def update_chips(ID,Name,Price,Quantity):
+def update_chips(ID, Name, Price, Quantity):
     '''
     @params: ID, Name, Price, Quantity
     updates values of chips that has been selected
@@ -212,14 +212,14 @@ def update_chips(ID,Name,Price,Quantity):
         c = conn.cursor() 
 
         c.execute(
-            "update Chips set ID=?, Name=?, Price=?, Quantity=?",
-            (ID,Name,Price,Quantity))
+            "UPDATE Chips SET Name=?, Price=?, Quantity=? WHERE ID=?",
+            (Name, Price, Quantity, ID))
         conn.commit()
     except sqlite3.Error as e:
         print(e)
 
     finally:
-        conn.close()  
+        conn.close()
 
 
 # Chocolates
@@ -300,8 +300,8 @@ def update_chocolate(ID,Name,Price,Quantity):
         c = conn.cursor() 
 
         c.execute(
-            "update Chocolates set ID=?,Name=?, Price=?, Quantity=?",
-            (ID,Name,Price,Quantity))
+            "update Chocolates set Name=?, Price=?, Quantity=? WHERE ID = ?" ,
+            (Name, Price, Quantity, ID))
         conn.commit()
     except sqlite3.Error as e:
         print(e)
@@ -388,8 +388,8 @@ def update_biscuit(ID,Name,Price,Quantity):
         c = conn.cursor() 
 
         c.execute(
-            "update Biscuits set ID=?, Name=?, Price=?, Quantity=?",
-            (ID,Name,Price,Quantity))
+            "update Biscuits set Name=?, Price=?, Quantity=? WHERE ID=?",
+            (Name, Price, Quantity, ID))
         conn.commit()
     except sqlite3.Error as e:
         print(e)
