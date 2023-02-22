@@ -13,6 +13,8 @@ def newWindow(new, vendingState):
     new = Toplevel(new)
     new.state("zoomed")
     new.title("Vending Admin Pannel")
+    photo = PhotoImage(file = "public/vending.png")
+    new.iconphoto(False, photo)
 
     frame = Frame(new, width=1700,height=800,bg="#000000")
     frame.place(x=1, y=1)
