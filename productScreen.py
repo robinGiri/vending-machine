@@ -22,8 +22,8 @@ def products(main, vendingState):
         vendingState["amount_to_return"]=vendingState["input_currency"]-vendingState["expense_amount"]
         first = Frame(good_frame, bg="#6A6161",height=50,width=560)
         first.place(x=1,y=1)
-        Label(first, text="Your total amount is Rs. {}".format(vendingState["expense_amount"]),fg="#00FF7F", bg="#6A6161",font=5).place(x=1,y=5)
-        Label(first, text="Your remaning amount is Rs. {}".format(vendingState["amount_to_return"]),fg="#00FF7F", bg="#6A6161",font=5).place(x=1,y=20) 
+        Label(first, text="Your total amount is Rs. {}".format(vendingState["expense_amount"]),fg="#00FF7F", bg="#6A6161").place(x=1,y=5)
+        Label(first, text="Your remaning amount is Rs. {}".format(vendingState["amount_to_return"]),fg="#00FF7F", bg="#6A6161").place(x=1,y=20) 
         
     def checkAuthAndCurrency(limitOfSelectedItem, itemType):
         '''
@@ -87,18 +87,20 @@ def products(main, vendingState):
 
     # clickable individual products
     def coke():
+        
         if checkAuthAndCurrency(vendingState["no_of_drink_bought"], 'Drink'):
             drinks = product.query_all_drinks()         
             for drink in drinks:
                 my_drink = list(drink)
                 if "Coke" == my_drink[1]:
-                    if checkWeHaveEnoughtDrinks(my_drink[3], "Coke", my_drink[2]):
+                    if checkWeHaveEnoughtDrinks(my_drink[3], "Coke", my_drink[2]):                        
                         vendingState["no_of_drink_bought"] -= 1
                         update_vending_expense_amount(my_drink[2])
                         product.update_drink(my_drink[0], my_drink[1], my_drink[2], my_drink[3]-1)
-                        my_coke.config(image=new_pic2,bg="#000000",border=0,borderwidth=0)
                         my_coke = Label(item1,image="",bg="#000000")
                         my_coke.place(x=10,y=10)
+                        
+        my_coke.config(image=new_pic2,bg="#000000",border=0,borderwidth=0)                        
     image2 = Image.open("public/Coke.png")
     resized = image2.resize((60,85), Image.Resampling.LANCZOS)
     new_pic2 = ImageTk.PhotoImage(resized)
@@ -117,9 +119,9 @@ def products(main, vendingState):
                         vendingState["no_of_drink_bought"] -= 1
                         update_vending_expense_amount(my_drink[2])
                         product.update_drink(my_drink[0], my_drink[1], my_drink[2], my_drink[3]-1)
-                        my_Fanta.config(image=new_pic3,bg="#000000",border=0,borderwidth=0)
                         my_Fanta = Label(item1,image="",bg="#000000")
                         my_Fanta.place(x=10,y=10)
+        my_Fanta.config(image=new_pic3,bg="#000000",border=0,borderwidth=0)                        
     image3 = Image.open("public/Fanta.png")
     resized = image3.resize((60,85), Image.Resampling.LANCZOS)
     new_pic3 = ImageTk.PhotoImage(resized)
@@ -138,10 +140,9 @@ def products(main, vendingState):
                         vendingState["no_of_drink_bought"] -= 1
                         update_vending_expense_amount(my_drink[2])
                         product.update_drink(my_drink[0], my_drink[1], my_drink[2], my_drink[3]-1)
-                        my_Sprite.config(image=new_pic4,bg="#000000",border=0,borderwidth=0)
                         my_Sprite = Label(item1,image="",bg="#000000")
                         my_Sprite.place(x=10,y=10)
-
+        my_Sprite.config(image=new_pic4,bg="#000000",border=0,borderwidth=0)
     image4 = Image.open("public/Sprite.png")
     resized = image4.resize((130,90), Image.Resampling.LANCZOS)
     new_pic4 = ImageTk.PhotoImage(resized)
@@ -160,10 +161,9 @@ def products(main, vendingState):
                         vendingState["no_of_drink_bought"] -= 1
                         update_vending_expense_amount(my_drink[2])
                         product.update_drink(my_drink[0], my_drink[1], my_drink[2], my_drink[3]-1)
-                        my_Pepsi.config(image=new_pic5,bg="#000000",border=0,borderwidth=0)
                         my_Pepsi = Label(item1,image="",bg="#000000")
                         my_Pepsi.place(x=10,y=10)
-
+        my_Pepsi.config(image=new_pic5,bg="#000000",border=0,borderwidth=0)
     image5 = Image.open("public/Pepsi.png")
     resized = image5.resize((90,85), Image.Resampling.LANCZOS)
     new_pic5 = ImageTk.PhotoImage(resized)
@@ -173,7 +173,7 @@ def products(main, vendingState):
     Pepsi_btn.place(x=470,y=20)
 
 
-    def Bonbon():
+    def Bourbon():
         if checkAuthAndCurrency(vendingState["no_of_biscut_bought"], 'biscuit'):
             biscuits = product.query_all_biscuits()         
             for biscuit in biscuits:
@@ -183,16 +183,15 @@ def products(main, vendingState):
                         vendingState["no_of_biscut_bought"] -= 1
                         update_vending_expense_amount(my_biscuit[2])
                         product.update_biscuit(my_biscuit[0], my_biscuit[1], my_biscuit[2], my_biscuit[3]-1)
-                        my_Bonbon.config(image=new_pic7,bg="#000000",border=0,borderwidth=0)
                         my_Bonbon = Label(item2,image="",bg="#000000")
                         my_Bonbon.place(x=10,y=10)
-
+        my_Bonbon.config(image=new_pic7,bg="#000000",border=0,borderwidth=0)
     image7 = Image.open("public/Bornbon.png")
     resized = image7.resize((80,85), Image.Resampling.LANCZOS)
     new_pic7 = ImageTk.PhotoImage(resized)
     Bonbon_img = Label(goods, image=new_pic7,borderwidth=0,border=0,bg="#000000")
     Bonbon_img.place(x=40,y=145)
-    Bonbon_btn = Button(goods, image=new_pic7,command=Bonbon,border=0,borderwidth=0,bg="#000000",activebackground="#000000")
+    Bonbon_btn = Button(goods, image=new_pic7,command=Bourbon,border=0,borderwidth=0,bg="#000000",activebackground="#000000")
     Bonbon_btn.place(x=40,y=145)
 
     def Oreo():
@@ -205,10 +204,9 @@ def products(main, vendingState):
                         vendingState["no_of_biscut_bought"] -= 1
                         update_vending_expense_amount(my_biscuit[2])
                         product.update_biscuit(my_biscuit[0], my_biscuit[1], my_biscuit[2], my_biscuit[3]-1)
-                        my_Oreo.config(image=new_pic8,bg="#000000",border=0,borderwidth=0)
                         my_Oreo = Label(item2,image="",bg="#000000")
                         my_Oreo.place(x=10,y=10)
-
+        my_Oreo.config(image=new_pic8,bg="#000000",border=0,borderwidth=0)
     image8 = Image.open("public/Oreo.png")
     resized = image8.resize((120,85), Image.Resampling.LANCZOS)
     new_pic8 = ImageTk.PhotoImage(resized)
@@ -227,9 +225,9 @@ def products(main, vendingState):
                         vendingState["no_of_biscut_bought"] -= 1
                         update_vending_expense_amount(my_biscuit[2])
                         product.update_biscuit(my_biscuit[0], my_biscuit[1], my_biscuit[2], my_biscuit[3]-1)
-                        my_Digestive.config(image=new_pic9,bg="#000000",border=0,borderwidth=0)
                         my_Digestive = Label(item2,image="",bg="#000000")
                         my_Digestive.place(x=10,y=10)
+        my_Digestive.config(image=new_pic9,bg="#000000",border=0,borderwidth=0)
     image9 = Image.open("public/Digestive.png")
     resized = image9.resize((100,85), Image.Resampling.LANCZOS)
     new_pic9 = ImageTk.PhotoImage(resized)
@@ -248,9 +246,9 @@ def products(main, vendingState):
                         vendingState["no_of_biscut_bought"] -= 1
                         update_vending_expense_amount(my_biscuit[2])
                         product.update_biscuit(my_biscuit[0], my_biscuit[1], my_biscuit[2], my_biscuit[3]-1)
-                        my_Hide_And_Seek.config(image=new_pic10,bg="#000000",border=0,borderwidth=0)
                         my_Hide_And_Seek = Label(item2,image="",bg="#000000")
                         my_Hide_And_Seek.place(x=10,y=10)
+        my_Hide_And_Seek.config(image=new_pic10,bg="#000000",border=0,borderwidth=0)
     image10 = Image.open("public/Hide_And_Seek.png")
     resized = image10.resize((100,85), Image.Resampling.LANCZOS)
     new_pic10 = ImageTk.PhotoImage(resized)
@@ -269,9 +267,9 @@ def products(main, vendingState):
                         vendingState["no_of_chips_bought"] -= 1
                         update_vending_expense_amount(my_chip[2])
                         product.update_biscuit(my_chip[0], my_chip[1], my_chip[2], my_chip[3]-1)
-                        Dorritos_btn.config(image=new_pic12,bg="#000000",border=0,borderwidth=0)
-                        Dorritos_btn = Label(item2,image="",bg="#000000")
+                        Dorritos_btn = Label(item3,image="",bg="#000000")
                         Dorritos_btn.place(x=10,y=10)
+        Dorritos_btn.config(image=new_pic12,bg="#000000",border=0,borderwidth=0)
     image12 = Image.open("public/Dorritos.png")
     resized = image12.resize((80,85), Image.Resampling.LANCZOS)
     new_pic12 = ImageTk.PhotoImage(resized)
@@ -290,9 +288,9 @@ def products(main, vendingState):
                         vendingState["no_of_chips_bought"] -= 1
                         update_vending_expense_amount(my_chip[2])
                         product.update_chips(my_chip[0], my_chip[1], my_chip[2], my_chip[3]-1)
-                        my_Lays.config(image=new_pic13,bg="#000000",border=0,borderwidth=0)
                         my_Lays = Label(item3,image="",bg="#000000")
                         my_Lays.place(x=1,y=10)
+        my_Lays.config(image=new_pic13,bg="#000000",border=0,borderwidth=0)
     image13 = Image.open("public/Lays.png")
     resized = image13.resize((120,85), Image.Resampling.LANCZOS)
     new_pic13 = ImageTk.PhotoImage(resized)
@@ -313,9 +311,9 @@ def products(main, vendingState):
                         vendingState["no_of_chips_bought"] -= 1
                         update_vending_expense_amount(my_chip[2])
                         product.update_chips(my_chip[0], my_chip[1], my_chip[2], my_chip[3]-1)
-                        my_Local_Chips.config(image=new_pic14,bg="#000000",border=0,borderwidth=0)
                         my_Local_Chips = Label(item3,image="",bg="#000000")
                         my_Local_Chips.place(x=1,y=10)
+        my_Local_Chips.config(image=new_pic14,bg="#000000",border=0,borderwidth=0)
 
     image14 = Image.open("public/Local_Chips.png")
     resized = image14.resize((80,100), Image.Resampling.LANCZOS)
@@ -335,9 +333,9 @@ def products(main, vendingState):
                         vendingState["no_of_chips_bought"] -= 1
                         update_vending_expense_amount(my_chip[2])
                         product.update_chips(my_chip[0], my_chip[1], my_chip[2], my_chip[3]-1)
-                        my_Uncle_Chips.config(image=new_pic15,bg="#000000",border=0,borderwidth=0)
                         my_Uncle_Chips = Label(item3,image="",bg="#000000")
                         my_Uncle_Chips.place(x=1,y=10)
+        my_Uncle_Chips.config(image=new_pic15,bg="#000000",border=0,borderwidth=0)
 
     image15 = Image.open("public/Uncle_Chips.png")
     resized = image15.resize((80,85), Image.Resampling.LANCZOS)
@@ -357,9 +355,9 @@ def products(main, vendingState):
                         vendingState["no_of_chocolate_bought"] -= 1
                         update_vending_expense_amount(my_chocolate[2])
                         product.update_chips(my_chocolate[0], my_chocolate[1], my_chocolate[2], my_chocolate[3]-1)
-                        my_Snickers.config(image=new_pic17,bg="#000000",border=0,borderwidth=0)
                         my_Snickers = Label(item4,image="",bg="#000000")
                         my_Snickers.place(x=1,y=10)
+        my_Snickers.config(image=new_pic17,bg="#000000",border=0,borderwidth=0)
 
     image17 = Image.open("public/Snickers.png")
     resized = image17.resize((120,85), Image.Resampling.LANCZOS)
@@ -379,9 +377,9 @@ def products(main, vendingState):
                         vendingState["no_of_chocolate_bought"] -= 1
                         update_vending_expense_amount(my_chocolate[2])
                         product.update_chips(my_chocolate[0], my_chocolate[1], my_chocolate[2], my_chocolate[3]-1)
-                        my_Twix.config(image=new_pic18,bg="#000000",border=0,borderwidth=0)
                         my_Twix = Label(item4,image="",bg="#000000")
                         my_Twix.place(x=1,y=10)
+        my_Twix.config(image=new_pic18,bg="#000000",border=0,borderwidth=0)
 
     image18 = Image.open("public/Twix.png")
     resized = image18.resize((120,85), Image.Resampling.LANCZOS)
@@ -401,9 +399,9 @@ def products(main, vendingState):
                         vendingState["no_of_chocolate_bought"] -= 1
                         update_vending_expense_amount(my_chocolate[2])
                         product.update_chips(my_chocolate[0], my_chocolate[1], my_chocolate[2], my_chocolate[3]-1)
-                        my_Rafello.config(image=new_pic19,bg="#000000",border=0,borderwidth=0)
                         my_Rafello = Label(item4,image="",bg="#000000")
                         my_Rafello.place(x=1,y=10)
+        my_Rafello.config(image=new_pic19,bg="#000000",border=0,borderwidth=0)
 
     image19 = Image.open("public/Rafello.png")
     resized = image19.resize((120,85), Image.Resampling.LANCZOS)
@@ -423,9 +421,9 @@ def products(main, vendingState):
                         vendingState["no_of_chocolate_bought"] -= 1
                         update_vending_expense_amount(my_chocolate[2])
                         product.update_chips(my_chocolate[0], my_chocolate[1], my_chocolate[2], my_chocolate[3]-1)
-                        my_Mars.config(image=new_pic20,bg="#000000",border=0,borderwidth=0)
                         my_Mars = Label(item4,image="",bg="#000000")
                         my_Mars.place(x=1,y=10)
+        my_Mars.config(image=new_pic20,bg="#000000",border=0,borderwidth=0)
 
     image20 = Image.open("public/Mars.png")
     resized = image20.resize((128,85), Image.Resampling.LANCZOS)
