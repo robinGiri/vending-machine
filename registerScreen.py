@@ -61,7 +61,7 @@ def register(main, vendingState):
             return
 
         # check if they haven't change anything and just clicked for sign up
-        elif "email@softwatica.edu.np" in email.get() :
+        elif "email@softwarica.edu.np" in email.get() :
             messagebox.showerror("error", "Choose Email")
             return
 
@@ -106,7 +106,7 @@ def register(main, vendingState):
     # email input
     email = Entry(frame, width=40)
     email.place(x=180, y=110, height=30)
-    email.insert(0,"   email@softwatica.edu.np")
+    email.insert(0,"   email@softwarica.edu.np")
     email.bind("<Button-1>",email_imput)
 
     # password input
