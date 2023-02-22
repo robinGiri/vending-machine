@@ -10,6 +10,9 @@ main = Tk()
 main.state("zoomed")
 main.config(bg="#141414")
 
+'''Added vending icon'''
+photo = PhotoImage(file = "public/vending.png")
+main.iconphoto(False, photo)
 '''
 initial state of vending machine where
 1. authenticated is false initially and gets updated from login screen 
