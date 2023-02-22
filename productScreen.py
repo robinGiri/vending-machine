@@ -10,15 +10,19 @@ def products(main, vendingState):
     after clicking delete quantity from DB
     and reduce input currency
     '''
-    
+
     def withdrawProduct(productType, itemType):
         if vendingState["is_authenticated"] == False :
             messagebox.showerror("error", "Please Login First")
             return
+        if vendingState["input_currency"] == 0 :
+            messagebox.showerror("error", "Please Load Cash First")
+            return
         def update_vending_expense_amount():
             first = Frame(good_frame, bg="#6A6161",height=50,width=560)
             first.place(x=1,y=1)
-            Label(first, text="Your total amount is Rs. {}".format(vendingState["expense_amount"]),fg="#00FF7F", bg="#6A6161",font=5).place(x=1,y=10)                             
+            Label(first, text="Your total amount is Rs. {}".format(vendingState["expense_amount"]),fg="#00FF7F", bg="#6A6161",font=5).place(x=1,y=5)
+            Label(first, text="Your remaning amount is Rs. {}".format(vendingState["amount_to_return"]),fg="#00FF7F", bg="#6A6161",font=5).place(x=1,y=20)                                                        
                    
         '''
         @param: productType
@@ -30,49 +34,77 @@ def products(main, vendingState):
             for drink in drinks:
                 my_drink = list(drink)
                 if itemType == my_drink[1]:
-                    product.update_drink(my_drink[0], my_drink[1], my_drink[2], my_drink[3]-1)
-                    vendingState["expense_amount"] += my_drink[2]
-                    vendingState["amount_to_return"]=vendingState["input_currency"]-vendingState["expense_amount"]
-                    update_vending_expense_amount()
+                    if  my_drink[3] < 1 :
+                        messagebox.showerror("error", "Sorry, We are out of Drink")
+                    else:
+                        if vendingState["input_currency"]-vendingState["expense_amount"] <= 0:
+                            messagebox.showerror("error", "You Don't Have Enough Balance To  Buy, Load cash First")
+                            return
+                        vendingState["expense_amount"] += my_drink[2]
+                        vendingState["amount_to_return"]=vendingState["input_currency"]-vendingState["expense_amount"]
+                        vendingState["no_of_drink_bought"] -= 1
+                        update_vending_expense_amount()
+                        product.update_drink(my_drink[0], my_drink[1], my_drink[2], my_drink[3]-1)
+
         if productType == "Chips":
             chips = product.query_all_chips()
             for chip in chips:
                 my_chip = list(chip)
                 if itemType == my_chip[1]:
-                    product.update_chips(my_chip[0], my_chip[1], my_chip[2], my_chip[3]-1)
-                    vendingState["expense_amount"] += my_chip[2]
-                    vendingState["amount_to_return"]=vendingState["input_currency"]-vendingState["expense_amount"]
-                    update_vending_expense_amount()
+                    if  my_chip[3] < 1 :
+                        messagebox.showerror("error", "Sorry,  We are out of Chip")
+                    else:
+                        if vendingState["input_currency"]-vendingState["expense_amount"] <= 0:
+                            messagebox.showerror("error", "You Don't Have Enough Balance To  Buy, Load cash First")
+                            return
+                        vendingState["expense_amount"] += my_chip[2]
+                        vendingState["amount_to_return"]=vendingState["input_currency"]-vendingState["expense_amount"]
+                        vendingState["no_of_chips_bought"] -= 1
+                        update_vending_expense_amount()
+                        product.update_chips(my_chip[0], my_chip[1], my_chip[2], my_chip[3]-1)
+
         if productType == "Biscuits":
             biscuits = product.query_all_biscuits()
             for biscuit in biscuits:
                 my_biscuit = list(biscuit)
                 if itemType == my_biscuit[1]:
-                    product.update_chips(my_biscuit[0], my_biscuit[1], my_biscuit[2], my_biscuit[3]-1)
-                    vendingState["expense_amount"] += my_biscuit[2]
-                    vendingState["amount_to_return"]=vendingState["input_currency"]-vendingState["expense_amount"]
-                    update_vending_expense_amount()
+                    if  my_biscuit[3] < 1 :
+                        messagebox.showerror("error", "Sorry,  We are out of Biscuit")
+                    else:
+                        if vendingState["input_currency"]-vendingState["expense_amount"] <= 0:
+                            messagebox.showerror("error", "You Don't Have Enough Balance To  Buy, Load cash First")
+                            return
+                        vendingState["expense_amount"] += my_biscuit[2]
+                        vendingState["amount_to_return"]=vendingState["input_currency"]-vendingState["expense_amount"]
+                        vendingState["no_of_biscut_bought"] -= 1
+                        update_vending_expense_amount()
+                        product.update_chips(my_biscuit[0], my_biscuit[1], my_biscuit[2], my_biscuit[3]-1)
         if productType == "Chocolates":
             chocolates = product.query_all_chocolates()
             for chocolate in chocolates:
                 my_chocolate = list(chocolate)
                 if itemType == my_chocolate[1]:
-                    product.update_chips(my_chocolate[0], my_chocolate[1], my_chocolate[2], my_chocolate[3]-1)
-                    vendingState["expense_amount"]+= my_chocolate[2]
-                    vendingState["amount_to_return"]=vendingState["input_currency"]-vendingState["expense_amount"]
-                    update_vending_expense_amount()
-
-
+                    if  my_chocolate[3] < 1 :
+                        messagebox.showerror("error", "Sorry,  We are out of Chocolate")
+                    else:
+                        if vendingState["input_currency"]-vendingState["expense_amount"] <= 0:
+                            messagebox.showerror("error", "You Don't Have Enough Balance To  Buy, Load cash First")
+                            return
+                        vendingState["expense_amount"] += my_chocolate[2]
+                        vendingState["amount_to_return"]=vendingState["input_currency"]-vendingState["expense_amount"]
+                        vendingState["no_of_chocolate_bought"] -= 1
+                        update_vending_expense_amount()
+                        product.update_chips(my_chocolate[0], my_chocolate[1], my_chocolate[2], my_chocolate[3]-1)
+                    
     goods = Frame(main, width=600,height=570,bg="#000000")
     goods.place(x=135,y=40)
-    
-    
+
     good_frame = Frame(main, width=560,height=50,bg="#6A6161")
     good_frame.place(x=155,y=547)
-    
+
     first = Frame(good_frame, bg="#6A6161",height=100,width=147)
     first.place(x=1,y=45)
-            
+  
     item = Frame(main, width=600,height=130,bg="#000000")
     item.place(x=135,y=640)
 
@@ -90,7 +122,10 @@ def products(main, vendingState):
 
     # clickable individual products
     def coke():
-        withdrawProduct("Drinks", "Coke")
+        if vendingState["no_of_drink_bought"] < 1:
+            messagebox.showerror("error", "Sorry, We don't allow buying more than one drink")
+        else:
+            withdrawProduct("Drinks", "Coke")
         my_coke.config(image=new_pic2,bg="#000000",border=0,borderwidth=0)
     image2 = Image.open("public/Coke.png")
     resized = image2.resize((60,85), Image.Resampling.LANCZOS)
@@ -103,7 +138,10 @@ def products(main, vendingState):
     my_coke.place(x=10,y=10)
 
     def Fanta():
-        withdrawProduct("Drinks", "Fanta")
+        if vendingState["no_of_drink_bought"] < 1:
+            messagebox.showerror("error", "Sorry, We don't allow buying more than one drink")
+        else:
+            withdrawProduct("Drinks", "Fanta")
         my_Fanta.config(image=new_pic3,bg="#000000",border=0,borderwidth=0)
     image3 = Image.open("public/Fanta.png")
     resized = image3.resize((60,85), Image.Resampling.LANCZOS)
@@ -116,7 +154,10 @@ def products(main, vendingState):
     my_Fanta.place(x=10,y=10)
 
     def Sprite():
-        withdrawProduct("Drinks", "Sprite")
+        if vendingState["no_of_drink_bought"] < 1:
+            messagebox.showerror("error", "Sorry, We don't allow buying more than one drink")
+        else:
+            withdrawProduct("Drinks", "Sprite")
         my_Sprite.config(image=new_pic4,bg="#000000",border=0,borderwidth=0)
     image4 = Image.open("public/Sprite.png")
     resized = image4.resize((130,90), Image.Resampling.LANCZOS)
@@ -129,7 +170,10 @@ def products(main, vendingState):
     my_Sprite.place(x=10,y=10)
 
     def Pepsi():
-        withdrawProduct("Drinks", "Pepsi")
+        if vendingState["no_of_drink_bought"] < 1:
+            messagebox.showerror("error", "Sorry, We don't allow buying more than one drink")
+        else:
+            withdrawProduct("Drinks", "Pepsi")
         my_Pepsi.config(image=new_pic5,bg="#000000",border=0,borderwidth=0)
     image5 = Image.open("public/Pepsi.png")
     resized = image5.resize((90,85), Image.Resampling.LANCZOS)
@@ -143,7 +187,10 @@ def products(main, vendingState):
 
 
     def Bonbon():
-        withdrawProduct("Biscuits","Bourbon")
+        if vendingState["no_of_biscut_bought"] < 1:
+            messagebox.showerror("error", "Sorry, We don't allow buying more than one biscuits")
+        else:
+            withdrawProduct("Biscuits","Bourbon")
         my_Bonbon.config(image=new_pic7,bg="#000000",border=0,borderwidth=0)
     image7 = Image.open("public/Bornbon.png")
     resized = image7.resize((80,85), Image.Resampling.LANCZOS)
@@ -156,7 +203,10 @@ def products(main, vendingState):
     my_Bonbon.place(x=10,y=10)
 
     def Oreo():
-        withdrawProduct("Biscuits", "Oreo")        
+        if vendingState["no_of_biscut_bought"] < 1:
+            messagebox.showerror("error", "Sorry, We don't allow buying more than one biscuits")
+        else:
+           withdrawProduct("Biscuits", "Oreo")
         my_Oreo.config(image=new_pic8,bg="#000000",border=0,borderwidth=0)
     image8 = Image.open("public/Oreo.png")
     resized = image8.resize((120,85), Image.Resampling.LANCZOS)
@@ -169,7 +219,10 @@ def products(main, vendingState):
     my_Oreo.place(x=10,y=10)
 
     def Digestive():
-        withdrawProduct("Biscuits", "Digestive")        
+        if vendingState["no_of_biscut_bought"] < 1:
+            messagebox.showerror("error", "Sorry, We don't allow buying more than one biscuits")
+        else:
+            withdrawProduct("Biscuits", "Digestive")
         my_Digestive.config(image=new_pic9,bg="#000000",border=0,borderwidth=0)
     image9 = Image.open("public/Digestive.png")
     resized = image9.resize((100,85), Image.Resampling.LANCZOS)
@@ -182,7 +235,10 @@ def products(main, vendingState):
     my_Digestive.place(x=10,y=10)
 
     def Hide_And_Seek():
-        withdrawProduct("Biscuits", "Hide_And_Seek")        
+        if vendingState["no_of_biscut_bought"] < 1:
+            messagebox.showerror("error", "Sorry, We don't allow buying more than one biscuits")
+        else:
+           withdrawProduct("Biscuits", "Hide_And_Seek") 
         my_Hide_And_Seek.config(image=new_pic10,bg="#000000",border=0,borderwidth=0)
     image10 = Image.open("public/Hide_And_Seek.png")
     resized = image10.resize((100,85), Image.Resampling.LANCZOS)
@@ -196,7 +252,10 @@ def products(main, vendingState):
 
 
     def Dorritos():
-        withdrawProduct("Chips", "Dorritos")        
+        if vendingState["no_of_chips_bought"] < 1:
+            messagebox.showerror("error", "Sorry, We don't allow buying more than one chips")
+        else:
+            withdrawProduct("Chips", "Dorritos")
         my_Dorritos.config(image=new_pic12,bg="#000000",border=0,borderwidth=0)
     image12 = Image.open("public/Dorritos.png")
     resized = image12.resize((80,85), Image.Resampling.LANCZOS)
@@ -209,7 +268,10 @@ def products(main, vendingState):
     my_Dorritos.place(x=10,y=10)
 
     def Lays():
-        withdrawProduct("Chips", "Lays")        
+        if vendingState["no_of_chips_bought"] < 1:
+            messagebox.showerror("error", "Sorry, We don't allow buying more than one chips")
+        else:
+            withdrawProduct("Chips", "Lays")
         my_Lays.config(image=new_pic13,bg="#000000",border=0,borderwidth=0)
     image13 = Image.open("public/Lays.png")
     resized = image13.resize((120,85), Image.Resampling.LANCZOS)
@@ -222,7 +284,10 @@ def products(main, vendingState):
     my_Lays.place(x=1,y=10)
 
     def Local_Chips():
-        withdrawProduct("Chips", "Local_Chips")
+        if vendingState["no_of_chips_bought"] < 1:
+            messagebox.showerror("error", "Sorry, We don't allow buying more than one chips")
+        else:
+           withdrawProduct("Chips", "Local_Chips")
         my_Local_Chips.config(image=new_pic14,bg="#000000",border=0,borderwidth=0)
     image14 = Image.open("public/Local_Chips.png")
     resized = image14.resize((80,100), Image.Resampling.LANCZOS)
@@ -235,7 +300,10 @@ def products(main, vendingState):
     my_Local_Chips.place(x=10,y=10)
 
     def Uncle_Chips():
-        withdrawProduct("Chips", "Uncle_Chips")
+        if vendingState["no_of_chips_bought"] < 1:
+            messagebox.showerror("error", "Sorry, We don't allow buying more than one chips")
+        else:
+            withdrawProduct("Chips", "Uncle_Chips")
         my_Uncle_Chips.config(image=new_pic15,bg="#000000",border=0,borderwidth=0)
     image15 = Image.open("public/Uncle_Chips.png")
     resized = image15.resize((80,85), Image.Resampling.LANCZOS)
@@ -248,7 +316,10 @@ def products(main, vendingState):
     my_Uncle_Chips.place(x=10,y=10)
 
     def Snickers():
-        withdrawProduct("Chocolates", "Snickers")
+        if vendingState["no_of_chocolate_bought"] < 1:
+            messagebox.showerror("error", "Sorry, We don't allow buying more than one chocolate")
+        else:
+            withdrawProduct("Chocolates", "Snickers")
         my_Snickers.config(image=new_pic17,bg="#000000",border=0,borderwidth=0)
     image17 = Image.open("public/Snickers.png")
     resized = image17.resize((120,85), Image.Resampling.LANCZOS)
@@ -261,7 +332,10 @@ def products(main, vendingState):
     my_Snickers.place(x=10,y=10)
 
     def Twix():
-        withdrawProduct("Chocolates", "Twix")
+        if vendingState["no_of_chocolate_bought"] < 1:
+            messagebox.showerror("error", "Sorry, We don't allow buying more than one chocolate")
+        else:
+            withdrawProduct("Chocolates", "Twix")
         my_Twix.config(image=new_pic18,bg="#000000",border=0,borderwidth=0)
     image18 = Image.open("public/Twix.png")
     resized = image18.resize((120,85), Image.Resampling.LANCZOS)
@@ -274,7 +348,10 @@ def products(main, vendingState):
     my_Twix.place(x=10,y=10)
 
     def Rafello():
-        withdrawProduct("Chocolates", "Rafello")
+        if vendingState["no_of_chocolate_bought"] < 1:
+            messagebox.showerror("error", "Sorry, We don't allow buying more than one chocolate")
+        else:
+             withdrawProduct("Chocolates", "Rafello")
         my_Rafello.config(image=new_pic19,bg="#000000",border=0,borderwidth=0)
     image19 = Image.open("public/Rafello.png")
     resized = image19.resize((120,85), Image.Resampling.LANCZOS)
@@ -287,7 +364,10 @@ def products(main, vendingState):
     my_Rafello.place(x=10,y=10)
 
     def Mars():
-        withdrawProduct("Chocolates", "Mars")
+        if vendingState["no_of_chocolate_bought"] < 1:
+            messagebox.showerror("error", "Sorry, We don't allow buying more than one chocolate")
+        else:
+            withdrawProduct("Chocolates", "Mars")
         my_Mars.config(image=new_pic20,bg="#000000",border=0,borderwidth=0)
     image20 = Image.open("public/Mars.png")
     resized = image20.resize((128,85), Image.Resampling.LANCZOS)

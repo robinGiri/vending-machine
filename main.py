@@ -25,6 +25,10 @@ vendingState = {
     "input_currency": 0,
     "expense_amount": 0,
     "amount_to_return": 0,
+    "no_of_drink_bought": 1,
+    "no_of_chocolate_bought": 1,
+    "no_of_chips_bought": 1,
+    "no_of_biscut_bought": 1,
 }
 
 # this will add title
